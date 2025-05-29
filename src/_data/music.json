@@ -1,5 +1,18 @@
 [
-        {
+    {
+        "name": "GOLLIWOG",
+        "artist": "billy woods",
+        "score": 3.5,
+        "description": "Sorry team, I don't know about this one. After Doves was one of my favourite songs last year I was excited to hear my first billy woods solo album so when I heard about this I rushed to listen to it but I just wasn't feeling it. It seems like everyone loves it but this sucks so much, billy woods monotone delivery does absolutely nothing for me on this production and these beats, I've tried to listen to this three or four times by now but it clearly just isn't for me and I've pulled the plug every single time. I'm sure the lyrics are just as dense and raw as they sound at first listen but I didn't have any semblance of a time good enough to actually look further into them."
+    },
+    {
+        "name": "Egotrip",
+        "artist": "John michel & Anthony James",
+        "image": "https://i.imgur.com/VHXHvKb.png",
+        "score": 8.5,
+        "description": "Might be a bit premature but on first listen this shit straight beautiful. The beats and rapping both are incredible (though the jazzy beats are the main highlight), the features always hold their own weight. Super unexpected based on having never heard of this album and the cover looking like some stupid Swans shit (though I will have to listen to some Swans shit tomorrow when the new Swans album drops). Despite all having the same aesthetic and pretty similar beats on most song, every song managed to stay reasonably varied with a crowded and constantly morphing style of production (not a bad thing). Egotrip is a pretty perfect length for an album too at about 40 minutes which makes it avoid feeling monotonous. The rapping on this is reminiscent of McKinley Dixon on Beloved! Paradise! Jazz?! which was super cool to me and just got me more excited to hear his upcoming album as well as some more Jay-Z or early Kanye sounding moments. There was even ONEWAY which had some moments that reminded me of Wish You Were Hear by Pink Floyd but I might actually be just losing it. Overall incredible project that I'm upset almost flew under my radar. However, I will be relistening just in case my enjoyment of it wears off on me like the similar YUNG LIXO project did for me as there wasn't a song in particular that stood out to me and I'm unsure if that's because I didn't like the project as much as I thought or just because it was that good.. \n Edit: Relistened and I still like it!!"
+    },
+    {
         "name": "I Didn't Mean To Haunt You",
         "artist": "Quadeca",
         "image": "https://i.imgur.com/YIGcetO.png",
@@ -605,7 +618,7 @@
     {
         "name": "13 Lentes de um Final Feliz",
         "artist": "YUNG LIXO",
-        "score": 7.5,
+        "score": 7,
         "description": "Who could have guessed one day a Brazilian furry would make a better rap album than what Kanye dropped. While I can't judge it lyrically due to a language barrier this shit just bangs, all the beats are wonderful and YUNG LIXO has a really good flow. The final track is my favourite and I've been blasting it since release."
     },
     {
