@@ -43,7 +43,7 @@ jobs:
           path: ./_site
 
       - name: Deploy to NekoWeb
-        uses: indiefellas/deploy2nekoweb@v4
+        uses: indiefellas/deploy2nekoweb@main
         with:
           nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
           nekoweb-cookie: ${{ secrets.NEKOWEB_COOKIE }}
