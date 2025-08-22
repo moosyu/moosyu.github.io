@@ -58,13 +58,7 @@
                     <a href="/pages/media/games/">Games</a>
                 </div>
             </div>
-            <div class="dropdown">
-                <button class="dropbtn {% if '/pages/ramblings/2025' in page.url or '/pages/ramblings/2024' in page.url %}active-tab{% endif %}"><span class="nav-emojis">{{ emojis.ramble | safe }}</span>Ramblings</button>
-                <div class="dropdown-content">
-                    <a href="/pages/ramblings/2025">2025</a>
-                    <a href="/pages/ramblings/2024">2024</a>
-                </div>
-            </div>
+            <a href="{% latestCalendarUrl %}" {% if '/pages/ramblings/' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.ramble | safe }}</span>Ramblings</a>
             <a href="/pages/blog" {% if '/pages/blog' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.blog | safe }}</span>Blog</a>
             <a href="/pages/panels" {% if '/pages/panels' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.panels | safe }}</span>Panels</a>
             <a href="/pages/bookmarks" {% if '/pages/bookmarks' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.bookmarks | safe }}</span>Bookmarks</a>

@@ -1,0 +1,8 @@
+{% extends "base.njk" %}
+
+{% block content %}
+  <div class="background-div">
+    <h2>{{ date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).replace('.', '') }}</h2>
+    {{ content | safe }}
+  </div>
+{% endblock %}

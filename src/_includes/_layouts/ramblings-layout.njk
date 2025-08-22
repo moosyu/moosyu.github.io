@@ -1,44 +1,8 @@
 {% extends "base.njk" %}
 
-{% block headStyle %}
-  .ramblings-container {
-    border-bottom: 1px hsla(0, 0%, 100%, .12) solid;
-    font-size: 16px;
-  }
-
-  .ramblings-container img {
-      cursor: pointer;
-      width: 20%;
-  }
-
-  .ramblings-container h2 {
-      color: #999;
-      font-size: 13px;
-  }
-{% endblock %}
-
 
 {% block content %}
-<div class="background-div">
-    <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
-      <h3>Click images to view full size.</h3>
-      <h3 style="text-align: right;"><a style="text-decoration: none;" href="javascript: document.body.scrollIntoView(false);">To bottom ↓</a></h3>
-    </div>
+  <div class="background-div">
     {{ content | safe }}
-    <h3 style="text-align:right;"><a style="text-decoration: none;" href="#top">To top ↑</a></h3>
-</div>
-
-<script>
-  document.querySelectorAll('img').forEach(img => {
-    img.style.width = '20%';
-    img.loading = 'lazy';
-    img.addEventListener('click', () => {
-      if (img.style.width != '20%') {
-        img.style.width = '20%';
-      } else {
-        img.style.width = 'auto';
-      }
-    });
-  });
-</script>
+  </div>
 {% endblock %}

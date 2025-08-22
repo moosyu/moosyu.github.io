@@ -4,6 +4,9 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownItKatex = require("@vscode/markdown-it-katex").default;
 const markdownIt = require("markdown-it");
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("wordCount", (content) => {
@@ -13,6 +16,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("readTime", (content) => {
     let wordCount = content ? content.replace(/(<([^>]+)>)/gi, "").split(/\s+/).length : 0;
     return Math.ceil(wordCount / 200);
+  });
+
+  eleventyConfig.addShortcode("latestCalendarUrl", function() {
+    const calendarData = this.ctx.collections.calendarData;
+    const latest = calendarData[calendarData.length - 1];
+    return `/pages/ramblings/calendar/${latest.year}/${latest.month.toString().padStart(2, '0')}/`;
   });
 
   eleventyConfig.addPassthroughCopy({
@@ -72,6 +81,54 @@ module.exports = function(eleventyConfig) {
     return tree;
   });
 
+  eleventyConfig.addNunjucksFilter("format", function(value, format) {
+    if (format === "%02d") {
+      return value.toString().padStart(2, '0');
+    }
+    return value;
+  });
+
+  eleventyConfig.addNunjucksFilter("convertNumMonth", function(value) {
+    return monthNames[value - 1];
+  });
+
+  eleventyConfig.addCollection("calendarData", function (collectionApi) {
+    let calendar = {};
+    let items = collectionApi.getFilteredByGlob("src/pages/ramblings/data_files/*.md");
+
+    for (let item of items) {
+      let d = item.date;
+      let year = d.getFullYear();
+      let month = d.getMonth() + 1;
+      let day = d.getDate();
+
+      calendar[year] ??= {};
+      calendar[year][month] ??= {};
+      calendar[year][month][day] = item.url;
+    }
+
+    let months = [];
+    for (let year of Object.keys(calendar)) {
+      for (let month of Object.keys(calendar[year])) {
+        const yearNum = Number(year);
+        const monthNum = Number(month);
+        const firstDay = new Date(yearNum, monthNum - 1, 1);
+        const daysInMonth = new Date(yearNum, monthNum, 0).getDate();
+
+        months.push({
+          year: yearNum,
+          month: monthNum,
+          days: calendar[year][month],
+          firstDayOfWeek: firstDay.getDay() + 1,
+          daysInMonth: daysInMonth
+        });
+      }
+    }
+
+    months.sort((a, b) => a.year - b.year || a.month - b.month);
+    return months;
+  });
+
   eleventyConfig.addTransform("htmlmin", function (content) {
     if ((this.page.outputPath || "").endsWith(".html")) {
       if (this.page.inputPath.includes("src/pages/misc/")) {
@@ -101,39 +158,6 @@ module.exports = function(eleventyConfig) {
   }).use(markdownItKatex);
   eleventyConfig.setLibrary("md", md);
 	eleventyConfig.addPlugin(pluginRss);
-
-  function wrapRambingsPlugin(mdLib) {
-    mdLib.core.ruler.after('block', 'wrap-ramblings', state => {
-      const open = () => {
-        const token = new state.Token("html_block", "", 0);
-        token.content = '<div class="ramblings-container">';
-        return token;
-      };
-
-      const close = () => {
-        const token = new state.Token("html_block", "", 0);
-        token.content = '</div>';
-        return token;
-      };
-
-      let inside = false;
-      state.tokens = state.tokens.flatMap((token, i, tokens) => {
-        const isDateH2 = token.type === "heading_open" && token.tag === "h2" && tokens[i+1]?.type === "inline" && /^\d{2}\/\d{2}\/\d{2}$/.test(tokens[i+1].content);
-        const result = [];
-        if (isDateH2) {
-          if (inside) result.push(close());
-          result.push(open());
-          inside = true;
-        }
-        result.push(token);
-        return result;
-      });
-
-      if (inside) state.tokens.push(close());
-    });
-  }
-
-  md.use(wrapRambingsPlugin);
 
   return {
     dir: {
