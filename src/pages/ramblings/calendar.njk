@@ -8,8 +8,8 @@ permalink: "/pages/ramblings/calendar/{{ monthData.year }}/{{ monthData.month.to
 ---
 
 {% set yearStr = monthData.year %}
-{% set monthStr = "%02d"| format(monthData.month) %}
-{% set firstDayOfMonth = yearStr ~ "-" ~ monthStr ~ "-01" %}
+{% set monthStr = monthData.month %}
+{% set firstDayOfMonth = yearStr ~ "-" ~ monthStr | formatDate ~ "-01" %}
 
 {% extends "base.njk" %}
 
@@ -44,7 +44,6 @@ permalink: "/pages/ramblings/calendar/{{ monthData.year }}/{{ monthData.month.to
     border-radius: 4px;
     margin: 5px;
     text-align: center;
-    font-size: 20px;
   }
 
   .calendar-row {
@@ -79,11 +78,17 @@ permalink: "/pages/ramblings/calendar/{{ monthData.year }}/{{ monthData.month.to
   .calendar-day-link:hover {
     background: #0056b3;
   }
+
+  @media screen and (min-width: 1000px) {
+    .calendar-day-header {
+      font-size: 20px;
+    }
+  }
 {% endblock %}
 
 {% block content %}
   <div class="background-div">
-    <details style="text-align: right;">
+    <details>
       <summary><svg width="24" height="24" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M0 10C0 4.478 4.478 0 10 0s10 4.478 10 10-4.477 10-10 10S0 15.523 0 10m11.125 2.002H8.989v-.141c.01-1.966.492-2.254 1.374-2.782q.139-.083.293-.178c.73-.459 1.292-1.038 1.292-1.883 0-.948-.743-1.564-1.666-1.564-.851 0-1.657.398-1.712 1.533H6.304C6.364 4.693 8.18 3.5 10.294 3.5c2.306 0 3.894 1.447 3.894 3.488 0 1.382-.695 2.288-1.805 2.952l-.238.144c-.79.475-1.009.607-1.02 1.777V12zm.17 3.012a1.344 1.344 0 0 1-1.327 1.328 1.32 1.32 0 0 1-1.328-1.328 1.32 1.32 0 0 1 1.328-1.316c.712 0 1.322.592 1.328 1.316z" fill="#FFF"/></svg></summary>
       Shoutout to xiaoshan from <a href="https://dreamscape.place/">dreamscape</a>, fully stole this idea from her!!
     </details>

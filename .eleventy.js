@@ -18,6 +18,14 @@ module.exports = function(eleventyConfig) {
     return Math.ceil(wordCount / 200);
   });
 
+  eleventyConfig.addNunjucksFilter("formatDate", function(value) {
+    return value.toString().padStart(2, '0');
+  });
+
+  eleventyConfig.addNunjucksFilter("convertNumMonth", function(value) {
+    return monthNames[value - 1];
+  });
+
   eleventyConfig.addShortcode("latestCalendarUrl", function() {
     const calendarData = this.ctx.collections.calendarData;
     const latest = calendarData[calendarData.length - 1];
@@ -79,17 +87,6 @@ module.exports = function(eleventyConfig) {
     });
 
     return tree;
-  });
-
-  eleventyConfig.addNunjucksFilter("format", function(value, format) {
-    if (format === "%02d") {
-      return value.toString().padStart(2, '0');
-    }
-    return value;
-  });
-
-  eleventyConfig.addNunjucksFilter("convertNumMonth", function(value) {
-    return monthNames[value - 1];
   });
 
   eleventyConfig.addCollection("calendarData", function (collectionApi) {
