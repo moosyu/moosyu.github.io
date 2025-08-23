@@ -119,7 +119,7 @@ permalink: "/pages/ramblings/calendar/{{ monthData.year }}/{{ monthData.month.to
           <div class="calendar-day">
             {% if dayNumber >= 1 and dayNumber <= monthData.daysInMonth %}
               {% if monthData.days[dayNumber] %}
-                <a href="{{ monthData.days[dayNumber] }}" class="calendar-day-link">{{ dayNumber }}</a>
+                <a href="{{ monthData.days[dayNumber].url }}" class="calendar-day-link">{{ dayNumber }}</a>
               {% else %}
                 <span class="calendar-day-number">{{ dayNumber }}</span>
               {% endif %}

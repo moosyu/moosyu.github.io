@@ -1,0 +1,22 @@
+---
+layout: "_layouts/ramblings-layout.njk"
+title: "untitled unmastered"
+---
+
+{% set year_over = false %}
+{% set rambling_year = 2024 %}
+
+{% for entry in collections.calendarData | reverse %}
+    {% if entry.year == rambling_year and year_over == false %}
+        {% for day, page in entry.days | entriesConverter | reverse %}
+        <div class="ramblings-container">
+            <h2>{{ day | formatDate }}/{{ entry.month | formatDate }}/{{ entry.year }}</h2>
+            {% if page.title %}
+                <p><a href="{{ page.url }}">{{ page.title }}</a></p>
+            {% else %}
+                <p><a href="{{ page.url }}">Untitled entry</a></p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endfor %}

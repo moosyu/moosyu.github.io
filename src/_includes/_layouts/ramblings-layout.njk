@@ -1,8 +1,20 @@
 {% extends "base.njk" %}
 
+{% block headStyle %}
+  .ramblings-container {
+    border-bottom: 1px hsla(0, 0%, 100%, .12) solid;
+    font-size: 16px;
+  }
+{% endblock %}
 
 {% block content %}
   <div class="background-div">
+      <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+      <h3>Click images to view full size.</h3>
+      <h3 style="text-align: right;"><a style="text-decoration: none;" href="javascript: document.body.scrollIntoView(false);">To bottom ↓</a></h3>
+    </div>
+    <p>Ramblings list version!! (Same entries as the calendar just in a different view.) </p>
     {{ content | safe }}
+    <h3 style="text-align:right;"><a style="text-decoration: none;" href="#top">To top ↑</a></h3>
   </div>
 {% endblock %}

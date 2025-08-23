@@ -26,6 +26,11 @@ module.exports = function(eleventyConfig) {
     return monthNames[value - 1];
   });
 
+  // convert object into an array so it can be reversed
+  eleventyConfig.addNunjucksFilter("entriesConverter", function(obj) {
+    return Object.entries(obj);
+  });
+
   eleventyConfig.addShortcode("latestCalendarUrl", function() {
     const calendarData = this.ctx.collections.calendarData;
     const latest = calendarData[calendarData.length - 1];
@@ -89,7 +94,7 @@ module.exports = function(eleventyConfig) {
     return tree;
   });
 
-  eleventyConfig.addCollection("calendarData", function (collectionApi) {
+eleventyConfig.addCollection("calendarData", function (collectionApi) {
     let calendar = {};
     let items = collectionApi.getFilteredByGlob("src/pages/ramblings/data_files/*.md");
 
@@ -101,7 +106,10 @@ module.exports = function(eleventyConfig) {
 
       calendar[year] ??= {};
       calendar[year][month] ??= {};
-      calendar[year][month][day] = item.url;
+      calendar[year][month][day] = {
+        url: item.url,
+        title: item.data.title // Add the title from front matter
+      };
     }
 
     let months = [];
@@ -123,6 +131,7 @@ module.exports = function(eleventyConfig) {
     }
 
     months.sort((a, b) => a.year - b.year || a.month - b.month);
+    // console.log(console.log(JSON.stringify(months, null, 2)))
     return months;
   });
 
