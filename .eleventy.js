@@ -94,45 +94,37 @@ module.exports = function(eleventyConfig) {
     return tree;
   });
 
-eleventyConfig.addCollection("calendarData", function (collectionApi) {
-    let calendar = {};
-    let items = collectionApi.getFilteredByGlob("src/pages/ramblings/data_files/*.md");
+  eleventyConfig.addCollection("calendarData", (collectionApi) => {
+    const items = collectionApi.getFilteredByGlob("src/pages/ramblings/data_files/*.md");
+    const calendar = {};
 
-    for (let item of items) {
-      let d = item.date;
-      let year = d.getFullYear();
-      let month = d.getMonth() + 1;
-      let day = d.getDate();
+    for (let { date, data, url } of items) {
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      const title = data.title || "Untitled entry";
 
       calendar[year] ??= {};
       calendar[year][month] ??= {};
-      calendar[year][month][day] = {
-        url: item.url,
-        title: item.data.title // Add the title from front matter
-      };
+      calendar[year][month][day] = { url, title };
     }
 
-    let months = [];
-    for (let year of Object.keys(calendar)) {
-      for (let month of Object.keys(calendar[year])) {
-        const yearNum = Number(year);
-        const monthNum = Number(month);
+    const months = Object.entries(calendar).flatMap(([year, monthsObj]) =>
+      Object.entries(monthsObj).map(([month, days]) => {
+        const yearNum = +year;
+        const monthNum = +month;
         const firstDay = new Date(yearNum, monthNum - 1, 1);
-        const daysInMonth = new Date(yearNum, monthNum, 0).getDate();
-
-        months.push({
+        return {
           year: yearNum,
           month: monthNum,
-          days: calendar[year][month],
+          days,
           firstDayOfWeek: firstDay.getDay() + 1,
-          daysInMonth: daysInMonth
-        });
-      }
-    }
+          daysInMonth: new Date(yearNum, monthNum, 0).getDate(),
+        };
+      })
+    );
 
-    months.sort((a, b) => a.year - b.year || a.month - b.month);
-    // console.log(console.log(JSON.stringify(months, null, 2)))
-    return months;
+    return months.sort((a, b) => a.year - b.year || a.month - b.month);
   });
 
   eleventyConfig.addTransform("htmlmin", function (content) {

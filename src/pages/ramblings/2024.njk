@@ -13,8 +13,6 @@ title: "untitled unmastered"
             <h2>{{ day | formatDate }}/{{ entry.month | formatDate }}/{{ entry.year }}</h2>
             {% if page.title %}
                 <p><a href="{{ page.url }}">{{ page.title }}</a></p>
-            {% else %}
-                <p><a href="{{ page.url }}">Untitled entry</a></p>
             {% endif %}
         </div>
         {% endfor %}
