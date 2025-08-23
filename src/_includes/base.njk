@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="dropdown">
-                <button class="dropbtn {% if '/pages/ramblings/' in page.url  %}active-tab{% endif %}"><span class="nav-emojis">{{ emojis.rambling | safe }}</span>Ramblings</button>
+                <button class="dropbtn {% if '/pages/ramblings/' in page.url  %}active-tab{% endif %}"><span class="nav-emojis">{{ emojis.ramble | safe }}</span>Ramblings</button>
                 <div class="dropdown-content">
                     <a href="{% latestCalendarUrl %}">Calendar</a>
                     <a href="/pages/ramblings/2025/">2025 entries</a>
