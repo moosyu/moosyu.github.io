@@ -4,6 +4,7 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownItKatex = require("@vscode/markdown-it-katex").default;
 const markdownIt = require("markdown-it");
+const markdownItFootnote = require("markdown-it-footnote")
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
@@ -153,7 +154,7 @@ module.exports = function(eleventyConfig) {
   const md = markdownIt({
     html: true,
     linkify: true,
-  }).use(markdownItKatex);
+  }).use(markdownItKatex).use(markdownItFootnote);
   eleventyConfig.setLibrary("md", md);
 	eleventyConfig.addPlugin(pluginRss);
 

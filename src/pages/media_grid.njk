@@ -1,0 +1,81 @@
+---
+title: "big and fat, born without arms or legs, born to jump in the air and clap"
+pagination:
+  data: comics
+  size: 100
+  alias: items
+  addAllPagesToCollections: true
+---
+
+{% extends "base.njk" %}
+
+{% block headStyle %}
+  .media-grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    align-items: center;
+  }
+  .media-grid-item {
+    margin: 20px;
+    background-color: #1f1e1e;
+    padding: 10px;
+    border-radius: 6px;
+    max-width: 250px;
+  }
+  .media-grid-item > h3, p, .media-head > h3 {
+    margin: 0;
+  }
+  .media-grid-item > img {
+    max-height: 450px;
+    display: block;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  .media-score {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .media-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+  }
+  .media-head {
+    display: flex;
+    justify-content: space-between;
+    margin: 3px 0 3px 0;
+  }
+  .media-head p {
+    margin: 0;
+  }
+{% endblock %}
+
+{% block content %}
+  <div class="background-div">
+        <div class="media-grid-container">
+          {% for item in items %}
+            <div class="media-grid-item">
+                <img src="https://cdn.myanimelist.net/images/manga/1/190207l.jpg">
+                <div class="media-head">
+                    <h3 title="{{ item.name }}" class="media-title">{{ item.name }}</h3>
+                    <h3 style="{% if item.score < 1 %} color: #5e5e5e;
+                      {% elif item.score < 3 %} color: #ff4c4c;
+                      {% elif item.score < 5 %} color: #ff8888;
+                      {% elif item.score < 7 %} color: #f0e68c;
+                      {% elif item.score < 8 %} color: #7bc96f;
+                      {% elif item.score < 10 %} color: #00cc66;
+                      {% else %} color: #9d63d0;
+                      {% endif %}">
+                      {{ item.score }}/10
+                    </h3>
+                </div>
+                <p>Type: {{ item.type }}</p>
+                <p>Status: Dropped</p>
+                <a href="#">Read thoughts...</a>
+            </div>
+            {% endfor %}
+        </div>
+  </div>
+{% endblock %}

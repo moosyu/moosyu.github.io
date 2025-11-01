@@ -16,6 +16,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@vscode/markdown-it-katex": "^1.1.0",
     "clean-css": "^5.3.3",
-    "html-minifier-terser": "^7.2.0"
+    "html-minifier-terser": "^7.2.0",
+    "markdown-it-footnote": "^4.0.0"
   }
 }
