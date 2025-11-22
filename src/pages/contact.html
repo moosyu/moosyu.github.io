@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="contactForm">
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <br>
+        <label>Your Message:</label>
+        <textarea name="message" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+
+    <p id="status"></p>
+
+    <script>
+    document.getElementById("contactForm").onsubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    const response = await fetch("https://still-darkness-65ad.moosyu.workers.dev/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, message })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        alert("i didnt get it or something is wrong....email me if this happens more then the usual!: " + (data.error || "missing error!?"));
+        return;
+    } else {
+        alert("thanks for submitting a question or whatever! this will be answered via discord!");
+    }
+    form.reset();
+    };
+    </script>
+</body>
+</html>
