@@ -8,6 +8,8 @@ Wrote some jank code for rice to do this:
 
 and thought I may as well share. I made it in a way that hopefully it should be a drop in replacement for [Max's Nekoweb Stats script](https://maxpixels.moe/resources/nekoweb-stats/) though you may have to modify depending on your needs.
 
+## Setup
+
 Firstly make or find images that number 0 to 9 and name them as such, make sure each image has the same format (named something like 0.png) and the same extension. If you have 8 images named 0.png -> 8.png but 9 is 9.gif this isn't going to work. Next up if you don't already create HTML elements with the ids created, updated, visitors and followers, for example:
 
 ```html
@@ -53,7 +55,7 @@ function convertTextToImage(stringValue, elementValue) {
     });
 }
 
-viewCountImages()
+displayStats()
 ```
 
 To make this work for you you'll need to edit two things. Firstly replace the domain in the first line with your domain, not just the first part, the full thing (eg: const domain = "moosyu.nekoweb.org"). If you're using a custom domain with Nekoweb I believe you can use either your NAME.nekoweb.org or the domain you bought but I'd use your proper domain name just to be safe. Next inside function ConvertTextToImage change:
@@ -183,17 +185,17 @@ line in convertTextToImage but NOT after the closing curly bracket of the conver
 ```js
 function convertTextToImage(stringValue, elementValue) {
     const imgFront = document.createElement("img");
-    imgFront.src = "https://rice.place/counter/ctoro.png";
+    imgFront.src = "PATH TO FRONT IMAGE";
     elementValue.appendChild(imgFront);
 
     stringValue.forEach(n => {
       const img = document.createElement("img");
-      img.src = `https://rice.place/counter/${n}.png`;
+      img.src = `${n}.png`;
       elementValue.appendChild(img);
     });
 
     const imgBack = document.createElement("img");
-    imgBack.src = "https://rice.place/counter/cend.png";
+    imgBack.src = "PATH TO BACK IMAGE";
     elementValue.appendChild(imgBack);
 }
 ```
@@ -206,4 +208,43 @@ Beautiful!
 
 ## Displaying dates as images
 
-Finally, you may be wondering if you can convert your date into images just like the views/follows, the answer is yes but it's a little bit of a pain to do. Technically the convertTextToImage could already do it however images can't include /'s in their name so the current way it's working wouldn't work for slashes, fortunately it's not particularly difficult to fix.
+You may be wondering if you can convert your date into images just like the views/follows, the answer is yes but it's a little bit of a pain to do. Technically the convertTextToImage could already do it however images can't include /'s in their name so the current way it's working wouldn't work for slashes, fortunately it's not particularly difficult to fix. Inside of the stringValue forEach loop add:
+
+```js
+if (n == "/") {
+n = "slash";
+}
+```
+
+and then have an image in your folder with the rest of your numbers named slash with the same extension. Your convertTextToImage function should now look something like this:
+
+```js
+function convertTextToImage(stringValue, elementValue) {
+    stringValue.forEach(n => {
+      if (n == "/") {
+        n = "slash";
+      }
+      const img = document.createElement("img");
+      img.src = `${n}.png`;
+      elementValue.appendChild(img);
+    });
+}
+```
+
+and this will give you something like this:
+
+![displayed date](https://i.imgur.com/sszviq5.png)
+
+This is lowkey a really ugly fix as if statements are my #1 opp but it's simple enough so I think it's fine.
+
+## Common issue
+
+Lastly if you're getting an error something along the lines of:
+
+Access to fetch at 'https://nekoweb.org/api/site/info/YOURURL' from origin 'https://YOURURL' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'https://nekoweb.org' that is not equal to the supplied origin. Have the server send the header with a valid value.
+
+in your console it could be because you've sent too many requests to the Nekoweb API in a short period of time. Just wait a few minutes and it should start working again.
+
+That's about it for me, thanks for giving my guide a read. If you do end up adding this somewhere on your site pretty please add my button or something 🥺. Feel free to message me on Discord or email me if you know me and are having problems.
+
+# All the example images were made using [rice's numbers](https://rice.place/). Go follow her 😡!!
