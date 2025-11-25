@@ -49,7 +49,7 @@
         </span>
         <div class="navbar-content">
             <a href="/" {% if page.url == '/' %}class="active-tab" style="border-radius: 0 0 0 3px;"{% endif %}><span class="nav-emojis">{{ emojis.home | safe }}</span>Home</a>
-            <a href="/pages/media_grid" {% if '/pages/media_grid' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.reviews | safe }}</span>Thoughts</a>
+            <a href="/pages/thoughts/media_grid/" {% if '/pages/thoughts/' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.reviews | safe }}</span>Thoughts</a>
             <div class="dropdown">
                 <button class="dropbtn {% if '/pages/ramblings/' in page.url  %}active-tab{% endif %}"><span class="nav-emojis">{{ emojis.ramble | safe }}</span>Ramblings</button>
                 <div class="dropdown-content">
@@ -63,7 +63,6 @@
             <a href="/pages/links" {% if '/pages/links' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.links | safe }}</span>Links</a>
         </div>
     </div>
-
     {% block content %}{% endblock %}
 </body>
 </html>

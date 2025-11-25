@@ -1,13 +1,37 @@
 ---
+layout: "layout.njk"
+title: "sorry for party rocking"
 pagination:
   data: thoughts
   size: 1
   alias: item
-permalink: "thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/"
+permalink: "/pages/thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/"
 ---
 
-<h1>{{ item.name }}</h1>
-<p>Type: {{ item.type }}</p>
-<p>Score: {{ item.score }}/10</p>
+<div class="background-div" style="display: flex; gap: 10px;">
+  <div style="flex-grow: 3;">
+    <h1>{{ item.name }}</h1>
+    <p>Type: {{ item.type }}</p>
+    <p>Score: {{ item.score }}/10</p>
+    <p>{{ item.description }}</p>
+  </div>
+  {% if (item.image) or (item.imageB) %}
+    <div style="flex-grow: 1;">
+      <h2>Media:</h2>
+      <img src="{{ item.image }}" alt="image 1" onclick="toggleFullscreen(this)" style="cursor: pointer;">
+      {% if (item.imageB) %}
+        <img src="{{ item.imageB }}" alt="image 2" onclick="toggleFullscreen(this)" style="cursor: pointer;">
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
 
-<p>{{ item.description }}</p>
+<script>
+  function toggleFullscreen(img) {
+    if (!document.fullscreenElement) {
+        img.requestFullscreen();
+    } else {
+        document.exitFullscreen();
+    }
+  }
+</script>

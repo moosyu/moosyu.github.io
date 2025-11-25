@@ -71,9 +71,10 @@ pagination:
                 </h3>
             </div>
             <p>{{ item.type }}</p>
-            <a href="/thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/">Read thoughts...</a>
+            <a href="/pages/thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/">Read thoughts...</a>
         </div>
         {% endfor %}
+    </div>
     </div>
     <div class="pagination-container">
       <div class="pagination-buttons left">
@@ -98,7 +99,6 @@ pagination:
           {% else %}
           <span>Next</span>
           {% endif %}
-      </div>
     </div>
   </div>
 {% endblock %}

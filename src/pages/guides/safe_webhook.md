@@ -123,7 +123,7 @@ Next go to your contact form HTML page and put in HTML somewhat resembling this:
     </form>
 ```
 
-The important parts is the id being contactForm and the names being email and message. Next add this JS to the contact page (if you don't know here read [this Mozilla page](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Add_JavaScript_to_your_web_page). ):
+The important parts is the id being contactForm and the names being email and message. Next add this JS to the contact page (if you don't know here read [this Mozilla page](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Add_JavaScript_to_your_web_page)):
 
 ```js
 document.getElementById("contactForm").onsubmit = async (e) => {
