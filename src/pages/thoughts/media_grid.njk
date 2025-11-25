@@ -12,8 +12,8 @@ pagination:
 {% block headStyle %}
   .media-grid-container {
     display: grid;
-    grid-template-columns: auto auto auto auto;
     padding: 10px;
+    grid-template-columns: auto auto;
     align-items: center;
   }
   .media-grid-item {
@@ -50,6 +50,16 @@ pagination:
   .media-head p {
     margin: 0;
   }
+  @media screen and (min-width: 1000px) {
+    .media-grid-container {
+      grid-template-columns: auto auto auto;
+    }
+  }
+  @media screen and (min-width: 1300px) {
+    .media-grid-container {
+      grid-template-columns: auto auto auto auto;
+    }
+  }
 {% endblock %}
 
 {% block content %}
@@ -71,7 +81,12 @@ pagination:
                 </h3>
             </div>
             <p>{{ item.type }}</p>
-            <a href="/pages/thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/">Read thoughts...</a>
+            <div class="media-head">
+              <a href="/pages/thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/">Read thoughts...</a>
+              {% if (item.image) %}
+                <svg fill="#FFF" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 52 52" xml:space="preserve"><path d="M50 10c0-2.2-1.8-4-4-4H6c-2.2 0-4 1.8-4 4v32c0 2.2 1.8 4 4 4h40c2.2 0 4-1.8 4-4zM39.6 38h-29c-1.2 0-1.9-1.3-1.3-2.3l8.8-15.3c.4-.7 1.3-.7 1.7 0l5.3 9.1c.4.6 1.3.7 1.7.1l4.3-6.2c.4-.6 1.3-.6 1.7 0L40.7 36c.6.9 0 2-1.1 2M37 20c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4"/></svg>
+              {% endif %}
+            </div>
         </div>
         {% endfor %}
     </div>

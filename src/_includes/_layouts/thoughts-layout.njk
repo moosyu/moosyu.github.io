@@ -1,0 +1,26 @@
+{% extends "base.njk" %}
+
+{% block headStyle %}
+    img {
+        border: 2px white dotted;
+        border-radius: 20px;
+    }
+    img:hover {
+        cursor: pointer;
+    }
+{% endblock %}
+
+{% block content %}
+    <div class="background-div" style="display: flex; gap: 10px;">
+        {{ content | safe }}
+    </div>
+    <script>
+    function toggleFullscreen(img) {
+        if (!document.fullscreenElement) {
+            img.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    }
+    </script>
+{% endblock %}
