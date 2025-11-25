@@ -49,15 +49,7 @@
         </span>
         <div class="navbar-content">
             <a href="/" {% if page.url == '/' %}class="active-tab" style="border-radius: 0 0 0 3px;"{% endif %}><span class="nav-emojis">{{ emojis.home | safe }}</span>Home</a>
-            <div class="dropdown">
-                <button class="dropbtn {% if '/pages/media/comics' in page.url or '/pages/media/games' in page.url or '/pages/media/tv' in page.url or '/pages/media/music' in page.url %}active-tab{% endif %}"><span class="nav-emojis">{{ emojis.reviews | safe }}</span>Media</button>
-                <div class="dropdown-content">
-                    <a href="/pages/media/comics/">Comics &amp; Books</a>
-                    <a href="/pages/media/music/">Music</a>
-                    <a href="/pages/media/tv/">TV &amp; Movies</a>
-                    <a href="/pages/media/games/">Games</a>
-                </div>
-            </div>
+            <a href="/pages/media_grid" {% if '/pages/media_grid' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.reviews | safe }}</span>Thoughts</a>
             <div class="dropdown">
                 <button class="dropbtn {% if '/pages/ramblings/' in page.url  %}active-tab{% endif %}"><span class="nav-emojis">{{ emojis.ramble | safe }}</span>Ramblings</button>
                 <div class="dropdown-content">

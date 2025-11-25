@@ -1,0 +1,13 @@
+---
+pagination:
+  data: thoughts
+  size: 1
+  alias: item
+permalink: "thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/"
+---
+
+<h1>{{ item.name }}</h1>
+<p>Type: {{ item.type }}</p>
+<p>Score: {{ item.score }}/10</p>
+
+<p>{{ item.description }}</p>

@@ -4,9 +4,6 @@ title: "blind leading the blind"
 ---
 
 <div class="background-div">
-    <div style="display:flex; justify-content:center; gap:8px; margin-bottom: 10px;">
-        {{ emojis.cone | safe }}<span style="font-size:large;">I don't update this page anymore (which is why it was removed from the navbar). Most guides should work but I won't be fixing any of the broken ones.</span>
-    </div>
     <ul style="margin: 0; padding: 0; list-style-type: none;">
     {% for guide in collections.guides | reverse %}
       <li class="blog-post-item">

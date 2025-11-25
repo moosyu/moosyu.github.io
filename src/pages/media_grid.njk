@@ -1,8 +1,8 @@
 ---
 title: "big and fat, born without arms or legs, born to jump in the air and clap"
 pagination:
-  data: comics
-  size: 100
+  data: thoughts
+  size: 32
   alias: items
   addAllPagesToCollections: true
 ---
@@ -54,28 +54,51 @@ pagination:
 
 {% block content %}
   <div class="background-div">
-        <div class="media-grid-container">
-          {% for item in items %}
-            <div class="media-grid-item">
-                <img src="https://cdn.myanimelist.net/images/manga/1/190207l.jpg">
-                <div class="media-head">
-                    <h3 title="{{ item.name }}" class="media-title">{{ item.name }}</h3>
-                    <h3 style="{% if item.score < 1 %} color: #5e5e5e;
-                      {% elif item.score < 3 %} color: #ff4c4c;
-                      {% elif item.score < 5 %} color: #ff8888;
-                      {% elif item.score < 7 %} color: #f0e68c;
-                      {% elif item.score < 8 %} color: #7bc96f;
-                      {% elif item.score < 10 %} color: #00cc66;
-                      {% else %} color: #9d63d0;
-                      {% endif %}">
-                      {{ item.score }}/10
-                    </h3>
-                </div>
-                <p>Type: {{ item.type }}</p>
-                <p>Status: Dropped</p>
-                <a href="#">Read thoughts...</a>
+    <div class="media-grid-container">
+      {% for item in items %}
+        <div class="media-grid-item">
+            <div class="media-head">
+                <h3 title="{{ item.name }}" class="media-title">{{ item.name }}</h3>
+                <h3 style="{% if item.score < 1 %} color: #5e5e5e;
+                  {% elif item.score < 3 %} color: #ff4c4c;
+                  {% elif item.score < 5 %} color: #ff8888;
+                  {% elif item.score < 7 %} color: #f0e68c;
+                  {% elif item.score < 8 %} color: #7bc96f;
+                  {% elif item.score < 10 %} color: #00cc66;
+                  {% else %} color: #9d63d0;
+                  {% endif %}">
+                  {{ item.score }}/10
+                </h3>
             </div>
-            {% endfor %}
+            <p>{{ item.type }}</p>
+            <a href="/thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/">Read thoughts...</a>
         </div>
+        {% endfor %}
+    </div>
+    <div class="pagination-container">
+      <div class="pagination-buttons left">
+          {% if pagination.href.previous %}
+          <a href="{{ pagination.href.previous }}" id="previous-link">Previous</a>
+          {% else %}
+          <span>Previous</span>
+          {% endif %}
+      </div>
+
+      <select id="pageDropdown" onchange="window.location.href=this.value;">
+          {%- for pageEntry in pagination.pages %}
+          <option value="{{ pagination.hrefs[loop.index0] }}" {% if page.url == pagination.hrefs[loop.index0] %} selected {% endif %}>
+              Page {{ loop.index }}
+          </option>
+          {%- endfor %}
+      </select>
+
+      <div class="pagination-buttons right">
+          {% if pagination.href.next %}
+          <a href="{{ pagination.href.next }}" id="next-link">Next</a>
+          {% else %}
+          <span>Next</span>
+          {% endif %}
+      </div>
+    </div>
   </div>
 {% endblock %}
