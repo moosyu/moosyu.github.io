@@ -1,0 +1,56 @@
+---
+title: "mo guests mo books"
+---
+
+{% extends "base.njk" %}
+
+{% block headStyle %}
+    .comment-title {
+        font-weight: bold;
+        padding-right: 16px;
+    }
+    form {
+        margin: 0 10px 10px 10px;
+    }
+    .comment-item {
+        background-color: #1f1e1e;
+        border-radius: 6px;
+        padding: 5px;
+        margin: 10px;
+    }
+    form textarea {
+        width: 100%;
+    }
+    form textarea, form input {
+        margin-bottom: 8px;
+        padding: 12px 20px;
+    }
+    form button {
+        padding: 3px;
+    }
+
+    form textarea, form input, form button {
+        background: linear-gradient(180deg, #212526e6 0, #1e2222e6 30%, #181f22e6 50%, #0d1013e6 100%);
+        box-sizing: border-box;
+        color: #fff;
+        border: dotted #fff 1px;
+        border-radius: 4px;
+    }
+{% endblock %}
+
+{% block content %}
+<div class="background-div">
+    <form method="POST" action="https://cmt.nkko.link/api/moosyu.github.io/pages/guestbook">
+        <div>
+            <input type="text" maxlength="64" name="name" placeholder="Enter your name..." required/>
+            <br>
+            <input type="url" maxlength="64" name="website" placeholder="Enter your site (optional)..." />
+        </div>
+        <textarea name="content" maxlength="1024" placeholder="Enter your comment..." required></textarea>
+        <br>
+        <button>Send!</button>
+    </form>
+    <div id="comment-section"></div>
+</div>
+<script src="/js/jb-comments.js"></script>
+{% endblock %}
