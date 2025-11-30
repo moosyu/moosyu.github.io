@@ -49,6 +49,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/_data/*");
   eleventyConfig.addPassthroughCopy("src/css/*");
   eleventyConfig.addPassthroughCopy("src/js/*");
+  eleventyConfig.addPassthroughCopy(".well-known/*")
   eleventyConfig.setServerOptions({
     liveReload: true,
     port: 5501,
