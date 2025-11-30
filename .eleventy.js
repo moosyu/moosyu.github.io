@@ -5,6 +5,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownItKatex = require("@vscode/markdown-it-katex").default;
 const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote")
+const fs = require("fs")
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
@@ -157,6 +158,22 @@ module.exports = function(eleventyConfig) {
   }).use(markdownItKatex).use(markdownItFootnote);
   eleventyConfig.setLibrary("md", md);
 	eleventyConfig.addPlugin(pluginRss);
+
+  eleventyConfig.on("afterBuild", () => {
+    const inputPath = "src/_data/thoughts.json";
+    const outputPath = "_site/_data/thoughts.min.json";
+    const raw = fs.readFileSync(inputPath, "utf-8");
+    const data = JSON.parse(raw);
+    const removeFields = ["description", "score", "image", "imageB"];
+
+    const cleaned = data.map(entry => {
+      const newEntry = { ...entry };
+      removeFields.forEach(f => delete newEntry[f]);
+      return newEntry;
+    });
+
+    fs.writeFileSync(outputPath, JSON.stringify(cleaned));
+  });
 
   return {
     dir: {

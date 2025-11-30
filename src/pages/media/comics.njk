@@ -110,8 +110,8 @@ pagination:
                         <a target="_blank" href="{{ item.image }}">
                             <p class="media-attachments">{{ item.image }}</p>
                         </a>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
             </td>
             <td>{{ item.description | replace('\n', '<br><br>') | safe }}</td>
         </tr>

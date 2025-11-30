@@ -34,10 +34,6 @@ button:hover, a:hover {
     max-width: 100%;
 }
 
-.search-items-container h1 {
-    font-family: YellowBalloon;
-    filter: drop-shadow(1px 1px 0 #FFF) drop-shadow(-1px 1px 0 #FFF) drop-shadow(0 -1px 0 #FFF) drop-shadow(1px 0 #FFF);}
-
 .search-items-container h1 a {
     text-decoration: none;
 }
