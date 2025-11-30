@@ -12,7 +12,7 @@ permalink: "/pages/thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/
   <h1>{{ item.name }}</h1>
   <p>Type: {{ item.type }}</p>
   <p>Score: {{ item.score }}/10</p>
-  <p>{{ item.description }}</p>
+  <p>{{ item.description | replace('\n', '<br><br>') | safe }}</p>
 </div>
 {% if (item.image) or (item.imageB) %}
   <div class="media">
