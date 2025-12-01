@@ -3,39 +3,51 @@ const comment_entry_form = document.getElementById("comment-entry-form")
 const pageName = window.location.pathname;
 const pageURL = `moosyu.github.io${pageName}`;
 
-comment_entry_form.innerHTML = displayFormHTML(null, false);
+comment_entry_form.innerHTML = displayFormHTML(null);
 
 async function displayComments() {
         try {
             const response = await fetch(`https://cmt.nkko.link/api/${pageURL}`);
             const data = await response.json();
 
-            comments = data.sort((a, b) => { 
-                return new Date(b.createdAt) - new Date(a.createdAt) 
-            });
-            comments.forEach(comment => {
-                parentComment = displayEntry(comment, "comment", comment.id, comment.replies.length > 0);
-                if (comment.replies) {
-                    comment.replies.forEach(reply => {
-                        parentComment.append(displayEntry(reply, "reply", reply.id, comment.replies.length > 0));
-                    })
-                }
-                comment_section.append(parentComment);
-            });
+            // clears loading message
+            if (data === undefined || data.length == 0) {
+                comment_section.innerHTML = "<div class='comment-item'>There aren't any comments yet :(</div>";
+            } else {
+                comment_section.innerHTML = "";
+                const comments = data.sort((a, b) => { 
+                    return new Date(b.createdAt) - new Date(a.createdAt);
+                });
+                comments.forEach(comment => {
+                    parentComment = displayEntry(comment, "comment", comment.id, comment.replies.length > 0);
+                    if (comment.replies) {
+                        const replies = comment.replies.sort((a, b) => {
+                            return new Date(a.createdAt) - new Date(b.createdAt);
+                        });
+                        replies.forEach(reply => {
+                            parentComment.append(displayEntry(reply, "reply", reply.id, comment.replies.length > 0));
+                        });
+                    }
+                    comment_section.append(parentComment);
+                });
+            }
         } catch (error) {
-            console.error("comments failed to load: " + error);
+            comment_section.innerHTML = `Comments failed to load: ${error}`;
+            console.error(`Comments failed to load: ${error}`);
         }
 }
 
 // this part makes me wish i used ts but whatever...
-function displayEntry(type, typeName, entryID, hasReplies) {
+function displayEntry(entry, typeName, entryID, hasReplies) {
     const entryDiv = document.createElement("div");
-    entryDiv.id = "entry-" + entryID;
+    entryDiv.id = `entry-${entryID}`;
     entryDiv.classList.add(`${typeName}-item`);
+    if (typeName == "reply") {
+        entryDiv.classList.add("hidden")
+    }
 
     // comment date
-    const dateDiv = document.createElement("div");
-    const createdAtDate = new Date(type.createdAt);
+    const createdAtDate = new Date(entry.createdAt);
     const formattedDate = createdAtDate.toLocaleString("en-US", {
         weekday: "short",
         day: "2-digit",
@@ -45,68 +57,65 @@ function displayEntry(type, typeName, entryID, hasReplies) {
         minute: "2-digit",
         hour12: true,
     });
-    dateDiv.innerHTML = `<span class="comment-title">Date</span> ${formattedDate}`;
 
-    // comment name
-    const nameDiv = document.createElement("div");
-    nameDiv.innerHTML = `<span class="comment-title">Name</span> ${type.author}`;
-
-    // comment site url
-    const urlDiv = document.createElement("div");
-    if (type.website) {
-        urlDiv.innerHTML = `<span class="comment-title">URL</span> <a href="${type.website}">${type.website}</a>`;
-    } else {
-        urlDiv.textContent = "No website URL included!";
-    }
-
-    // comment content
-    const contentDiv = document.createElement("div");
-    contentDiv.classList.add("comment-content");
-    contentDiv.textContent = type.content;
+    entryDiv.innerHTML = `
+        <table>
+            <tr>
+                <td class="comment-title">Date</td>
+                <td>${formattedDate}</td>
+            </tr>
+            <tr>
+                <td class="comment-title">Name</span></td>
+                <td>${entry.author}</td>
+            </tr>
+            <tr>
+                <td class="comment-title">URL</td>
+                <td>${entry.website ? `<a href="${entry.website}">${entry.website}</a>` : "No website URL included"}</td>
+            </tr>
+        </table>
+        <span class="comment-content">${entry.content}</span>
+        <div class="comment-footer"></div>
+    `;
 
     // footer content
-    const commentFooter = document.createElement("div");
-    commentFooter.classList.add("comment-footer")
-    const submitDiv = document.createElement("div");
+    const commentFooter = entryDiv.querySelector(".comment-footer");
     if (typeName == "comment") {
-        submitDiv.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 17-5-5 5-5"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></svg>
-        <button class="reply-button" onclick="displayReplyEntry('${entryID}')">Reply</button>
-        `;
-        commentFooter.append(submitDiv);
+        commentFooter.append(createReplyBtn(entryID));
         if (hasReplies) {
             const viewCommentsDiv = document.createElement("div");
             viewCommentsDiv.id = `view-comments-${entryID}`;
             viewCommentsDiv.innerHTML = displayViewComments(entryID, true);
             commentFooter.append(viewCommentsDiv);
         }
-    } else {
-        entryDiv.classList.add("hidden");
     }
 
-    entryDiv.append(dateDiv, nameDiv, urlDiv, contentDiv, commentFooter);
     return entryDiv;
 }
 
-function showReplies(entryID) {
-    const parentEntry = document.getElementById("entry-" + entryID);
-    const replies = parentEntry.querySelectorAll(".reply-item");
-    const entryViewCommentsDiv = document.getElementById("view-comments-" + entryID);
-    const isHidden = replies.length > 0 && replies[0].classList.contains("hidden");
-
-    replies.forEach(reply => {
-        if (isHidden) {
-            reply.classList.remove("hidden");
-        } else {
-            reply.classList.add("hidden");
-        }
-    });
-
-    entryViewCommentsDiv.innerHTML = isHidden ? displayViewComments(entryID, false) : displayViewComments(entryID, true);
+function createReplyBtn(entryID) {
+    const replyDiv = document.createElement("div");
+    replyDiv.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 17-5-5 5-5"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></svg>
+        <button class="reply-button" onclick="displayReplyEntry('${entryID}')">Reply</button>
+    `;
+    return replyDiv;
 }
 
+function showReplies(entryID) {
+    const parentEntry = document.getElementById(`entry-${entryID}`);
+    const replies = parentEntry.querySelectorAll(".reply-item");
+    const viewBtn = document.getElementById(`view-comments-${entryID}`);
+    const isHidden = replies[0].classList.contains("hidden");
+
+    replies.forEach(reply => {
+        reply.classList.toggle("hidden", !isHidden)
+    });
+    viewBtn.innerHTML = displayViewComments(entryID, !isHidden);
+}
+
+
 function displayReplyEntry(entryID) {
-    const parentEntry = document.getElementById("entry-" + entryID);
+    const parentEntry = document.getElementById(`entry-${entryID}`);
     const replyEntry = parentEntry.querySelector(".reply-entry");
     
     if (replyEntry) {
@@ -118,10 +127,10 @@ function displayReplyEntry(entryID) {
     } else {
         const replyDiv = document.createElement("div");
         replyDiv.classList.add("reply-entry");
-        replyDiv.innerHTML = displayFormHTML(entryID, true);
-        // IF THIS EVER BREAKS CHECK HERE FIRST THIS IS SOME DOGSHIT CODE
-        const fifthChild = parentEntry.children[4];
-        fifthChild.insertAdjacentElement("afterend", replyDiv);
+        replyDiv.innerHTML = displayFormHTML(entryID);
+
+        const commentFooter = parentEntry.querySelector(".comment-footer");
+        commentFooter.insertAdjacentElement("afterend", replyDiv);
     }
 }
 
@@ -136,33 +145,22 @@ function displayViewComments(entryID, hidden) {
     }
 }
 
-function displayFormHTML(entryID, replying) {
-    if (replying) {
-        return `
+function displayFormHTML(entryID) {
+    return `
         <form method="POST" action="https://cmt.nkko.link/api/${pageURL}">
-            <input type="hidden" name="parentId" value="${entryID}">
+            ${entryID ? `<input type="hidden" name="parentId" value="${entryID}">` : ""}
+    
             <div>
                 <input type="text" maxlength="64" name="name" placeholder="Enter your name..." required/>
                 <br>
                 <input type="url" maxlength="64" name="website" placeholder="Enter your site (optional)..." />
             </div>
+    
             <textarea name="content" maxlength="1024" placeholder="Enter your comment..." required></textarea>
             <br>
-            <button class="submit-button">Send!</button>
-        </form>`;
-    } else {
-        return `
-        <form method="POST" action="https://cmt.nkko.link/api/${pageURL}">
-            <div>
-                <input type="text" maxlength="64" name="name" placeholder="Enter your name..." required/>
-                <br>
-                <input type="url" maxlength="64" name="website" placeholder="Enter your site (optional)..." />
-            </div>
-            <textarea name="content" maxlength="1024" placeholder="Enter your comment..." required></textarea>
-            <br>
-            <button class="submit-button">Send!</button>
-        </form>`;
-    }
+            <button class="submit-button">Send</button>
+        </form>
+    `;
 }
 
 displayComments()

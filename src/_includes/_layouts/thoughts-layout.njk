@@ -1,23 +1,47 @@
 {% extends "base.njk" %}
 
-{% block headStyle %}
-    img {
-        border: 2px white dotted;
-        border-radius: 20px;
-    }
-    img:hover {
-        cursor: pointer;
-    }
-    .media {
-        width: 300px;
-        flex-shrink: 0;
-    }
+{% set guestbook_css %} {% include "../../css/jb-comment.css" %} {% endset %}
+
+{% block head %}
+    <style>
+        {{ guestbook_css | cssmin | safe }}
+        img {
+            border: 2px white dotted;
+            border-radius: 20px;
+        }
+        img:hover {
+            cursor: pointer;
+        }
+        .media {
+            width: 300px;
+            flex-shrink: 0;
+        }
+    </style>
+    <noscript>
+        <style>
+            .comment-section {
+                display: none;
+            }
+        </style>
+    </noscript>
 {% endblock %}
 
 {% block content %}
-    <div class="background-div" style="display: flex; gap: 10px;">
-        {{ content | safe }}
+
+    <div class="background-div">
+        <div style="display: flex; gap: 10px;">
+            {{ content | safe }}
+        </div>
+        <div class="comment-section">
+            <hr>
+            <h2>What'd you think?</h2>
+            <div id="comment-entry-form"></div>
+            <div id="comment-section">
+                <span class="comment-loading">Comments loading...</span>
+            </div>
+        </div>
     </div>
+
     <script>
     function toggleFullscreen(img) {
         if (!document.fullscreenElement) {
@@ -27,4 +51,5 @@
         }
     }
     </script>
+    <script src="/js/jb-comments.js"></script>
 {% endblock %}

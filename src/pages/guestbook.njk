@@ -4,83 +4,19 @@ title: "mo guests mo books"
 
 {% extends "base.njk" %}
 
+{% set guestbook_css %} {% include "../css/jb-comment.css" %} {% endset %}
+
 {% block headStyle %}
-    .comment-title {
-        font-weight: bold;
-        padding-right: 16px;
-    }
-    form {
-        margin: 0 10px 10px 10px;
-    }
-    .comment-item {
-        background-color: #1f1e1e;
-        border-radius: 6px;
-        padding: 5px;
-        margin: 10px;
-    }
-    .reply-item, .reply-entry {
-        margin: 10px 0 0 10px;
-        background-color: #161515;
-        border-radius: 6px;
-        padding: 5px;
-    }
-    .reply-entry {
-        padding-top: 15px;
-    }
-    .reply-item::before {
-        content: "";
-        background-color: #FFF;
-        position: absolute;
-        min-height: 100%;
-        width: 2px;
-        left: -10px;
-    }
-    .comment-content {
-        overflow-wrap: break-word;
-    }
-    form textarea {
-        width: 100%;
-    }
-    form textarea, form input {
-        margin-bottom: 8px;
-        padding: 12px 20px;
-    }
-    .submit-button {
-        padding: 3px;
-        cursor: pointer;
-    }
-    .comment-footer {
-        display: flex;
-        gap: 5px;
-    }
-    .comment-footer div {
-        display: flex;
-        gap: 0;
-        align-items: end;
-    }
-    .comment-footer div button {
-        margin-top: 5px;
-        cursor: pointer;
-        border: none;
-        background: none;
-        color: white;
-    }
-    form textarea, form input, .submit-button {
-        background: linear-gradient(180deg, #212526e6 0, #1e2222e6 30%, #181f22e6 50%, #0d1013e6 100%);
-        box-sizing: border-box;
-        color: #fff;
-        border: dotted #fff 1px;
-        border-radius: 4px;
-    }
-    .hidden {
-        display: none;
-    }
+    {{ guestbook_css | cssmin | safe }}
 {% endblock %}
 
 {% block content %}
 <div class="background-div">
+    <noscript>Enable JS to use the guestbook!</noscript>
     <div id="comment-entry-form"></div>
-    <div id="comment-section"></div>
+    <div id="comment-section">
+        <span class="comment-loading">Comments loading...</span>
+    </div>
 </div>
 <script src="/js/jb-comments.js"></script>
 {% endblock %}
