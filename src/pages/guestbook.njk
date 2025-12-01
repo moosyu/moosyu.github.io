@@ -18,6 +18,26 @@ title: "mo guests mo books"
         padding: 5px;
         margin: 10px;
     }
+    .reply-item, .reply-entry {
+        margin: 10px 0 0 10px;
+        background-color: #161515;
+        border-radius: 6px;
+        padding: 5px;
+    }
+    .reply-entry {
+        padding-top: 15px;
+    }
+    .reply-item::before {
+        content: "";
+        background-color: #FFF;
+        position: absolute;
+        min-height: 100%;
+        width: 2px;
+        left: -10px;
+    }
+    .comment-content {
+        overflow-wrap: break-word;
+    }
     form textarea {
         width: 100%;
     }
@@ -25,31 +45,41 @@ title: "mo guests mo books"
         margin-bottom: 8px;
         padding: 12px 20px;
     }
-    form button {
+    .submit-button {
         padding: 3px;
+        cursor: pointer;
     }
-
-    form textarea, form input, form button {
+    .comment-footer {
+        display: flex;
+        gap: 5px;
+    }
+    .comment-footer div {
+        display: flex;
+        gap: 0;
+        align-items: end;
+    }
+    .comment-footer div button {
+        margin-top: 5px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: white;
+    }
+    form textarea, form input, .submit-button {
         background: linear-gradient(180deg, #212526e6 0, #1e2222e6 30%, #181f22e6 50%, #0d1013e6 100%);
         box-sizing: border-box;
         color: #fff;
         border: dotted #fff 1px;
         border-radius: 4px;
     }
+    .hidden {
+        display: none;
+    }
 {% endblock %}
 
 {% block content %}
 <div class="background-div">
-    <form method="POST" action="https://cmt.nkko.link/api/moosyu.github.io/pages/guestbook">
-        <div>
-            <input type="text" maxlength="64" name="name" placeholder="Enter your name..." required/>
-            <br>
-            <input type="url" maxlength="64" name="website" placeholder="Enter your site (optional)..." />
-        </div>
-        <textarea name="content" maxlength="1024" placeholder="Enter your comment..." required></textarea>
-        <br>
-        <button>Send!</button>
-    </form>
+    <div id="comment-entry-form"></div>
     <div id="comment-section"></div>
 </div>
 <script src="/js/jb-comments.js"></script>
