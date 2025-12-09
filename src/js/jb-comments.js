@@ -1,3 +1,5 @@
+// dont worry about this comment
+
 const comment_section = document.getElementById("comment-section");
 const comment_entry_form = document.getElementById("comment-entry-form");
 const pageName = window.location.pathname;
