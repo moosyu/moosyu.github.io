@@ -19,7 +19,7 @@
 }
 .reply-item::before {
     content: "";
-    background-color: #FFF;
+    background-color: #fff;
     position: absolute;
     min-height: 100%;
     width: 2px;
@@ -48,14 +48,31 @@ form textarea, form input {
     gap: 0;
     align-items: end;
 }
-.comment-footer div button {
+
+.form-buttons div, .comment-footer div {
+    display: flex;
+    gap: 0;
+}
+
+.comment-footer div {
+    align-items: end;
+}
+
+.form-buttons div {
+    align-items: center;
+}
+
+.collapsible-button {
     margin-top: 5px;
-    cursor: pointer;
     border: none;
     background: none;
-    color: white;
+    color: #fff;
+    cursor: pointer;
 }
-form textarea, form input, .submit-button {
+.collapsible-button:hover, .submit-button:hover {
+    color: #fff;
+}
+form textarea, form input, .submit-button, .emoji-panel {
     background: linear-gradient(180deg, #212526e6 0, #1e2222e6 30%, #181f22e6 50%, #0d1013e6 100%);
     box-sizing: border-box;
     color: #fff;
@@ -63,5 +80,36 @@ form textarea, form input, .submit-button {
     border-radius: 4px;
 }
 .hidden {
-    display: none;
+    display: none !important;
+}
+.collapsible-div {
+    cursor: pointer;
+}
+.form-buttons {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.form-buttons svg {
+    cursor: pointer;
+}
+.emoji-panel {
+    padding: 4px;
+    align-items: center;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+.emoji-panel .emoji-listed {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    padding: 0 4px 0 4px;
+}
+.emoji-listed:hover {
+    cursor: pointer;
+}
+.c-emoji {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
 }

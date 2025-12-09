@@ -4,7 +4,7 @@ title: "mo guests mo books"
 
 {% extends "base.njk" %}
 
-{% set guestbook_css %} {% include "../css/jb-comment.css" %} {% endset %}
+{% set guestbook_css %} {% include "../css/jb-comments.css" %} {% endset %}
 
 {% block headStyle %}
     {{ guestbook_css | cssmin | safe }}

@@ -1,20 +1,20 @@
 {% extends "base.njk" %}
 
-{% set guestbook_css %} {% include "../../css/jb-comment.css" %} {% endset %}
+{% set guestbook_css %} {% include "../../css/jb-comments.css" %} {% endset %}
 
 {% block head %}
     <style>
         {{ guestbook_css | cssmin | safe }}
-        img {
-            border: 2px white dotted;
-            border-radius: 20px;
-        }
-        img:hover {
-            cursor: pointer;
-        }
         .media {
             width: 300px;
             flex-shrink: 0;
+        }
+        .media img {
+            border: 2px white dotted;
+            border-radius: 20px;
+        }
+        .media img:hover {
+            cursor: pointer;
         }
     </style>
     <noscript>
