@@ -1,22 +1,23 @@
-// dont worry about this comment
-
 const comment_section = document.getElementById("comment-section");
 const comment_entry_form = document.getElementById("comment-entry-form");
+const comment_pagination_container = document.getElementById("comment-pagination-container");
 const pageName = window.location.pathname;
 const pageURL = `moosyu.github.io${pageName}`;
+const emojiNames = ["smile", "annoyed", "talk", "pissed", "nervous", "cool", "exclaim", "sad", "freak", "grahh", "sobbing", "blunder"];
+const emojiPattern = new RegExp(`:(${emojiNames.join('|')}):`, 'g');
 
 comment_entry_form.innerHTML = displayFormHTML(null);
 
-async function displayComments() {
+async function displayComments(paginationPage) {
         try {
-            const response = await fetch(`https://cmt.nkko.link/api/${pageURL}`);
+            const response = await fetch(`https://cmt.nkko.link/api/${pageURL}?page=${paginationPage}&size=25`);
             const data = await response.json();
 
-            if (data === undefined || data.length == 0) {
+            if (data.comments === undefined || data.comments.length == 0) {
                 comment_section.innerHTML = "<div class='comment-item'>There aren't any comments yet :(</div>";
             } else {
                 comment_section.innerHTML = "";
-                const comments = data.sort((a, b) => { 
+                const comments = data.comments.sort((a, b) => { 
                     return new Date(b.createdAt) - new Date(a.createdAt);
                 });
                 comments.forEach(comment => {
@@ -36,6 +37,7 @@ async function displayComments() {
                         comment_section.append(parentComment);
                     }
                 });
+                displayPagination(data);
             }
         } catch (error) {
             comment_section.innerHTML = `Comments failed to load: ${error}`;
@@ -99,12 +101,38 @@ function displayEntry(entry, typeName, entryID, hasReplies) {
     return entryDiv;
 }
 
-function filterContent(content) {
-    // exploded all over the place after making this you guys have no idea
-    return content.replace(
-        /:(smile|annoyed|talk|pissed|nervous|cool|exclaim|sad|freak|grahh|sobbing|blunder):/g,
-        (_, name) => `<img src="/assets/emojis/${name}.webp" class="c-emoji" alt="${name}">`
-    );
+function displayPagination(data) {
+    const prevDisabled = data.currentPage == 1;
+    const nextDisabled = data.currentPage == data.totalPages;
+    
+    comment_pagination_container.innerHTML = 
+        `<div class="pagination-buttons left">
+            ${prevDisabled ? "<span>Previous</span>" : `<span onclick="displayComments(${data.currentPage - 1})" id="previous-link">Previous</span>`}
+        </div>
+        <select id="pageDropdown">
+            ${(nextDisabled && prevDisabled) ? `<option value="1">Page 1</option>` : displayPaginationList(data)}
+        </select>
+        <div class="pagination-buttons right">
+            ${nextDisabled ? "<span>Next</span>" : `<span onclick="displayComments(${data.currentPage + 1})" id="next-link">Next</span>`}
+        </div>`;
+    
+    const dropdown = document.getElementById('pageDropdown');
+    if (dropdown) {
+        dropdown.value = data.currentPage;
+        dropdown.addEventListener('change', function() {
+            displayComments(this.value);
+        });
+    }
+}
+
+function displayPaginationList(data) {
+    let html = "";
+
+    for (let i = 1; i <= data.totalPages; i++) {
+        html += `<option value="${i}">Page ${i}</option>`
+    }
+
+    return html;
 }
 
 function createEmojiBtn(entryID) {
@@ -191,6 +219,19 @@ function addEmoji(emojiName, entryID) {
     textContent.focus();
 }
 
+function createEmojiList(entryID) {
+    return emojiNames.map(emoji => {
+        return `<img class="emoji-listed" src="/assets/emojis/${emoji}.webp" loading="lazy" alt=":${emoji}:" onclick="addEmoji('${emoji}', '${entryID}')">`;
+    }).join("");
+}
+
+function filterContent(content) {
+    return content.replace(
+        emojiPattern,
+        (_, name) => `<img src="/assets/emojis/${name}.webp" class="c-emoji" alt="${name}">`
+    );
+}
+
 function displayFormHTML(entryID) {
     return `
         <form method="POST" action="https://cmt.nkko.link/api/${pageURL}">
@@ -203,18 +244,7 @@ function displayFormHTML(entryID) {
             <textarea id="text-content-${entryID}" name="content" maxlength="1024" placeholder="Enter your comment..." required></textarea>
             <br>
             <div class="emoji-panel hidden" id="emojis-${entryID}">
-                <img class="emoji-listed" src="/assets/emojis/smile.webp" alt=":smile:" onclick="addEmoji('smile', '${entryID}')">
-                <img class="emoji-listed" src="/assets/emojis/annoyed.webp" alt=":annoyed:" onclick="addEmoji('annoyed', '${entryID}')">
-                <img class="emoji-listed" src="/assets/emojis/talk.webp" alt=":talk:" onclick="addEmoji('talk', '${entryID}')">
-                <img class="emoji-listed" src="/assets/emojis/pissed.webp" alt=":pissed:" onclick="addEmoji('pissed', '${entryID}')">
-                <img class="emoji-listed" src="/assets/emojis/nervous.webp" alt=":nervous:" onclick="addEmoji('nervous', '${entryID}')">
-                <img class="emoji-listed" src="/assets/emojis/cool.webp" alt=":cool:" onclick="addEmoji('cool', '${entryID}')">
-                <img class="emoji-listed" src="/assets/emojis/exclaim.webp" alt=":exclaim:" onclick="addEmoji('exclaim', '${entryID}')">
-                <img class="emoji-listed" src="/assets/emojis/sad.webp" alt=":sad:" onclick="addEmoji('sad', '${entryID}')">
-                <img class="emoji-listed" src="/assets/emojis/freak.webp" alt=":freak:" onclick="addEmoji('freak', '${entryID}')">
-                <img class="emoji-listed" src="/assets/emojis/grahh.webp" alt=":grahh:" onclick="addEmoji('grahh', '${entryID}')">
-                <img class="emoji-listed" src="/assets/emojis/sobbing.webp" alt=":sobbing:" onclick="addEmoji('sobbing', '${entryID}')">
-                <img class="emoji-listed" src="/assets/emojis/blunder.webp" alt=":blunder:" onclick="addEmoji('blunder', '${entryID}')">
+                ${createEmojiList(entryID)}
             </div>
             <div class="form-buttons">
                 <button class="submit-button">Send</button>
@@ -224,4 +254,4 @@ function displayFormHTML(entryID) {
     `;
 }
 
-displayComments();
+displayComments("1");
