@@ -16,6 +16,16 @@
         .media img:hover {
             cursor: pointer;
         }
+        .thoughts-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        @media screen and (min-width: 600px) {
+            .thoughts-content {
+                flex-direction: row;
+            }
+        }
     </style>
     <noscript>
         <style>
@@ -29,7 +39,7 @@
 {% block content %}
 
     <div class="background-div">
-        <div style="display: flex; gap: 10px;">
+        <div style="display: flex; gap: 10px;" class="thoughts-content">
             {{ content | safe }}
         </div>
         <div class="comment-section">
