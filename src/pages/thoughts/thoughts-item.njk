@@ -17,9 +17,11 @@ permalink: "/pages/thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/
 {% if (item.image) or (item.imageB) %}
   <div class="media">
     <h2>Media:</h2>
-    <img src="{{ item.image }}" alt="image 1" onclick="toggleFullscreen(this)">
-    {% if (item.imageB) %}
-      <img src="{{ item.imageB }}" alt="image 2" onclick="toggleFullscreen(this)">
-    {% endif %}
+    <div class="thoughts-media">
+      <img src="{{ item.image }}" alt="image 1" onclick="toggleFullscreen(this)">
+      {% if (item.imageB) %}
+        <img src="{{ item.imageB }}" alt="image 2" onclick="toggleFullscreen(this)">
+      {% endif %}
+    </div>
   </div>
 {% endif %}

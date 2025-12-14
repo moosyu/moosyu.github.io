@@ -6,12 +6,13 @@
     <style>
         {{ guestbook_css | cssmin | safe }}
         .media {
-            width: 300px;
+            width: auto;
             flex-shrink: 0;
         }
         .media img {
             border: 2px white dotted;
             border-radius: 20px;
+            width: 50%;
         }
         .media img:hover {
             cursor: pointer;
@@ -21,9 +22,27 @@
             flex-direction: column;
             gap: 10px;
         }
-        @media screen and (min-width: 600px) {
+        .thoughts-media {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 10px;
+        }
+        @media screen and (min-width: 700px) {
             .thoughts-content {
                 flex-direction: row;
+            }
+            .thoughts-media {
+                flex-direction: column;
+                padding-bottom: 0;
+            }
+            .media {
+                width: 300px;
+            }
+            .media img {
+                width: auto;
             }
         }
     </style>
