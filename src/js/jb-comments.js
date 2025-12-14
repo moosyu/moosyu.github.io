@@ -3,6 +3,7 @@ const comment_entry_form = document.getElementById("comment-entry-form");
 const comment_pagination_container = document.getElementById("comment-pagination-container");
 const pageName = window.location.pathname;
 const pageURL = `moosyu.github.io${pageName}`;
+const apiURL = "https://cmt.nkko.link/api/export/"
 const emojiNames = ["smile", "annoyed", "talk", "pissed", "nervous", "cool", "exclaim", "sad", "freak", "grahh", "sobbing", "blunder"];
 const emojiPattern = new RegExp(`:(${emojiNames.join('|')}):`, 'g');
 
@@ -10,7 +11,7 @@ comment_entry_form.innerHTML = displayFormHTML(null);
 
 async function displayComments(paginationPage) {
         try {
-            const response = await fetch(`https://cmt.nkko.link/api/${pageURL}?page=${paginationPage}&size=25`);
+            const response = await fetch(`${apiURL}${pageURL}?page=${paginationPage}&size=25`);
             const data = await response.json();
 
             if (data.comments === undefined || data.comments.length == 0) {
@@ -234,7 +235,7 @@ function filterContent(content) {
 
 function displayFormHTML(entryID) {
     return `
-        <form method="POST" action="https://cmt.nkko.link/api/${pageURL}">
+        <form method="POST" action="${apiURL}${pageURL}">
             ${entryID ? `<input type="hidden" name="parentId" value="${entryID}">` : ""}
             <div>
                 <input type="text" maxlength="64" name="name" placeholder="Enter your name..." required/>

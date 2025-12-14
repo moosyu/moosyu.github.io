@@ -3,6 +3,8 @@ title: "Making a nekoweb elements.css file"
 date: 2024-08-31
 ---
 
+# THIS POST IS OUTDATED AS SHIT JUST USE [NEKOBOX](https://jbc.lol/utils/nekobox/)!!
+
 ![nekoweb screenshot](https://I.imgur.com/6Nu9YGf.png)
 
 It kind of has a wacky format but I found the best way to do it. Stealing !!

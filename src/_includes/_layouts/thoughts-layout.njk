@@ -58,16 +58,8 @@
 {% block content %}
 
     <div class="background-div">
-        <div style="display: flex; gap: 10px;" class="thoughts-content">
+        <div class="thoughts-content">
             {{ content | safe }}
-        </div>
-        <div class="comment-section">
-            <hr>
-            <h2>What'd you think?</h2>
-            <div id="comment-entry-form"></div>
-            <div id="comment-section">
-                <span class="comment-loading">Comments loading...</span>
-            </div>
         </div>
     </div>
 
@@ -80,5 +72,4 @@
         }
     }
     </script>
-    <script src="/js/jb-comments.js"></script>
 {% endblock %}
