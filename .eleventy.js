@@ -97,11 +97,21 @@ module.exports = function(eleventyConfig) {
     return tree;
   });
 
+  function dateFromFilename(inputPath) {
+    const filename = inputPath.split("/").pop().replace(".md", "");
+    const [y, m, d] = filename.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  }
+
   eleventyConfig.addCollection("calendarData", (collectionApi) => {
-    const items = collectionApi.getFilteredByGlob("src/pages/ramblings/data_files/*.md");
+    const items = collectionApi.getFilteredByGlob(
+      "src/pages/ramblings/data_files/*.md"
+    );
     const calendar = {};
 
-    for (let { date, data, url } of items) {
+    for (let item of items) {
+      const { data, url, inputPath } = item;
+      const date = dateFromFilename(inputPath);
       const year = date.getFullYear();
       const month = date.getMonth() + 1;
       const day = date.getDate();
@@ -110,6 +120,8 @@ module.exports = function(eleventyConfig) {
       calendar[year] ??= {};
       calendar[year][month] ??= {};
       calendar[year][month][day] = { url, title };
+
+      item.data.date = date;
     }
 
     const months = Object.entries(calendar).flatMap(([year, monthsObj]) =>
