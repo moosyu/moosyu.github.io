@@ -132,32 +132,32 @@ permalink: "/pages/ramblings/calendar/{{ monthData.year }}/{{ monthData.month.to
         {% endfor %}
       </div>
     </div>
+  </div>
+  <div class="pagination-container">
+    <div class="pagination-buttons left">
+      {% if pagination.href.previous %}
+        <a href="{{ pagination.href.previous }}">Previous</a>
+      {% else %}
+        <span>Previous</span>
+      {% endif %}
+  </div>
 
-    <div class="pagination-container">
-      <div class="pagination-buttons left">
-        {% if pagination.href.previous %}
-          <a href="{{ pagination.href.previous }}">Previous</a>
-        {% else %}
-          <span>Previous</span>
-        {% endif %}
-    </div>
+    <select id="pageDropdown" onchange="location.href=this.value">
+      {% for monthItem in collections.calendarData %}
+        <option value="/pages/ramblings/calendar/{{ monthItem.year }}/{{ monthItem.month.toString().padStart(2, '0') }}/"
+          {% if monthItem.year == monthData.year and monthItem.month == monthData.month %}selected{% endif %}>
+          {{ monthItem.month | convertNumMonth(monthItem.month) }} {{ monthItem.year }}
+        </option>
+      {% endfor %}
+    </select>
 
-      <select id="pageDropdown" onchange="location.href=this.value">
-        {% for monthItem in collections.calendarData %}
-          <option value="/pages/ramblings/calendar/{{ monthItem.year }}/{{ monthItem.month.toString().padStart(2, '0') }}/"
-            {% if monthItem.year == monthData.year and monthItem.month == monthData.month %}selected{% endif %}>
-            {{ monthItem.month | convertNumMonth(monthItem.month) }} {{ monthItem.year }}
-          </option>
-        {% endfor %}
-      </select>
-
-      <div class="pagination-buttons right">
-        {% if pagination.href.next %}
-          <a href="{{ pagination.href.next }}">Next</a>
-        {% else %}
-          <span>Next</span>
-        {% endif %}
-      </div>
+    <div class="pagination-buttons right">
+      {% if pagination.href.next %}
+        <a href="{{ pagination.href.next }}">Next</a>
+      {% else %}
+        <span>Next</span>
+      {% endif %}
     </div>
   </div>
+
 {% endblock %}

@@ -3,7 +3,7 @@ layout: layout.njk
 title: Checklist
 ---
 
-<div class="background-div">
+<div class="background-div bottom-div">
 
 ## To play:
 
