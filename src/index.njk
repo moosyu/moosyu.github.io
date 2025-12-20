@@ -8,18 +8,11 @@
         font-family: Cubular;
         src: url("/fonts/Cubular.ttf");
     }
-
-    #frontpage-btn {
-        width: 88px;
-        height: 31px;
-        image-rendering: pixelated;
-    }
     .tooltip {
         position: relative;
         display: inline-block;
         cursor: pointer;
     }
-
     .tooltip .tooltip-text {
         visibility: hidden;
         width: 140px;
@@ -36,7 +29,6 @@
         opacity: 0;
         transition: opacity 0.3s;
     }
-
     .tooltip .tooltip-text::after {
         content: "";
         position: absolute;
@@ -47,17 +39,48 @@
         border-style: solid;
         border-color: rgb(35, 40, 46) transparent transparent transparent;
     }
-
     .tooltip:hover .tooltip-text {
         visibility: visible;
         opacity: 1;
+    }
+    .wave-text span {
+    display: inline-block;
+    animation: wave 2s ease-in-out infinite;
+    }
+    .wave-text span:nth-child(1) {
+        animation-delay: 0s;
+    }
+    .wave-text span:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    .wave-text span:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+    .wave-text span:nth-child(4) {
+        animation-delay: 0.6s;
+    }
+    @keyframes wave {
+        0%, 100% {
+            transform: translateY(0);
+            color: #ff7849;
+        }
+        25% {
+            color: #ff4d8d;
+        }
+        50% {
+            transform: translateY(-5px);
+            color: #7c3aed;
+        }
+        75% {
+            color: #38bdf8;
+        }
     }
 {% endblock %}
 
 {% block head %}
 <noscript>
     <style>
-        #lastheard-container, #commits-container, #c_widget, .copy-instructions, .tooltip-text, .hits-counter-container {
+        #lastHeardContainer, #commitsContainer, #c_widget, .copy-instructions, .tooltip-text, .hits-counter-container {
             display: none !important;
         }
         .tooltip {
@@ -69,11 +92,11 @@
 
 {% block content %}
 <div class="updates-container">
-    <div id="commits-container"><span>Loading...</span></div>
-    <div id="lastheard-container"><span>Loading...</span></div>
+    <div id="commitsContainer"><span>Loading...</span></div>
+    <div id="lastHeardContainer"><span>Loading...</span></div>
 </div>
 <div class="background-div bottom-div">
-    <p><span style="font-size: 24px;">Hello!</span> Welcome to my <span class="wavy-rainbow">sick</span> website. This is the terminally online equivalent to a diary so if you enjoy reading about strangers on the internet you'll love it here. If you got here trying to play Friday Night Funkin mods, I'll kill you. If you'd like to get in contact with me feel free to email me at moosyu@tuta.io but do bear in mind I don't check my emails super often (if at all).</p>
+    <p><span style="font-size: 24px;">Hello!</span> Welcome to my <span class="wave-text"><span>s</span><span>i</span><span>c</span><span>k</span></span> website. This is the terminally online equivalent to a diary so if you enjoy reading about strangers on the internet you'll love it here. If you got here trying to play Friday Night Funkin mods, I'll kill you. If you'd like to get in contact with me feel free to email me at moosyu@tuta.io but do bear in mind I don't check my emails super often (if at all).</p>
 
     <p>I've worked on and off on this for three years (since 01/12/22), originally it was me trying to copy <a href="https://displayman.neocities.org/" target="_blank">Daniel's Virtual Place</a> but now it's more like an inbred distant relative. At this point its more like an amalgam of sites I like, but aren't we all? Hopefully the longer it lasts the more distinct the style will become. All the code is <a href="https://github.com/Moosyu/moosyu.github.io" target="_blank">public</a> and you're free to use it though it probably wasn't even mine in the first place. If for some reason you'd like to download an offline version of this site, there's a prebuilt zip at <a href="/site.zip">moosyu.com/site.zip</a> (do bear in mind many images are hosted on ze.wtf and Imgur so this will be missing a lot, all the images would make the site like half a gig as opposed to the current slim 10mb archive).</p>
 
@@ -81,7 +104,7 @@
     <p>Add my button to your site <noscript>:</noscript>&nbsp;<span class="copy-instructions">(click it to copy to clipboard).</span></p>
 
     <div class="tooltip">
-        <img id="frontpage-btn" onclick="copyButton()" onmouseout="mouseOut()" src="/assets/button2.png" alt="moosyu button">
+        <img onclick="copyButton()" onmouseout="mouseOut()" src="/assets/button2.png" alt="moosyu button">
         <span class="tooltip-text" id="tooltip-btn">Copy to clipboard</span>
     </div>
     <noscript>
@@ -92,13 +115,14 @@
     <br>
 </div>
 <script src="js/lastFM.js"></script>
-<script src="js/github-commit.js"></script>
+<script src="js/githubCommit.js"></script>
 <script>
     function copyButton() {
         navigator.clipboard.writeText('<a href="https://moosyu.github.io/"><img src="https://moosyu.github.io/assets/button2.png" alt="moosyus awesome button"></a>');
         var tooltip = document.getElementById("tooltip-btn");
         tooltip.innerHTML = "Copied";
     }
+    
     function mouseOut() {
         var tooltip = document.getElementById("tooltip-btn");
         tooltip.innerHTML = "Copy to clipboard";

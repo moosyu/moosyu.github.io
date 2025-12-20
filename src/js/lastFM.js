@@ -4,7 +4,7 @@ async function displayLastFM() {
         const data = await response.json();
         const track = data.track;
 
-        document.getElementById("lastheard-container").innerHTML = `
+        document.getElementById("lastHeardContainer").innerHTML = `
         <div id="trackInfo">
             <span>Last heard: <a target="_blank" href="${track.url}">${track.name}</a> by ${track.artist['#text']}</span>
         </div>`;

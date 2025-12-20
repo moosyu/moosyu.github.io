@@ -108,9 +108,17 @@ pagination:
 {% endblock %}
 
 {% block content %}
+  <div class="background-div" style="display:flex; justify-content:center; gap:8px; margin-bottom: 10px;">
+    {{ emojis.exclamation | safe }}
+    <span style="font-size: large;"><a href="/pages/blog/2025_music">Click here for Moosyu's top 10 albums of 2025</a></span>
+    {{ emojis.exclamation | safe }}
+  </div>
   <div class="media-top">
     <div>
-      <span>Current average score: {{ (scoreTotal / counter).toFixed(2) }}/10</span>
+      <a href="/pages/graphs/thoughts_dist/" class="score-link">Current average score: {{ (scoreTotal / counter).toFixed(2) }}/10</a>
+      <noscript>
+        <span>Current average score: {{ (scoreTotal / counter).toFixed(2) }}/10</span>
+      </noscript>
     </div>
     <input autocomplete="off" type="text" id="mediaSearchInput" placeholder="Search...">
   </div>
@@ -137,7 +145,7 @@ pagination:
             <div class="media-head">
               <a href="/pages/thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/">Read thoughts... ({{ readTime }} min read)</a>
               {% if (item.image) %}
-                <svg fill="#FFF" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 52 52" xml:space="preserve"><path d="M50 10c0-2.2-1.8-4-4-4H6c-2.2 0-4 1.8-4 4v32c0 2.2 1.8 4 4 4h40c2.2 0 4-1.8 4-4zM39.6 38h-29c-1.2 0-1.9-1.3-1.3-2.3l8.8-15.3c.4-.7 1.3-.7 1.7 0l5.3 9.1c.4.6 1.3.7 1.7.1l4.3-6.2c.4-.6 1.3-.6 1.7 0L40.7 36c.6.9 0 2-1.1 2M37 20c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4"/></svg>
+                {{ emojis.media_image | safe }}
               {% endif %}
             </div>
         </div>

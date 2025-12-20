@@ -7,15 +7,8 @@ body {
     color: #fff;
     backdrop-filter: grayscale(100%) brightness(35%) contrast(120%);
     padding: 5px;
-    border-radius: 15px;
+    border-radius: 30px;
     border: 1px dotted #fff;
-}
-
-.content-wrapper {
-    padding: 5px;
-    margin: 10px;
-    border-radius: 15px;
-    border: dotted #fff 1px;
 }
 
 a {
@@ -170,7 +163,7 @@ button:hover, a:hover {
     border-radius: 4px;
 }
 
-#commits-container, #lastheard-container {
+#commitsContainer, #lastHeardContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -372,7 +365,7 @@ button:hover, a:hover {
         flex-direction: row;
     }
 
-    #commits-container, #lastheard-container {
+    #commitsContainer, #lastHeardContainer {
         width: 100%;
     }
 
