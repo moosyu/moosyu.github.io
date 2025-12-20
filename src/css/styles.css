@@ -1,16 +1,21 @@
 body {
     font-family: monospace;
-    background: #171b1f url("/assets/wall.png");
-    margin: 0 auto;
+    background: #4798c9 url("/assets/wall_dark.png");
+    margin: 10px auto;
     max-width: 1400px;
-    overflow: -moz-scrollbars-vertical;
     overflow-y: scroll;
-    color: #FFF;
+    color: #fff;
+    backdrop-filter: grayscale(100%) brightness(35%) contrast(120%);
+    padding: 5px;
+    border-radius: 15px;
+    border: 1px dotted #fff;
 }
 
-@font-face {
-    font-family: YellowBalloon;
-    src: url("/fonts/Yellow_Balloon.ttf");
+.content-wrapper {
+    padding: 5px;
+    margin: 10px;
+    border-radius: 15px;
+    border: dotted #fff 1px;
 }
 
 a {
@@ -95,6 +100,10 @@ button:hover, a:hover {
     color: #e23a45;
 }
 
+.home-navbtn {
+    border-radius: 15px 0 0 15px;
+}
+
 .navbar-expander svg {
     transition: transform 0.2s linear;
 }
@@ -158,11 +167,11 @@ button:hover, a:hover {
     border-radius: 4px;
 }
 
-.description-container, #commits-container, #lastheard-container {
+#commits-container, #lastheard-container {
     background-color: #111214;
     padding: 20px;
     border: dotted white 1px;
-    border-radius: 4px;
+    border-radius: 15px;
 }
 
 #commits-container, #lastheard-container {
@@ -185,12 +194,7 @@ button:hover, a:hover {
     justify-content: space-between;
     gap: 10px;
     padding: 10px;
-    background: linear-gradient(180deg,
-        #212526e6 0%,
-        #1e2222e6 30%,
-        #181f22e6 50%,
-        #0d1013e6 100%
-    );
+    background: linear-gradient(180deg, #212526 0, #1e2222 30%, #181f22 50%, #0d1013 100%);
     border: dotted #fff 1px;
     border-radius: 15px;
     margin: 10px;

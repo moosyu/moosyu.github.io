@@ -51,7 +51,7 @@
             </svg>
         </span>
         <div class="navbar-content">
-            <a href="/" {% if page.url == '/' %}class="active-tab" style="border-radius: 0 0 0 3px;"{% endif %}><span class="nav-emojis">{{ emojis.home | safe }}</span>Home</a>
+            <a href="/" class="home-navbtn {% if page.url == '/' %} active-tab {% endif %}"><span class="nav-emojis">{{ emojis.home | safe }}</span>Home</a>
             <a href="/pages/thoughts/media_grid/" {% if '/pages/thoughts/' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.reviews | safe }}</span>Thoughts</a>
             <div class="dropdown">
                 <button class="dropbtn {% if '/pages/ramblings/' in page.url  %}active-tab{% endif %}"><span class="nav-emojis">{{ emojis.ramble | safe }}</span>Ramblings</button>
