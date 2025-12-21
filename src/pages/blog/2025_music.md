@@ -7,19 +7,19 @@ tags:
 
 Wow, another year over. Maybe next year I'll figure out how to make a guestbook that lasts longer than a day, who knows though. To be honest, this year I've listened to less music than I'd have liked to, certainly less new music than I'd have liked to and even less that I'd bothered to write anything about. I'll lock in on being terminally online next year I promise. Anyhow, as Pitchfork's #1 competitor it's time for me list things off, I'm not sure if the placing will be 1:1 with what I scored them, there has been a fair few high 7s this year so they swap around in my head fairly often and I don't usually update them. I was going to do a cool grid thing but then I realised I hate position: relative and it's 12am so I canned it, sorry.
 
-10\. [John Michel - Egotrip](/pages/thoughts/egotrip-album/)
+10\. [ROSALÍA - LUX](/pages/thoughts/lux-album/)
 
-9\. [Joey Valence & Brae - HYPERYOUTH](/pages/thoughts/hyperyouth-album/)
+9\. [John Michel - Egotrip](/pages/thoughts/egotrip-album/)
 
-8\. [Viagra Boys - viagr aboys](/pages/thoughts/viagr-aboys-album/)
+8\. [Joey Valence & Brae - HYPERYOUTH](/pages/thoughts/hyperyouth-album/)
 
-7\. ROSALÍA - LUX (No writeup yet, sorry)
+7\. [Viagra Boys - viagr aboys](/pages/thoughts/viagr-aboys-album/)
 
 6\. [Djo - The Crux](/pages/thoughts/the-crux-album/)
 
-5\. [Perfume Genius - Glory](/pages/thoughts/racing-mount-pleasant-album/)
+5\. [Perfume Genius - Glory](/pages/thoughts/glory-album/)
 
-4\. [Racing Mount Pleasant - Racing Mount Pleasant]()
+4\. [Racing Mount Pleasant - Racing Mount Pleasant](/pages/thoughts/racing-mount-pleasant-album/)
 
 3\. [Jane Remover - ♡](/pages/thoughts/-ep/)
 
