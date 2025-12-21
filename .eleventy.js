@@ -44,6 +44,7 @@ module.exports = function(eleventyConfig) {
     "public/fonts": "fonts",
     "public/favicon.ico": "favicon.ico",
     "src/nekofm.css" : "nekofm.css",
+    "src/elements.css" : "elements.css",
     "src/pages/musicring/sitesMusicRing.json" : "sitesMusicRing.json"
   });
   eleventyConfig.addPassthroughCopy("src/_data/*");

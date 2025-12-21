@@ -1,0 +1,22 @@
+.site-box .sitefeature {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: none;
+  border-radius: 15px;
+  background-image: url("//moosyu.nekoweb.org/assets/nekoweb-elements.png");
+}
+.site-box .sitefeature img {
+    display: none;
+}
+.site-box {
+  border-radius: 30px;
+  background-image: url("//moosyu.nekoweb.org/assets/wall.png");
+}
+.site-box p {
+  margin-top: 10px;
+  color: #fff;
+}
+.site-box > a > span {
+  display: none;
+}
