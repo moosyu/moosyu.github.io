@@ -21,7 +21,7 @@ Wow, another year over. Maybe next year I'll figure out how to make a guestbook 
 
 4\. [Racing Mount Pleasant - Racing Mount Pleasant](/pages/thoughts/racing-mount-pleasant-album/)
 
-3\. [Jane Remover - ♡](/pages/thoughts/-ep/)
+3\. [Jane Remover - ♡](/pages/thoughts/heart-ep/)
 
 2\. [Jane Remover - Revengeseekerz](/pages/thoughts/revengeseekerz-album/)
 

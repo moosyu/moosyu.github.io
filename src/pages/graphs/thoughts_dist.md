@@ -1,4 +1,4 @@
 ---
 title: "thoughts ratings distribution"
-jsonLocation: "/_data/thoughts.json"
+jsonLocation: "/_data/thoughts.min.json"
 ---
