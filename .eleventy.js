@@ -14,7 +14,7 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("dateConvert", (dateInput, format = "MMM d, yyyy") => {
     if (!dateInput) return "";
-    return DateTime.fromISO(dateInput, { zone: "utc" }).toFormat(format);
+    return DateTime.fromISO(dateInput).toFormat(format);
   });
 
   eleventyConfig.addFilter("wordCount", (content) => {
