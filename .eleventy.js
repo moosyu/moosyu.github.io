@@ -6,11 +6,17 @@ const markdownItKatex = require("@vscode/markdown-it-katex").default;
 const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote")
 const fs = require("fs")
+const { DateTime } = require("luxon");
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addFilter("dateConvert", (dateInput, format = "MMM d, yyyy") => {
+    if (!dateInput) return "";
+    return DateTime.fromISO(dateInput, { zone: "utc" }).toFormat(format);
+  });
+
   eleventyConfig.addFilter("wordCount", (content) => {
     return content.replace(/(<([^>]+)>)/gi, "").split(/\s+/).length;
   });
@@ -178,7 +184,7 @@ module.exports = function(eleventyConfig) {
     const outputPath = "_site/_data/thoughts.min.json";
     const raw = fs.readFileSync(inputPath, "utf-8");
     const data = JSON.parse(raw);
-    const removeFields = ["description", "score", "image", "imageB"];
+    const removeFields = ["description", "score", "image", "imageB", "dateModified", "type"];
 
     const cleaned = data.map(entry => {
       const newEntry = { ...entry };

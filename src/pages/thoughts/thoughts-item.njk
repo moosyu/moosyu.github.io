@@ -1,17 +1,25 @@
 ---
 layout: "_layouts/thoughts-layout.njk"
 title: "sorry for party rocking"
+tags: "thoughts"
 pagination:
   data: thoughts
   size: 1
   alias: item
 permalink: "/pages/thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/"
+eleventyComputed:
+  date: "{{ item.dateModified | dateConvert }}"
 ---
 
 <div>
   <h1>{{ item.name }}</h1>
   <p>Type: {{ item.type }}</p>
   <p>Score: {{ item.score }}/10</p>
+  {% if (item.dateModified) %}
+    <p>Date modified: {{ date }}</p>
+  {% else %}
+      <p>Date modified: unknown</p>
+  {% endif %}
   <p>{{ item.description | replace('\n', '<br><br>') | safe }}</p>
 </div>
 {% if (item.image) or (item.imageB) %}
