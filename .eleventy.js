@@ -184,7 +184,7 @@ module.exports = function(eleventyConfig) {
     const outputPath = "_site/_data/thoughts.min.json";
     const raw = fs.readFileSync(inputPath, "utf-8");
     const data = JSON.parse(raw);
-    const removeFields = ["description", "score", "image", "imageB", "dateModified", "type"];
+    const removeFields = ["description", "score", "image", "imageB", "dateModified"];
 
     const cleaned = data.map(entry => {
       const newEntry = { ...entry };
