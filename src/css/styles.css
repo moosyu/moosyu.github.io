@@ -1,5 +1,5 @@
 body {
-    font-family: monospace;
+    font-family: sans-serif;
     background: #4798c9 url("/assets/wall_dark.png");
     margin: 10px auto;
     max-width: 1400px;
@@ -9,6 +9,10 @@ body {
     padding: 5px;
     border-radius: 30px;
     border: 1px dotted #fff;
+}
+
+p {
+    line-height: 1.5;
 }
 
 a {
