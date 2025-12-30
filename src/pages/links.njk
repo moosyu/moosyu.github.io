@@ -5,23 +5,23 @@ title: "please save me donald trump please"
 {% extends "base.njk" %}
 
 {% block headStyle %}
-  ul li::before {
+  .sitemap-list li::before {
   content: "•";
   margin-right: 6px;
   }
-
-  ul ul li::before {
+  .sitemap-list ul li::before {
   content: "➤";
   }
-
-  ul ul ul li::before {
+  .sitemap-list ul ul li::before {
   content: "↳";
   }
-
   .buttons-links img {
     width: 88px;
     height: 31px;
     image-rendering: pixelated;
+  }
+  .sitemap-list {
+    font-family: sans-serif;
   }
 {% endblock %}
 
@@ -90,7 +90,7 @@ title: "please save me donald trump please"
   <div class="background-div bottom-div">
     <p>Tree of every page in my site. Any page that can only be found on this page is probably broken or something though.<p>
     {% macro renderTree(tree, basePath="") %}
-    <ul style="list-style-type: none;">
+    <ul class="sitemap-list" style="list-style-type: none;">
     {% for key, value in tree %}
         <li>
         {% if value.__data %}

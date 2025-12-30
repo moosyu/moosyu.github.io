@@ -3,8 +3,8 @@ const cleanCss = require("clean-css");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownItKatex = require("@vscode/markdown-it-katex").default;
-const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote")
+const markdownItTaskList = require("markdown-it-task-lists");
 const fs = require("fs")
 const { DateTime } = require("luxon");
 const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -172,11 +172,11 @@ module.exports = function(eleventyConfig) {
   });
 
 	eleventyConfig.addPlugin(syntaxHighlight);
-  const md = markdownIt({
-    html: true,
-    linkify: true,
-  }).use(markdownItKatex).use(markdownItFootnote);
-  eleventyConfig.setLibrary("md", md);
+  eleventyConfig.amendLibrary("md", (mdLib) => {
+    mdLib.use(markdownItFootnote);
+    mdLib.use(markdownItKatex);
+    mdLib.use(markdownItTaskList, { enabled: true });
+  });
 	eleventyConfig.addPlugin(pluginRss);
 
   eleventyConfig.on("afterBuild", () => {

@@ -5,9 +5,8 @@ async function displayLastFM() {
         const track = data.track;
 
         document.getElementById("lastHeardContainer").innerHTML = `
-        <div id="trackInfo">
-            <span>Last heard: <a target="_blank" href="${track.url}">${track.name}</a> by ${track.artist['#text']}</span>
-        </div>`;
+            <p>Last heard: <a target="_blank" href="${track.url}">${track.name}</a> by ${track.artist['#text']}</p>
+        `
     } catch (error) {
         console.error("Fetching failed: ", error);
     }

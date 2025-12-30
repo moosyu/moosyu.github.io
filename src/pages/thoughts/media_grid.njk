@@ -76,6 +76,9 @@ pagination:
   #mediaSearchInput {
     width: 100%;
   }
+  .search-item {
+    margin: 0;
+  }
   @media screen and (min-width: 700px) {
     .media-top {
       flex-direction: row;
@@ -140,7 +143,7 @@ pagination:
                   {{ item.score }}/10
                 </h3>
             </div>
-            <p>{{ item.type }}</p>
+            <span>{{ item.type }}</span>
             <div class="media-head">
               <a href="/pages/thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/">Read thoughts... ({{ readTime }} min read)</a>
               {% if (item.image) %}
@@ -192,11 +195,11 @@ pagination:
 
       searchInput.addEventListener("input", () => {
         const query = searchInput.value.trim();
-        const results = fuse.search(query);
+        const results = fuse.search(query, { limit: 20 });
         searchResults.innerHTML = results.map(result => {
           return `
           <div class="background-div">
-            <h1><a href="/pages/thoughts/${slugify(result.item.name)}-${slugify(result.item.type)}/">${result.item.name}</a></h1>
+            <h3 class="search-item"><a href="/pages/thoughts/${slugify(result.item.name)}-${slugify(result.item.type)}/">${result.item.name}</a></h3>
           </div>
           `;
         }).join("");
