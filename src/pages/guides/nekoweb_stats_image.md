@@ -237,13 +237,27 @@ and this will give you something like this:
 
 This is lowkey a really ugly fix as if statements are my #1 opp but it's simple enough so I think it's fine.
 
-## Common issue
+## Common issues
 
-Lastly if you're getting an error something along the lines of:
+<details>
+<summary><p style="display: inline;">If you're getting Access to fetch at 'https://nekoweb.org/api/site/info/YOURURL' from origin 'https://YOURURL' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'https://nekoweb.org' that is not equal to the supplied origin. Have the server send the header with a valid value...</p></summary>
 
-Access to fetch at 'https://nekoweb.org/api/site/info/YOURURL' from origin 'https://YOURURL' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'https://nekoweb.org' that is not equal to the supplied origin. Have the server send the header with a valid value.
+You've sent too many requests to the Nekoweb API in a short period of time. Just wait a few minutes and it should start working again.
 
-in your console it could be because you've sent too many requests to the Nekoweb API in a short period of time. Just wait a few minutes and it should start working again.
+</details>
+
+<details>
+<summary><p style="display: inline;">If you're getting TypeError: can't access property "innerHTML", views is null...</p></summary>
+
+Either add a defer to your script like so:
+
+```html
+<script src="stats.js" defer></script>
+```
+
+or put your script right at the bottom of your HTML, just above the closing body tag. This issue is being caused by the script loading before the DOM and therefore when the script is running there really is nothing with the ID views.
+
+</details>
 
 That's about it for me, thanks for giving my guide a read. If you do end up adding this somewhere on your site pretty please add my button or something 🥺. Feel free to message me on Discord or email me if you know me and are having problems.
 

@@ -84,17 +84,17 @@ pagination:
       flex-direction: row;
     }
     .media-grid-container {
-      grid-template-columns: auto auto;
+      grid-template-columns: repeat(2, auto);;
     }
   }
   @media screen and (min-width: 1000px) {
     .media-grid-container {
-      grid-template-columns: auto auto auto;
+      grid-template-columns: repeat(3, auto);;
     }
   }
   @media screen and (min-width: 1300px) {
     .media-grid-container {
-      grid-template-columns: auto auto auto auto;
+      grid-template-columns: repeat(4, auto);;
     }
   }
 {% endblock %}

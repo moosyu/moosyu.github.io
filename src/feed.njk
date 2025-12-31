@@ -5,7 +5,7 @@ permalink: feed.xml
     <channel>
         <title>moosyus awesome blog</title>
         <link>https://moosyu.github.io</link>
-        <description>moosyu is online</description>{% for thought in thoughts %}{% if (thought.dateModified) %}
+        <description>moosyu is online</description>{% for thought in thoughts %}{% if (thought.dateModified) and (not thought.noRSS) %}
           <item>
             <title>{{ thought.name }}, {{ thought.score}}/10</title>
             <link>https://moosyu.github.io/pages/thoughts/{{ thought.name | slugify }}-{{ thought.type | slugify }}</link>

@@ -4,7 +4,8 @@ title: "blind leading the blind"
 ---
 
 <div class="background-div bottom-div">
-    <ul style="margin: 0; padding: 0; list-style-type: none;">
+  <p>Collection of guides. Most coding related, mostly written in ways those with no knowledge of JS should hopefully be able to understand. Older posts might be a little iffy.</p>
+  <ul style="margin: 0; padding: 0; list-style-type: none;">
     {% for guide in collections.guides | reverse %}
       <li class="blog-post-item">
         <a href="{{ guide.url }}" class="blog-post-link">

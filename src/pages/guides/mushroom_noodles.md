@@ -1,5 +1,5 @@
 ---
-title: "Mushroom Noodles"
+title: "Mushroom noodles"
 date: 2025-12-30
 ---
 
@@ -9,7 +9,7 @@ date: 2025-12-30
     }
 </style>
 
-I'm no chef so if you're reading this for a good recipe click off now, this is just for me because I've fucked this easy ass dish up twice now because I keep forgetting to half the ingredients in the recipe I read.
+I'm no chef, so if you're reading this for a good recipe click off now. This is just for me because I've fucked this easy ass dish up twice now because I keep forgetting to half the ingredients in the recipe I read.
 
 ## Ingredients:
 
