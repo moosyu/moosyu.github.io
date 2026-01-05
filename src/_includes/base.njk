@@ -51,10 +51,10 @@
             </svg>
         </span>
         <div class="navbar-content">
-            <a href="/" class="home-navbtn {% if page.url == '/' %} active-tab {% endif %}"><span class="nav-emojis">{{ emojis.home | safe }}</span>Home</a>
-            <a href="/pages/thoughts/media_grid/" {% if '/pages/thoughts/' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.reviews | safe }}</span>Thoughts</a>
+            <a style="--animation-offset: 0" href="/" class="home-navbtn {% if page.url == '/' %} active-tab {% endif %}"><span class="nav-emojis">{{ emojis.home | safe }}</span>Home</a>
+            <a style="--animation-offset: 1" href="/pages/thoughts/media_grid/" {% if '/pages/thoughts/' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.reviews | safe }}</span>Thoughts</a>
             <div class="dropdown">
-                <button class="dropbtn {% if '/pages/ramblings/' in page.url  %}active-tab{% endif %}"><span class="nav-emojis">{{ emojis.ramble | safe }}</span>Ramblings</button>
+                <a style="--animation-offset: 2" class="dropbtn {% if '/pages/ramblings/' in page.url  %}active-tab{% endif %}"><span class="nav-emojis">{{ emojis.ramble | safe }}</span>Ramblings</a>
                 <div class="dropdown-content">
                     <a href="{% latestCalendarUrl %}">Calendar</a>
                     <a href="/pages/ramblings/2026/">2026 entries</a>
@@ -62,10 +62,10 @@
                     <a href="/pages/ramblings/2024/">2024 entries</a>
                 </div>
             </div>
-            <a href="/pages/guides" {% if '/pages/guides' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.guides | safe }}</span>Guides</a>
-            <a href="/pages/bookmarks" {% if '/pages/bookmarks' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.bookmarks | safe }}</span>Bookmarks</a>
-            <a href="/pages/guestbook" {% if '/pages/guestbook' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.guestbook | safe }}</span>Guestbook</a>
-            <a href="/pages/links" {% if '/pages/links' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.links | safe }}</span>Links</a>
+            <a style="--animation-offset: 3" href="/pages/guides" {% if '/pages/guides' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.guides | safe }}</span>Guides</a>
+            <a style="--animation-offset: 4" href="/pages/bookmarks" {% if '/pages/bookmarks' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.bookmarks | safe }}</span>Bookmarks</a>
+            <a style="--animation-offset: 5" href="/pages/guestbook" {% if '/pages/guestbook' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.guestbook | safe }}</span>Guestbook</a>
+            <a style="--animation-offset: 6" href="/pages/links" {% if '/pages/links' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.links | safe }}</span>Links</a>
         </div>
     </div>
     {% block content %}{% endblock %}
