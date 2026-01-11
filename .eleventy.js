@@ -6,10 +6,12 @@ const markdownItKatex = require("@vscode/markdown-it-katex").default;
 const markdownItFootnote = require("markdown-it-footnote")
 const markdownItTaskList = require("markdown-it-task-lists");
 const fs = require("fs")
+const setPort = 5501;
 const { DateTime } = require("luxon");
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
+const buildTarget = process.env.DEPLOY_TARGET || "local";
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("dateConvert", (dateInput, format = "MMM d, yyyy") => {
@@ -59,7 +61,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy(".well-known/*")
   eleventyConfig.setServerOptions({
     liveReload: true,
-    port: 5501,
+    port: setPort,
   });
 
   // lots of comments bc the moment i look away from this shit i forget what is even going on anymore this took way too long...
@@ -195,6 +197,19 @@ module.exports = function(eleventyConfig) {
     fs.writeFileSync(outputPath, JSON.stringify(cleaned));
   });
 
+  let setPathPrefix = "/";
+  let siteUrl = `http://localhost:${setPort}`;
+
+  if (target === "github") {
+    setPathPrefix = "/moosyu.github.io";
+    siteUrl = "https://moosyu.github.io/";
+  }
+
+  if (target === "nekoweb") {
+    setPathPrefix = "/";
+    siteUrl = "https://moosyu.nekoweb.org";
+  }
+
   return {
     dir: {
       input: "src",
@@ -203,6 +218,6 @@ module.exports = function(eleventyConfig) {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
-    pathPrefix: "/"
+    pathPrefix: setPathPrefix
   };
 };

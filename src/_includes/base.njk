@@ -64,8 +64,10 @@
             </div>
             <a style="--animation-offset: 3" href="/pages/guides" {% if '/pages/guides' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.guides | safe }}</span>Guides</a>
             <a style="--animation-offset: 4" href="/pages/bookmarks" {% if '/pages/bookmarks' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.bookmarks | safe }}</span>Bookmarks</a>
-            <a style="--animation-offset: 5" href="/pages/guestbook" {% if '/pages/guestbook' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.guestbook | safe }}</span>Guestbook</a>
-            <a style="--animation-offset: 6" href="/pages/links" {% if '/pages/links' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.links | safe }}</span>Links</a>
+            <a style="--animation-offset: 5" href="/pages/links" {% if '/pages/links' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.links | safe }}</span>Links</a>
+            {% if site.isNekoweb %}
+            <a style="--animation-offset: 6" target="_blank" href="http://nekoweb.org/follow/moosyu.nekoweb.org"><span class="nav-emojis">{{ emojis.heart | safe }}</span>Follow</a>
+            {% endif %}
         </div>
     </div>
     {% block content %}{% endblock %}
