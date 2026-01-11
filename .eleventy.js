@@ -200,12 +200,12 @@ module.exports = function(eleventyConfig) {
   let setPathPrefix = "/";
   let siteUrl = `http://localhost:${setPort}`;
 
-  if (target === "github") {
+  if (buildTarget === "github") {
     setPathPrefix = "/moosyu.github.io";
     siteUrl = "https://moosyu.github.io/";
   }
 
-  if (target === "nekoweb") {
+  if (buildTarget === "nekoweb") {
     setPathPrefix = "/";
     siteUrl = "https://moosyu.nekoweb.org";
   }
