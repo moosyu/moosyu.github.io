@@ -42,7 +42,7 @@ viewport.addEventListener("pointerup", () => {
 		if (lastHovered.id.includes("webtile")) {
 			lastSelected = lastHovered;
 		}
-		
+
 		if (!viewport.querySelector(".tile-panel")) {
 			const selectedTilePanel = document.createElement("div");
 			viewport.append(selectedTilePanel);
@@ -78,7 +78,7 @@ viewport.addEventListener("pointermove", e => {
 	    }
 	    return;
 	}
-	
+
     if (!isDragging) {
         const dx = e.clientX - startX;
         const dy = e.clientY - startY;
@@ -88,8 +88,7 @@ viewport.addEventListener("pointermove", e => {
         }
 
         isDragging = true;
-        
-            
+
 	    if (lastSelected) {
 			lastSelected.classList.remove("selected-tile");
 			if (viewport.querySelector(".tile-panel")) {
@@ -97,7 +96,7 @@ viewport.addEventListener("pointermove", e => {
 			}
 	    }
     }
-    
+
 	offsetX -= e.clientX - startX;
 	offsetY -= e.clientY - startY;
 	startX = e.clientX;
@@ -115,7 +114,7 @@ function fakeAlert() {
 }
 
 function clipboardCopy() {
-	var tileDOM = lastSelected.outerHTML.replace(/\sstyle="[^"]*"/, ""); // removing the positioning style
+	let tileDOM = lastSelected.outerHTML.replace(/\sstyle="[^"]*"/, ""); // removing the positioning style
 	navigator.clipboard.writeText(tileDOM);
 	alert("tile copied to clipboard (but why?");
 }
@@ -124,7 +123,7 @@ function updateTiles() {
     const startCol = Math.floor(offsetX / TILE_SIZE);
     const startRow = Math.floor(offsetY / TILE_SIZE);
     let i = 0;
-    
+
     for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
             const tile = tiles[i++];

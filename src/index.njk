@@ -123,12 +123,12 @@
 <script>
     function copyButton() {
         navigator.clipboard.writeText('<a href="https://moosyu.github.io/"><img src="https://moosyu.github.io/assets/button2.png" alt="moosyus awesome button"></a>');
-        var tooltip = document.getElementById("tooltip-btn");
+        let tooltip = document.getElementById("tooltip-btn");
         tooltip.innerHTML = "Copied";
     }
-    
+
     function mouseOut() {
-        var tooltip = document.getElementById("tooltip-btn");
+        let tooltip = document.getElementById("tooltip-btn");
         tooltip.innerHTML = "Copy to clipboard";
     }
 </script>

@@ -21,7 +21,7 @@ const sites = [
 	"jbc.lol"
 ];
 
-var selectedSite = sites[Math.floor(Math.random() * sites.length)];
+let selectedSite = sites[Math.floor(Math.random() * sites.length)];
 
 siteSpan = document.getElementById("random-site");
 siteSpan.innerHTML = `
