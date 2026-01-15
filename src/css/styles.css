@@ -1,14 +1,28 @@
 body {
+    position: relative;
     font-family: monospace;
     background: #4798c9 url("/assets/wall_dark.png");
     margin: 10px auto;
     max-width: 1400px;
     overflow-y: scroll;
     color: #fff;
-    backdrop-filter: grayscale(100%) brightness(35%) contrast(120%);
     padding: 5px;
-    border-radius: 30px;
     border: 1px dotted #fff;
+    border-radius: 30px;
+}
+
+/* hacky (??) fix for stupid stacking context with backdrop-filter */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    backdrop-filter: grayscale(100%) brightness(35%) contrast(120%);
+    border-radius: 30px;
+    z-index: -1;
 }
 
 p {
@@ -121,8 +135,7 @@ button:hover, a:hover {
 }
 
 .dropbtn {
-    background: none;
-    width: 100%;
+    cursor: default;
 }
 
 .dropbtn:hover, .navbar a:hover {
@@ -218,34 +231,6 @@ button:hover, a:hover {
     border-radius: 15px;
 }
 
-.favourites-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    flex-direction: column;
-    align-items: center;
-}
-
-.favourites-item {
-    text-align: center;
-    width: 40%;
-    font-size: 16px;
-}
-
-.favourites-item img {
-    width: 100%;
-    height: auto;
-}
-
-.favourites-container img:hover {
-    filter: brightness(90%);
-    transform: scale(1.02);
-    transition-duration: .15s;
-    cursor: pointer;
-}
-
 .spoiler-container {
     position: relative;
     overflow: hidden;
@@ -305,12 +290,6 @@ button:hover, a:hover {
     color: #e23a45;
 }
 
-.bookmarks-container {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
-}
-
 .nav-emojis {
     height: 24px;
     width: 24px;
@@ -333,7 +312,7 @@ button:hover, a:hover {
   }
 } */
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1125px) {
     .navbar {
         flex-direction: row;
         display: flex;
@@ -354,22 +333,6 @@ button:hover, a:hover {
 
     .dropdown .dropbtn, .navbar a {
         white-space: normal;
-    }
-
-    .favourites-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-        padding: 20px;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .favourites-item {
-        text-align: center;
-        width: calc(20% - 16px);
-        font-size: 13px;
     }
 
     .navbar a, .dropdown .dropbtn {
@@ -395,11 +358,5 @@ button:hover, a:hover {
 
     .dropdown-content {
         transition: max-height 0.4s linear;
-    }
-}
-
-@media (min-width: 949px) and (max-width: 1149px) {
-    .bookmarks-container {
-        grid-template-columns: repeat(3, 1fr);
     }
 }

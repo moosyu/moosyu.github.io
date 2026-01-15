@@ -52,7 +52,7 @@
         </span>
         <div class="navbar-content">
             <a style="--animation-offset: 0" href="/" class="home-navbtn {% if page.url == '/' %} active-tab {% endif %}"><span class="nav-emojis">{{ emojis.home | safe }}</span>Home</a>
-            <a style="--animation-offset: 1" href="/pages/thoughts/media_grid/" {% if '/pages/thoughts/' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.reviews | safe }}</span>Thoughts</a>
+            <a style="--animation-offset: 1" href="/pages/thoughts/media_grid/" {% if '/pages/thoughts/' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.reviews | safe }}</span>Media Log</a>
             <div class="dropdown">
                 <a style="--animation-offset: 2" class="dropbtn {% if '/pages/ramblings/' in page.url  %}active-tab{% endif %}"><span class="nav-emojis">{{ emojis.ramble | safe }}</span>Ramblings</a>
                 <div class="dropdown-content">

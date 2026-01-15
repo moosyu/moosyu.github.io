@@ -1,4 +1,4 @@
-const texts = [
+var texts = [
   `"再来亿遍`,
   `《招惹了妒忌的狗》`,
   `欢迎来到《大唐新说唱》`,
@@ -47,48 +47,45 @@ const texts = [
   `<img src="https://i.imgur.com/KmooX78.png"  draggable="false">`,
   `<img src="https://i.imgur.com/bXqPNNT.gif"  draggable="false">`
 ];
-
-const colours = [
+var colours = [
   "orange",
   "yellow",
   "cyan",
   "magenta",
   "lime"
 ];
-
-const container = document.getElementById("marquee-container");
+var container = document.getElementById("marquee-container");
+var ctx = canvas.getContext("2d");
+var marquees = [];
 
 function spawnMarquee() {
-  const marqueeElement = document.createElement("div");
-  marqueeElement.className = "marquee";
-  
-  marqueeElement.innerHTML = texts[Math.floor(Math.random() * texts.length)];
-
-  const colour = colours[Math.floor(Math.random() * colours.length)];
-  marqueeElement.style.color = colour;
-
-  const containerHeight = container.clientHeight;
-  marqueeElement.style.top = Math.random() * (containerHeight - 30) + "px";
-
-  const duration = 8 + Math.random() * 6;
-
-  container.appendChild(marqueeElement);
-
-  const startX = container.clientWidth;
-  const endX = -marqueeElement.offsetWidth;
-
-  marqueeElement.animate(
-    [
-      { transform: `translateX(${startX}px)` },
-      { transform: `translateX(${endX}px)` }
-    ],
-    {
-      duration: duration * 1000,
-      easing: "linear"
-    }
-  ).onfinish = () => {
-    marqueeElement.remove();
-  };
+  marquees.push({
+    text: texts[0],
+    color: colours[Math.floor(Math.random() * colours.length)],
+    x: canvas.width,
+    y: Math.random() * (canvas.height - 20) + 20,
+    speed: 1 + Math.random() * 2
+  });
 }
 
+function loop() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.font = "20px sans-serif";
+
+  for (var i = marquees.length - 1; i >= 0; i--) {
+    var m = marquees[i];
+    ctx.fillStyle = m.color;
+    ctx.fillText(m.text, m.x, m.y);
+    m.x -= m.speed;
+
+    if (m.x < -ctx.measureText(m.text).width) {
+      marquees.splice(i, 1);
+    }
+  }
+
+  requestAnimationFrame(loop);
+}
+
+spawnMarquee();
 setInterval(spawnMarquee, 3000);
+loop();

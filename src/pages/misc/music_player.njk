@@ -1,0 +1,29 @@
+{% extends "base.njk" %}
+
+{% block headStyle %}
+    {% set playerCSS %} {% include "../../css/music-player.css" %} {% endset %}
+    {{ playerCSS | cssmin | safe }}
+{% endblock %}
+
+{% block content %}
+<div class="background-div bottom-div">
+    <p style="text-align: center; margin: 0 0 5px 0;">Currently stuck in my head:</p>
+    <div class="cd-rotate">
+        <img class="cd-image" loading="lazy" alt="picture of cd">
+    </div>
+    <a class="cd-link"><p class="cd-title"></p></a>
+    <div id="controls">
+        <div id="play-pause" onclick="playpauseTrack()">▶</div>
+    </div>
+    <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 5px;">
+                <p class="minus-symbol" onclick="switchVol(-10)">-</p>
+                <input type="range" min="1" max="100" value="20" class="volume_slider" onchange="setVolume()">
+                <p class="plus-symbol" onclick="switchVol(10)">+</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/music-player.js"></script>
+{% endblock %}

@@ -17,7 +17,7 @@ I'm no chef, so if you're reading this for a good recipe click off now. This is 
 
 - [ ] ½ a tsp of black pepper
 
-- [ ] 4 decently sized mushrooms
+- [ ] 4 - 6 decently sized mushrooms
 
 - [ ] 2 decently sized garlic cloves
 

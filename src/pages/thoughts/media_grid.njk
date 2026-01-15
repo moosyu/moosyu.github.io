@@ -110,11 +110,6 @@ pagination:
 {% endblock %}
 
 {% block content %}
-  <div class="background-div" style="display:flex; justify-content:center; gap:8px; margin-bottom: 10px;">
-    {{ emojis.exclamation | safe }}
-    <span style="font-size: large;"><a href="/pages/blog/2025_music">Click here for Moosyu's top 10 albums of 2025</a></span>
-    {{ emojis.exclamation | safe }}
-  </div>
   <div class="media-top">
     <div>
       <a href="/pages/graphs/thoughts_dist/" class="score-link">Current average score: {{ (scoreTotal / counter).toFixed(2) }}/10</a>

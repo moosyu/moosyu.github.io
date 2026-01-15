@@ -1,10 +1,13 @@
 {% extends "base.njk" %}
 
 {% set guestbook_css %} {% include "../../css/jb-comments.css" %} {% endset %}
+{% set lightbox_css %} {% include "../../css/glightbox.min.css" %} {% endset %}
 
 {% block head %}
     <style>
         {{ guestbook_css | cssmin | safe }}
+        {{ lightbox_css | cssmin | safe }}
+
         .media {
             width: auto;
             flex-shrink: 0;
@@ -61,14 +64,8 @@
             {{ content | safe }}
         </div>
     </div>
-
+    <script src="/js/glightbox.min.js"></script>
     <script>
-    function toggleFullscreen(img) {
-        if (!document.fullscreenElement) {
-            img.requestFullscreen();
-        } else {
-            document.exitFullscreen();
-        }
-    }
+    const lightbox = GLightbox();
     </script>
 {% endblock %}

@@ -18,17 +18,17 @@ eleventyComputed:
   {% if (item.dateModified) %}
     <p>Date modified: {{ date }}</p>
   {% else %}
-      <p>Date modified: unknown</p>
+      <p>!! This review is old and possibly not up to spec !!</p>
   {% endif %}
   <p>{{ item.description | replace('\n', '<br><br>') | safe }}</p>
 </div>
 {% if (item.image) or (item.imageB) %}
   <div class="media">
     <h2>Media:</h2>
-    <div class="thoughts-media">
-      <img src="{{ item.image }}" alt="image 1" onclick="toggleFullscreen(this)">
+    <div class="thoughts-media" style="position: relative">
+      <img src="{{ item.image }}" class="glightbox">
       {% if (item.imageB) %}
-        <img src="{{ item.imageB }}" alt="image 2" onclick="toggleFullscreen(this)">
+        <img src="{{ item.imageB }}" class="glightbox">
       {% endif %}
     </div>
   </div>
