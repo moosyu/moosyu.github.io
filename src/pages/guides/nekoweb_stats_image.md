@@ -26,7 +26,7 @@ const domain = "YOUR DOMAIN HERE"
 const creation_date = document.getElementById("created");
 const updated_date = document.getElementById("updated");
 const views = document.getElementById("visitors");
-const follows = document.getElementById("followers")
+const follows = document.getElementById("followers");
 
 async function displayStats() {
     try {
@@ -43,7 +43,7 @@ async function displayStats() {
         follows.innerHTML = "<em>Followers</em>:";
         convertTextToImage(data.followers.toString().split(""), follows);
     } catch (error) {
-        console.error("failed to fetch!!", error)
+        console.error("failed to fetch!!", error);
     }
 }
 
@@ -55,7 +55,7 @@ function convertTextToImage(stringValue, elementValue) {
     });
 }
 
-displayStats()
+displayStats();
 ```
 
 To make this work for you you'll need to edit two things. Firstly replace the domain in the first line with your domain, not just the first part, the full thing (eg: const domain = "moosyu.nekoweb.org"). If you're using a custom domain with Nekoweb I believe you can use either your NAME.nekoweb.org or the domain you bought but I'd use your proper domain name just to be safe. Next inside function ConvertTextToImage change:
