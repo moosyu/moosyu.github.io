@@ -1,13 +1,6 @@
 {% extends "base.njk" %}
 
 {% block headStyle %}
-    {% set commentCSS %} {% include "./css/comment-widget.css" %} {% endset %}
-    {{ commentCSS | cssmin | safe }}
-
-    @font-face {
-        font-family: Cubular;
-        src: url("/fonts/Cubular.ttf");
-    }
     .tooltip {
         position: relative;
         display: inline-block;

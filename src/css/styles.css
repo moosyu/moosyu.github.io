@@ -38,6 +38,13 @@ button:hover, a:hover {
     color: #36a3cf;
 }
 
+.active-tab {
+    background: linear-gradient(0deg,
+        #2ca2d1 0%,
+        #00000000 30%
+    ) !important;
+}
+
 .background-div, .search-items-container {
     background-color: #111214;
     padding: 10px;

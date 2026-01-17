@@ -1,0 +1,19 @@
+---
+layout: base.njk
+pagination:
+    data: collections
+    size: 1
+    alias: tag
+    filter:
+        - posts
+        - all
+permalink: /tags/{{ tag | slugify }}/
+---
+
+<h3>Blog posts tagged "{{ tag }}"</h3>
+
+<p>{{ tag | slugify }}</p>
+
+{% for post in collections[tag] | reverse %}
+    <a href="{{ post.url }}"><li>{{ post.data.title }} - {{ post.date.toLocaleDateString('en-US', { dateStyle: 'medium' }) }}</li></a>
+{% endfor %}

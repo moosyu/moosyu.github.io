@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "partials/head.njk" %}
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    {% include "partials/nav.njk" %}
+    {{ content | safe }}
+</body>
+</html>

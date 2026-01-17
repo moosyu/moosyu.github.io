@@ -14,6 +14,10 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 const buildTarget = process.env.DEPLOY_TARGET || "local";
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.on("beforeBuild", () => {
+    console.log("⏳ Build starting...");
+  });
+
   eleventyConfig.addFilter("dateConvert", (dateInput, format = "MMM d, yyyy") => {
     if (!dateInput) return "";
     return DateTime.fromISO(dateInput).toFormat(format);
@@ -168,6 +172,7 @@ module.exports = function(eleventyConfig) {
     // if not an html output, return content as-is
     return content;
   });
+
   // had to add a filter bc im dumb or something and couldnt figure out how to deal with files being passed through
   eleventyConfig.addFilter("cssmin", function (code) {
     return new cleanCss({}).minify(code).styles;
@@ -180,6 +185,8 @@ module.exports = function(eleventyConfig) {
     mdLib.use(markdownItTaskList, { enabled: true });
   });
 	eleventyConfig.addPlugin(pluginRss);
+  
+  eleventyConfig.setQuietMode(true);
 
   eleventyConfig.on("afterBuild", () => {
     const inputPath = "src/_data/thoughts.json";
@@ -195,10 +202,10 @@ module.exports = function(eleventyConfig) {
     });
 
     fs.writeFileSync(outputPath, JSON.stringify(cleaned));
+    console.log("✅ Build completed successfully!");
   });
 
   let setPathPrefix = "/";
-  let siteUrl = `http://localhost:${setPort}`;
 
   if (buildTarget === "github") {
     setPathPrefix = "/moosyu.github.io";

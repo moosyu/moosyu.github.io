@@ -1,4 +1,4 @@
 {
-    "layout": "_layouts/blogs-layout.njk",
+    "layout": "layouts/blogs-layout.njk",
     "tags": "blog"
 }

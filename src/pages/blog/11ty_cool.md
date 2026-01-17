@@ -5,9 +5,6 @@ tags:
     - web
 ---
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css"/>
-
 I was gonna try to not make this too dev bloggy because every blog seems to be a dev blog already, but I just really wanted to talk about my one true love, 11ty.
 
 Disclaimer: I've only used HTML and now 11ty so for all I know react, next, astro, hugo etc might just be better than 11ty in every way but I'm just gonna talk about 11ty like its the best because its definitely better than plain HTML.

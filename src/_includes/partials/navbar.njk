@@ -1,0 +1,27 @@
+<div class="navbar">
+    <span class="navbar-expander">
+        <svg onclick="document.querySelector('.navbar').classList.toggle('expanded');"
+        width="24" height="24" fill="#FFF" viewBox="-1 0 19 19" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg">
+        <path d="M8.5 15.313a1.03 1.03 0 0 1-.728-.302l-6.8-6.8a1.03 1.03 0 0 1 1.455-1.456L8.5 12.828l6.073-6.073a1.03 1.03 0 0 1 1.455 1.456l-6.8 6.8a1.03 1.03 0 0 1-.728.302"/>
+        </svg>
+    </span>
+    <div class="navbar-content">
+        <a style="--animation-offset: 0" href="/" class="home-navbtn {% if page.url == '/' %} active-tab {% endif %}"><span class="nav-emojis">{{ emojis.home | safe }}</span>Home</a>
+        <a style="--animation-offset: 1" href="/pages/thoughts/media_grid/" {% if '/pages/thoughts/' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.reviews | safe }}</span>Media Log</a>
+        <div class="dropdown">
+            <a style="--animation-offset: 2" class="dropbtn {% if '/pages/ramblings/' in page.url  %}active-tab{% endif %}"><span class="nav-emojis">{{ emojis.ramble | safe }}</span>Ramblings</a>
+            <div class="dropdown-content">
+                <a href="{% latestCalendarUrl %}">Calendar</a>
+                <a href="/pages/ramblings/2026/">2026 entries</a>
+                <a href="/pages/ramblings/2025/">2025 entries</a>
+                <a href="/pages/ramblings/2024/">2024 entries</a>
+            </div>
+        </div>
+        <a style="--animation-offset: 3" href="/pages/guides" {% if '/pages/guides' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.guides | safe }}</span>Guides</a>
+        <a style="--animation-offset: 4" href="/pages/bookmarks" {% if '/pages/bookmarks' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.bookmarks | safe }}</span>Bookmarks</a>
+        <a style="--animation-offset: 5" href="/pages/links" {% if '/pages/links' in page.url %}class="active-tab"{% endif %}><span class="nav-emojis">{{ emojis.links | safe }}</span>Links</a>
+        {% if site.isNekoweb %}
+        <a style="--animation-offset: 6" target="_blank" href="http://nekoweb.org/follow/moosyu.nekoweb.org"><span class="nav-emojis">{{ emojis.heart | safe }}</span>Follow</a>
+        {% endif %}
+    </div>
+</div>
