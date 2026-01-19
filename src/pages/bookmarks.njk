@@ -66,9 +66,20 @@ title: "i invented swag"
 {% endblock %}
 
 {% block content %}
+<!-- why did i do this like this instead of some json pagination system like usual? we may never know... -->
 <div class="background-div bottom-div">
     <p>Big unorganised collection of software, mods, websites and anything else that I'd have saved in my bookmarks bar.</p>
     <div class="bookmarks-container">
+        <a href="https://cmt.nkko.link/" target="_blank" class="bookmark-item-link">
+            <div class="bookmark-item">
+                <h2>
+                    GLightbox
+                    {{ emojis.js | safe }}
+                </h2>
+                <span class="version-subtitle"></span>
+                <span>Pretty simple to set up JS lightbox. Sometimes it's a little jank and in my case it took some messing around with the actual JS and CSS of it to make it finally work but in general it's not the worst choice if you don't feel inclined to spend your day making a worse one from scratch.</span>
+            </div>
+        </a>
         <a href="https://cmt.nkko.link/" target="_blank" class="bookmark-item-link">
             <div class="bookmark-item">
                 <h2>

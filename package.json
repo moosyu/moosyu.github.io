@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx @11ty/eleventy",
-    "serve": "npx @11ty/eleventy --serve"
+    "build": "bunx @11ty/eleventy",
+    "serve": "bunx @11ty/eleventy --serve"
   },
   "keywords": [],
   "author": "",
