@@ -24,7 +24,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addFilter("wordCount", (content) => {
-    return content.replace(/(<([^>]+)>)/gi, "").split(/\s+/).length;
+    return content.replace("<[^>]*>", "").split(/\s+/).length;
   });
 
   eleventyConfig.addFilter("readTime", (content) => {
@@ -174,7 +174,7 @@ module.exports = function(eleventyConfig) {
   });
 
   // had to add a filter bc im dumb or something and couldnt figure out how to deal with files being passed through
-  eleventyConfig.addFilter("cssmin", function (code) {
+  eleventyConfig.addFilter("cssmin", (code) => {
     return new cleanCss({}).minify(code).styles;
   });
 
@@ -185,7 +185,7 @@ module.exports = function(eleventyConfig) {
     mdLib.use(markdownItTaskList, { enabled: true });
   });
 	eleventyConfig.addPlugin(pluginRss);
-  
+
   eleventyConfig.setQuietMode(true);
 
   eleventyConfig.on("afterBuild", () => {
@@ -205,15 +205,11 @@ module.exports = function(eleventyConfig) {
     console.log("✅ Build completed successfully!");
   });
 
-  let setPathPrefix = "/";
-
   if (buildTarget === "github") {
-    setPathPrefix = "/moosyu.github.io";
-    siteUrl = "https://moosyu.github.io/";
+    siteUrl = "https://moosyu.github.io";
   }
 
   if (buildTarget === "nekoweb") {
-    setPathPrefix = "/";
     siteUrl = "https://moosyu.nekoweb.org";
   }
 
@@ -225,6 +221,6 @@ module.exports = function(eleventyConfig) {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
-    pathPrefix: setPathPrefix
+    pathPrefix: "/"
   };
 };
