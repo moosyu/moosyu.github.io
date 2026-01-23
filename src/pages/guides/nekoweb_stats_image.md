@@ -1,5 +1,5 @@
 ---
-title: Displaying Nekoweb follower count as images
+title: Displaying Nekoweb/Neocities follower count as images
 date: 2025-11-18
 ---
 
@@ -19,7 +19,10 @@ Firstly make or find images that number 0 to 9 and name them as such, make sure 
 <div id="followers"></div>
 ```
 
-If you don't want all these things (eg you just want visitors like rice) and you're unfamiliar with JS I'll explain how to get rid of the rest without resulting in console errors later in this guide. Next put the JS below somewhere on the page, if you don't know here read [this Mozilla page](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Add_JavaScript_to_your_web_page). If you already have Max's script just place this one where that was as it should be a drag and drop replacement.
+If you don't want all these things (eg you just want visitors like rice) and you're unfamiliar with JS I'll explain how to get rid of the rest without resulting in console errors later in this guide. Next put the JS below somewhere on the page, if you don't know here read [this Mozilla page](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Add_JavaScript_to_your_web_page). If you already have another site stats script just place this one where that was as it should be a drag and drop replacement.
+
+<details>
+<summary><p style="display: inline;">Nekoweb</p></summary>
 
 ```js
 const domain = "YOUR DOMAIN HERE"
@@ -58,7 +61,51 @@ function convertTextToImage(stringValue, elementValue) {
 displayStats();
 ```
 
-To make this work for you you'll need to edit two things. Firstly replace the domain in the first line with your domain, not just the first part, the full thing (eg: const domain = "moosyu.nekoweb.org"). If you're using a custom domain with Nekoweb I believe you can use either your NAME.nekoweb.org or the domain you bought but I'd use your proper domain name just to be safe. Next inside function ConvertTextToImage change:
+To make this work for you you'll need to edit two things. Firstly replace the domain in the first line with your domain, not just the first part, the full thing (eg: const domain = "moosyu.nekoweb.org"). If you're using a custom domain with Nekoweb I believe you can use either your NAME.nekoweb.org or the domain you bought but I'd use your proper domain name just to be safe.
+</details>
+
+<details>
+<summary><p style="display: inline;">Neocities (if you have supporter)</p></summary>
+
+```js
+const username = "YOUR NAME HERE"
+const creation_date = document.getElementById("created");
+const updated_date = document.getElementById("updated");
+const views = document.getElementById("visitors");
+const follows = document.getElementById("followers");
+
+async function displayStats() {
+    try {
+        const response = await fetch(`https://neocities.org/api/info?sitename=${username}`);
+        const data = await response.json();
+
+        const creation_date_formatted = new Date(data.created_at).toLocaleDateString();
+        const updated_date_formatted = new Date(data.last_updated).toLocaleDateString();
+
+        creation_date.innerHTML = `<em>Made</em>: ${creation_date_formatted}`;
+        updated_date.innerHTML = `<em>Updated</em>: ${updated_date_formatted}`;
+        views.innerHTML = "<em>Views</em>:";
+        convertTextToImage(data.views.toString().split(""), views);
+    } catch (error) {
+        console.error("failed to fetch!!", error);
+    }
+}
+
+function convertTextToImage(stringValue, elementValue) {
+    stringValue.forEach(n => {
+        const img = document.createElement("img");
+        img.src = `${n}.png`;
+        elementValue.appendChild(img);
+    });
+}
+
+displayStats();
+```
+
+To make this work for you you'll need to edit two things. Firstly replace the username in the first line with your Neocities username (eg: const username = "moosyu"). If you're using a custom domain with Neocities it doesn't matter, still enter your username.
+</details>
+
+Next inside function ConvertTextToImage change:
 
 ```js
 img.src = `${n}.png`;
