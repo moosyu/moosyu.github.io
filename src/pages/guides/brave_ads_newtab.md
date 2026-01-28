@@ -1,6 +1,6 @@
 ---
 title: "Disabling brave ads on new tab"
-date: 2023-11-11
+pubDate: 2023-11-11
 ---
 
 Turn this off.

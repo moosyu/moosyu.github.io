@@ -1,22 +1,25 @@
 ---
-title: "Displaying site stats with Neocities (free)"
-date: 2025-12-19
+title: "Displaying view count on Neocities (free)"
+pubDate: 2025-12-19
 ---
 
-Here's a quick little guide on displaying your site stats with Neocities, the first is just a simple script to fetch and won't work on free accounts but the second one (hopefully) should.
+Here's a quick little guide on displaying your site stats with Neocities.
 
-The first script is this (won't work for free sites):
+Add this HTML somewhere in your body:
 
 HTML:
 ```html
 <div id="neocities-stats">Loading</div>
 ```
 
-JS:
+<details>
+<summary><p style="display: inline;">If you have a supporter site add this JS</p></summary>
+
 ```js
+const username = "YOUR NAME HERE";
 async function displayViewCount() {
     try {
-        const response = await fetch('https://weirdscifi.ratiosemper.com/neocities.php?sitename=SITENAME-HERE');
+        const response = await fetch(`https://neocities.org/api/info?sitename=${username}`);
         const data = await response.json();
 
         document.getElementById("neocities-stats").innerHTML = `
@@ -30,6 +33,33 @@ displayViewCount();
 ```
 
 All that you need to modify is the SITENAME-HERE part with just your site's name. Info has sitename, views, hits, created_at, last_updated, domain and tags do you can display any of these by replacing the views in data.info.views with them.
+
+</details>
+
+<details>
+<summary><p style="display: inline;">If you have a free site do this</p></summary>
+
+<h1 style="color: red;">THIS COULD GET YOUR SITE BANNED!!</h1>
+
+This is using a workaround to Neocities' CORS limitations on free sites. Nobody has been banned for doing this (yet) and the moderation is pretty slack but still proceed with caution.
+
+```js
+const username = "YOUR NAME HERE";
+async function displayViewCount() {
+    try {
+        const response = await fetch(`https://neocities.org/api/info?sitename=${username}`);
+        const data = await response.json();
+
+        document.getElementById("neocities-stats").innerHTML = `
+        <span id="view-count">Views: ${data.info.views}</span>`;
+    } catch (error) {
+        console.error("Fetching failed: ", error);
+    }
+};
+
+displayViewCount();
+```
+
 
 Next is the second script that will work on free sites but do note:
 
@@ -52,12 +82,13 @@ Now add this HTML:
 and place this JS in a script tag somewhere:
 
 ```js
+const username = "YOUR NAME HERE";
 async function displayViewCount() {
     try {
       const pt = new POSTreq.POSTreq();
-      const response = await pt.fetch('https://weirdscifi.ratiosemper.com/neocities.php?sitename=SITENAME-HERE');
+      const response = await pt.fetch(`https://neocities.org/api/info?sitename=${username}`);
       const data = await response.json();
-      
+
       document.getElementById("neocities-stats").innerHTML = `
         <span id="view-count">Views: ${data.info.views}</span>`;
     } catch (error) {

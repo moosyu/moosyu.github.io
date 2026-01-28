@@ -1,6 +1,6 @@
 ---
 title: "Make everything but text hovered fade away in CSS"
-date: 2025-04-20
+pubDate: 2025-04-20
 ---
 
 <style>

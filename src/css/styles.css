@@ -1,7 +1,7 @@
 body {
     position: relative;
     font-family: monospace;
-    background: #4798c9 url("/assets/wall_dark.png");
+    background: #4798c9 url("/assets/backgrounds/wall_dark.png");
     margin: 10px auto;
     max-width: 1400px;
     overflow-y: scroll;
@@ -82,7 +82,7 @@ button:hover, a:hover {
 
 .navbar a, .dropdown .dropbtn {
     font-size: 24px;
-    padding: 14px;
+    padding: 14px 8px;
     border: none;
     outline: none;
     font-family: inherit;
@@ -95,8 +95,8 @@ button:hover, a:hover {
 }
 
 .navbar-expander {
-    font-size: 24px;
-    padding: 14px;
+    padding: 14px 0;
+    height: 24px;
     display: flex;
     justify-content: center;
 }
@@ -155,6 +155,7 @@ button:hover, a:hover {
 }
 
 .dropdown-content {
+    text-align: center;
     position: absolute;
     top: 100%;
     z-index: 3;

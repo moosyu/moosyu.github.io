@@ -1,0 +1,20 @@
+---
+import "../css/styles.css";
+import Meta from "../components/Meta.astro";
+import NoScript from "../components/NoScript.astro"
+import Navbar from "../components/Navbar.astro"
+
+const { title = "moosyu's wix site" } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<Meta />
+		<NoScript />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Navbar />
+		<slot />
+	</body>
+</html>

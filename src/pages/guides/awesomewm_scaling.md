@@ -1,6 +1,6 @@
 ---
 title: "Everything is tiny after installing AwesomeWM"
-date: 2022-12-07
+pubDate: 2022-12-07
 ---
 
 ![picture of it](https://i.redd.it/p8k2wq7ntxv91.png)

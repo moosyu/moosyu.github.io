@@ -1,6 +1,6 @@
 ---
 title: "Convert webp to jpg bash script"
-date: 2024-05-18
+pubDate: 2024-05-18
 ---
 
 Go to the folder where the files you wanna convert are.

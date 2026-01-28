@@ -1,6 +1,6 @@
 ---
 title: "Getting smooth vscode cursor"
-date: 2024-10-02
+pubDate: 2024-10-02
 ---
 
 ![example](https://i.imgur.com/rgUPQNR.gif)

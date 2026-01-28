@@ -1,6 +1,6 @@
 ---
 title: "Making a nekoweb elements.css file"
-date: 2024-08-31
+pubDate: 2024-08-31
 ---
 
 # THIS POST IS OUTDATED AS SHIT JUST USE [NEKOBOX](https://jbc.lol/utils/nekobox/)!!

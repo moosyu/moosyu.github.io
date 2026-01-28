@@ -1,3 +1,6 @@
+const commitsContainer = document.getElementById("commitsContainer");
+const textEl = commitsContainer.querySelector("p");
+
 async function displayLatestGithubCommit() {
     try {
         const response = await fetch('https://api.github.com/repos/Moosyu/moosyu.github.io/commits?per_page=1');
@@ -6,8 +9,9 @@ async function displayLatestGithubCommit() {
         const shortSha = sha.substring(0, 7);
         const authorDate = new Date(data[0].commit.author.date);
 
-        document.getElementById("commitsContainer").innerHTML = `
-        <p>Latest commit: <a target="_blank" href="https://github.com/Moosyu/moosyu.github.io/commit/${sha}">${shortSha}</a> on ${authorDate.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' })}</p>`;
+        if (commitsContainer) {
+            textEl.innerHTML = `Latest commit: <a target="_blank" href="https://github.com/Moosyu/moosyu.github.io/commit/${sha}">${shortSha}</a> on ${authorDate.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' })}`;
+        }
     } catch (error) {
         console.error("Fetching Github latest commit failed:", error);
     }

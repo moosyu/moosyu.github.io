@@ -1,6 +1,6 @@
 ---
 title: "Lexiqqq + 11ty github workflow"
-date: 2024-10-03
+pubDate: 2024-10-03
 ---
 
 ### Note: this still works but I don't use lexiqqq anymore so I won't be able to troubleshoot for you, sorry.

@@ -1,6 +1,6 @@
 ---
 title: "Displaying the latest github commit with js"
-date: 2024-10-28
+pubDate: 2024-10-28
 ---
 
 This is how you get one of these:

@@ -1,0 +1,41 @@
+---
+import Emojis from "../components/Emojis.astro";
+const currentPath = Astro.url.pathname;
+---
+<div class="navbar">
+    <Emojis className="navbar-expander" name="down-arrow" />
+        <div class="navbar-content">
+        <a href="/" class={`home-navbtn ${currentPath === "/" ? "active-tab" : ""}`}><Emojis className="nav-emojis" name="home" />Home</a>
+        <a href="/thoughts/media_grid/"><Emojis className="nav-emojis" name="star" />Media Log</a>
+        <div class="dropdown">
+            <a class="dropbtn"><Emojis className="nav-emojis" name="speech" />Ramblings</a>
+            <div class="dropdown-content">
+                <a href="#">Rambling calendar</a>
+                <a href="/pages/ramblings/2026/">2026 entries</a>
+                <a href="/pages/ramblings/2025/">2025 entries</a>
+                <a href="/pages/ramblings/2024/">2024 entries</a>
+            </div>
+        </div>
+        <a href="/guides/" class={currentPath.startsWith("/guides") ? "active-tab" : ""}><Emojis className="nav-emojis" name="book-blue" />Guides</a>
+        <a href="/pages/links/"><Emojis className="nav-emojis" name="chain" />Links</a>
+        <a target="_blank" href="http://nekoweb.org/follow/moosyu.nekoweb.org"><Emojis className="nav-emojis" name="heart" />Follow</a>
+    </div>
+</div>
+
+<style>
+    .down-arrow-svg {
+        width: 24px;
+        height: 24px;
+    }
+</style>
+
+<script>
+    const navbarEl = document.querySelector(".navbar");
+    const navbarArrowEl = document.querySelector(".down-arrow-svg");
+
+    if (navbarEl && navbarArrowEl) {
+        navbarArrowEl.addEventListener("click", () => {
+            navbarEl.classList.toggle('expanded');
+        });
+    }
+</script>

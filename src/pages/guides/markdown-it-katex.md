@@ -1,6 +1,6 @@
 ---
 title: "Latex markdown with 11ty using markdown-it-katex"
-date: 2024-09-24
+pubDate: 2024-09-24
 ---
 
 If you're wondering why I don't just use some JS library, it's because I don't like overusing client-side JS, next question. First off, I'm using [@vscode/markdown-it-katex](https://www.npmjs.com/package/@vscode/markdown-it-katex). This is the most maintained version of it and doesn't have any vulnerabilities like the original version. You want to go into the folder of your 11ty project and run:

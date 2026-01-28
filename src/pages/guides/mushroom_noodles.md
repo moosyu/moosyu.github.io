@@ -1,6 +1,6 @@
 ---
 title: "Mushroom noodles"
-date: 2025-12-30
+pubDate: 2025-12-30
 ---
 
 <style>

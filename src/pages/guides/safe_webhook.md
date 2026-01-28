@@ -1,6 +1,6 @@
 ---
 title: Discord webhook contact form + hiding your webhook token
-date: 2025-11-22
+pubDate: 2025-11-22
 ---
 
 Rice of the hit website rice.place had followed [this tutorial](https://dev.to/mistval/discord-webhook-powered-contact-form-3lk6) on creating a webhook contact form but this tutorial while simple also has you expose your webhook which allows people to send whatever heinous things they want to which is what happened to rice:

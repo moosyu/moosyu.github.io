@@ -1,24 +1,14 @@
 {
-  "name": "moosyusite",
-  "version": "1.0.0",
-  "description": "worst website ever?",
-  "main": "index.js",
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "bunx @11ty/eleventy",
-    "serve": "bunx @11ty/eleventy --serve"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-plugin-rss": "^2.0.2",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-    "@vscode/markdown-it-katex": "^1.1.0",
-    "clean-css": "^5.3.3",
-    "html-minifier-terser": "^7.2.0",
-    "markdown-it-footnote": "^4.0.0",
-    "markdown-it-task-lists": "^2.1.1"
+    "astro": "^5.16.15"
   }
 }

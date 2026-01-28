@@ -1,6 +1,6 @@
 ---
 title: "Making only the XFCE panel transparent"
-date: 2023-01-04
+pubDate: 2023-01-04
 ---
 
 ![screenshot of the panel](https://i.imgur.com/Xfztj7c.png)

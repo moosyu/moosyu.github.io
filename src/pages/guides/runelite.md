@@ -1,6 +1,6 @@
 ---
 title: "Running runelite off a USB flash drive"
-date: 2022-12-07
+pubDate: 2022-12-07
 ---
 
 (This guide assumes you're using Windows)

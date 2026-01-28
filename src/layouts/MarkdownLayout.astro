@@ -1,0 +1,13 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { frontmatter } = Astro.props;
+const publishDate = new Date(frontmatter.pubDate);
+
+---
+<BaseLayout title="blind leading the blind">
+    <div class="background-div bottom-div">
+        <p>Date created: {publishDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+        <slot />
+    </div>
+</BaseLayout>
