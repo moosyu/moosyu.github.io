@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "bunx @11ty/eleventy",
-    "serve": "bunx @11ty/eleventy --serve"
+    "dev": "bunx @11ty/eleventy --serve"
   },
   "keywords": [],
   "author": "",
