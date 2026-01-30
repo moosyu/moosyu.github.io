@@ -3,7 +3,7 @@ layout: layout.njk
 title: Checklist
 ---
 
-<div class="background-div bottom-div">
+<main class="bottom-div">
 
 ## To play:
 
@@ -299,4 +299,4 @@ title: Checklist
 
 - Youjo Senki
 
-</div>
+</main>

@@ -112,43 +112,43 @@ pagination:
 {% block content %}
   <div class="media-top">
     <div>
-      <a href="/pages/graphs/thoughts_dist/" class="score-link">Current average score: {{ (scoreTotal / counter).toFixed(2) }}/10</a>
-      <noscript>
-        <span>Current average score: {{ (scoreTotal / counter).toFixed(2) }}/10</span>
-      </noscript>
+        <a href="/pages/graphs/thoughts_dist/" class="score-link">Current average score: {{ (scoreTotal / counter).toFixed(2) }}/10</a>
+        <noscript>
+          <span>Current average score: {{ (scoreTotal / counter).toFixed(2) }}/10</span>
+        </noscript>
+      </div>
+      <input autocomplete="off" type="text" id="mediaSearchInput" placeholder="Search...">
     </div>
-    <input autocomplete="off" type="text" id="mediaSearchInput" placeholder="Search...">
-  </div>
-  <div id="searchResults"></div>
-  <div class="background-div">
-    <div class="media-grid-container">
-      {% for item in items %}
-        {% set readTime = item.description | readTime %}
-        <div class="media-grid-item" id="{{ loop.index0 }}">
-            <div class="media-head">
-                <h3 title="{{ item.name }}" class="media-title">{{ item.name }}</h3>
-                <h3 style="{% if item.score < 1 %} color: #5e5e5e;
-                  {% elif item.score < 3 %} color: #ff4c4c;
-                  {% elif item.score < 5 %} color: #ff8888;
-                  {% elif item.score < 7 %} color: #f0e68c;
-                  {% elif item.score < 8 %} color: #7bc96f;
-                  {% elif item.score < 10 %} color: #00cc66;
-                  {% else %} color: #9d63d0;
-                  {% endif %}">
-                  {{ item.score }}/10
-                </h3>
-            </div>
-            <span>{{ item.type }}</span>
-            <div class="media-head">
-              <a href="/pages/thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/">Read thoughts... ({{ readTime }} min read)</a>
-              {% if (item.image) %}
-                {{ emojis.media_image | safe }}
-              {% endif %}
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    </div>
+    <div id="searchResults"></div>
+    <main>
+      <div class="media-grid-container">
+        {% for item in items %}
+          {% set readTime = item.description | readTime %}
+          <div class="media-grid-item" id="{{ loop.index0 }}">
+              <div class="media-head">
+                  <h3 title="{{ item.name }}" class="media-title">{{ item.name }}</h3>
+                  <h3 style="{% if item.score < 1 %} color: #5e5e5e;
+                    {% elif item.score < 3 %} color: #ff4c4c;
+                    {% elif item.score < 5 %} color: #ff8888;
+                    {% elif item.score < 7 %} color: #f0e68c;
+                    {% elif item.score < 8 %} color: #7bc96f;
+                    {% elif item.score < 10 %} color: #00cc66;
+                    {% else %} color: #9d63d0;
+                    {% endif %}">
+                    {{ item.score }}/10
+                  </h3>
+              </div>
+              <span>{{ item.type }}</span>
+              <div class="media-head">
+                <a href="/pages/thoughts/{{ item.name | slugify }}-{{ item.type | slugify }}/">Read thoughts... ({{ readTime }} min read)</a>
+                {% if (item.image) %}
+                  {{ emojis.media_image | safe }}
+                {% endif %}
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+    </main>
     <div class="pagination-container">
       <div class="pagination-buttons left">
           {% if pagination.href.previous %}

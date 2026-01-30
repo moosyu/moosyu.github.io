@@ -18,7 +18,7 @@ async function displayComments(paginationPage) {
                 comment_section.innerHTML = "<div class='comment-item'>There aren't any comments yet :(</div>";
             } else {
                 comment_section.innerHTML = "";
-                const comments = data.comments.sort((a, b) => { 
+                const comments = data.comments.sort((a, b) => {
                     return new Date(b.createdAt) - new Date(a.createdAt);
                 });
                 comments.forEach(comment => {

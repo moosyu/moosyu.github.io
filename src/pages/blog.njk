@@ -13,7 +13,7 @@ title: "groups of words in specific order"
 {% endblock %}
 
 {% block content %}
-<div class="background-div bottom-div">
+<main class="bottom-div">
   <ul class="blog-list">
     {% for blog in collections.blog | reverse %}
       {% set wordCount = blog.templateContent | wordCount %}
@@ -34,5 +34,5 @@ title: "groups of words in specific order"
       </li>
     {% endfor %}
   </ul>
-</div>
+</main>
 {% endblock %}

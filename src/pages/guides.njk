@@ -3,7 +3,7 @@ layout: "layout.njk"
 title: "blind leading the blind"
 ---
 
-<div class="background-div bottom-div">
+<main class="bottom-div">
   <p>Collection of guides. Most coding related, mostly written in ways those with no knowledge of JS should hopefully be able to understand. Older posts might be a little iffy.</p>
   <ul style="margin: 0; padding: 0; list-style-type: none;">
     {% for guide in collections.guides | reverse %}
@@ -17,4 +17,4 @@ title: "blind leading the blind"
       </li>
     {% endfor %}
   </ul>
-</div>
+</main>

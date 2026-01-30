@@ -20,92 +20,92 @@
         <p style="margin: 0;">⚠︎ Sorry! This page is only visable with Javascript enabled!</p>
     </div>
 </noscript>
-<div class="background-div graphs">
-{{ content | safe }}
+<main class="graphs">
+  {{ content | safe }}
 
-<select id="chartTypeDropdown" style="margin-bottom: 20px; padding: 5px; background-color: #1e2030; border: 1px solid #89b4fa; border-radius: 5px; color: white;">
-  <option value="bar">Bar</option>
-  <option value="line">Line</option>
-  <option value="pie">Pie</option>
-  <option value="bubble">Bubble</option>
-  <option value="polarArea">Polar Area</option>
-  <option value="radar">Radar</option>
-</select>
+  <select id="chartTypeDropdown" style="margin-bottom: 20px; padding: 5px; background-color: #1e2030; border: 1px solid #89b4fa; border-radius: 5px; color: white;">
+    <option value="bar">Bar</option>
+    <option value="line">Line</option>
+    <option value="pie">Pie</option>
+    <option value="bubble">Bubble</option>
+    <option value="polarArea">Polar Area</option>
+    <option value="radar">Radar</option>
+  </select>
 
-<canvas id="ratingChart" width="400" height="200"></canvas>
-<h3>Data ordered by score, click the score header to change it to ascending.</h3>
-<div id="output"></div>
-<script src="/js/chart.js"></script>
-<script>
-const ranges = Array.from({ length: 11 }, () => 0);
-let asc = false;
-let data = [];
+  <canvas id="ratingChart" width="400" height="200"></canvas>
+  <h3>Data ordered by score, click the score header to change it to ascending.</h3>
+  <div id="output"></div>
+  <script src="/js/chart.js"></script>
+  <script>
+  const ranges = Array.from({ length: 11 }, () => 0);
+  let asc = false;
+  let data = [];
 
-fetch("{{ jsonLocation }}")
-  .then(response => response.json())
-  .then(jsonData => {
-    data = jsonData;
-    data.forEach(item => ranges[Math.floor(item.score)]++);
-    renderTable();
-    renderChart('bar');
-  })
-  .catch(error => console.error('json file is missing!', error));
+  fetch("{{ jsonLocation }}")
+    .then(response => response.json())
+    .then(jsonData => {
+      data = jsonData;
+      data.forEach(item => ranges[Math.floor(item.score)]++);
+      renderTable();
+      renderChart('bar');
+    })
+    .catch(error => console.error('json file is missing!', error));
 
-function renderTable() {
-  data.sort((a, b) => (asc ? a.score - b.score : b.score - a.score));
+  function renderTable() {
+    data.sort((a, b) => (asc ? a.score - b.score : b.score - a.score));
 
-  document.getElementById('output').innerHTML = `
-    <table>
-      <thead>
-        <tr>
-          <th style="text-align: start;">Name</th>
-          <th id="score-header" style="cursor: pointer;">Score</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${data.map(item => `
+    document.getElementById('output').innerHTML = `
+      <table>
+        <thead>
           <tr>
-            <td style="padding-right: 20px;">${item.name}</td>
-            <td>${item.score}</td>
+            <th style="text-align: start;">Name</th>
+            <th id="score-header" style="cursor: pointer;">Score</th>
           </tr>
-        `).join('')}
-      </tbody>
-    </table>
-  `;
-}
-
-document.addEventListener('click', event => {
-  if (event.target.id === 'score-header') {
-    asc = !asc;
-    renderTable();
+        </thead>
+        <tbody>
+          ${data.map(item => `
+            <tr>
+              <td style="padding-right: 20px;">${item.name}</td>
+              <td>${item.score}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
   }
-});
 
-document.getElementById('chartTypeDropdown').addEventListener('change', event => {
-  renderChart(event.target.value);
-});
-
-let chart;
-function renderChart(type) {
-  const ctx = document.getElementById('ratingChart').getContext('2d');
-  if (chart) chart.destroy();
-  chart = new Chart(ctx, {
-    type: type,
-    data: {
-      labels: Array.from({ length: 11 }, (_, i) => i.toString()),
-      datasets: [{
-        data: ranges,
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgb(54, 162, 235)',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      plugins: { legend: { display: false } },
-      scales: { y: { beginAtZero: true } }
+  document.addEventListener('click', event => {
+    if (event.target.id === 'score-header') {
+      asc = !asc;
+      renderTable();
     }
   });
-}
-</script>
-</div>
+
+  document.getElementById('chartTypeDropdown').addEventListener('change', event => {
+    renderChart(event.target.value);
+  });
+
+  let chart;
+  function renderChart(type) {
+    const ctx = document.getElementById('ratingChart').getContext('2d');
+    if (chart) chart.destroy();
+    chart = new Chart(ctx, {
+      type: type,
+      data: {
+        labels: Array.from({ length: 11 }, (_, i) => i.toString()),
+        datasets: [{
+          data: ranges,
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgb(54, 162, 235)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+  }
+  </script>
+</main>
 {% endblock %}
