@@ -4,9 +4,9 @@
 {% set month = date.getMonth() + 1 %}
 
 {% block content %}
-  <div class="background-div">
-  <a href="/pages/ramblings/calendar/{{ year }}/{{ month | formatDate }}/" class="back-button">Back</a>
-  <h2>{{ date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).replace('.', '') }}</h2>
-  {{ content | safe }}
-  </div>
+  <main>
+    <a href="/pages/ramblings/calendar/{{ year }}/{{ month | formatDate }}/" class="back-button">Back</a>
+    <h2>{{ date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).replace('.', '') }}</h2>
+    {{ content | safe }}
+  </main>
 {% endblock %}

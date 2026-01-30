@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="background-div">
+<main>
     Date created: {{ page.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).replace('.', '') }}
     {% for tag in tags %}
     {% if tag != "blog" %}
@@ -22,7 +22,7 @@
     {% endfor %}
 
     {{ content | safe }}
-</div>
+</main>
 {% set previousPost = collections.blog | getPreviousCollectionItem %}
 {% set nextPost = collections.blog | getNextCollectionItem %}
 <div class="pagination-container">
