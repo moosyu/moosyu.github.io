@@ -45,7 +45,7 @@ button:hover, a:hover {
     ) !important;
 }
 
-.background-div, .search-items-container {
+.background-div, .search-items-container, main {
     background-color: #111214;
     padding: 10px;
     margin: 10px;
@@ -53,7 +53,7 @@ button:hover, a:hover {
     box-shadow: inset 0 55px 25px -25px #292b2d;
 }
 
-.background-div img, .background-div video, .review_table img {
+.background-div img, .background-div video, main img, main video {
     max-width: 100%;
 }
 
@@ -77,21 +77,14 @@ button:hover, a:hover {
     border-radius: 15px 15px 0 0;
     flex-direction: column;
     max-width: 100%;
-    overflow: hidden;
 }
 
-.navbar a, .dropdown .dropbtn {
+.navbar a {
     font-size: 24px;
     padding: 14px 8px;
-    border: none;
-    outline: none;
-    font-family: inherit;
-    margin: 0;
     display: flex;
     align-items: center;
-    box-sizing: border-box;
     text-decoration: none;
-    white-space: nowrap;
 }
 
 .navbar-expander {
@@ -118,10 +111,6 @@ button:hover, a:hover {
     opacity: 1;
 }
 
-.navbar a, button {
-    color: #e23a45;
-}
-
 .home-navbtn {
     border-radius: 15px 0 0 0;
 }
@@ -141,11 +130,12 @@ button:hover, a:hover {
     overflow: visible;
 }
 
-.dropbtn {
+.dropdown a {
     cursor: default;
+    width: 100%;
 }
 
-.dropbtn:hover, .navbar a:hover {
+.navbar a:hover {
     background: linear-gradient(180deg,
         #2d3032e6 0%,
         #1e2123e6 30%,
@@ -155,18 +145,23 @@ button:hover, a:hover {
 }
 
 .dropdown-content {
-    text-align: center;
     position: absolute;
     top: 100%;
     z-index: 3;
     background-color: #1a2024;
     border: dotted white 1px;
-    border-width: 0 0 1px 0;
     border-radius: 0 0 4px 4px;
     width: 100%;
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+}
+
+/* text-align and justify-content in the same style... how daring of me */
+.dropdown-content a {
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
 .dropdown:hover .dropdown-content {
@@ -213,7 +208,12 @@ button:hover, a:hover {
     justify-content: space-between;
     gap: 10px;
     padding: 10px;
-    background: linear-gradient(180deg, #212526 0, #1e2222 30%, #181f22 50%, #0d1013 100%);
+    background: linear-gradient(180deg,
+        #212526 0,
+        #1e2222 30%,
+        #181f22 50%,
+        #0d1013 100%
+    );
     border: dotted #fff 1px;
     border-radius: 0 0 15px 15px;
     margin: 10px;
@@ -325,7 +325,6 @@ button:hover, a:hover {
         flex-direction: row;
         display: flex;
         width: auto;
-        overflow: visible;
     }
 
     .navbar-expander {
@@ -339,17 +338,18 @@ button:hover, a:hover {
         overflow: visible;
     }
 
-    .dropdown .dropbtn, .navbar a {
-        white-space: normal;
-    }
-
-    .navbar a, .dropdown .dropbtn {
-        width: auto;
-    }
-
     .dropdown-content {
         border-width: 0px 1px 1px 1px;
         min-width: 100%;
+    }
+
+    .dropdown a {
+        cursor: default;
+        width: auto;
+    }
+
+    .dropdown-content a {
+        cursor: pointer;
     }
 
     .updates-container {

@@ -1,0 +1,7 @@
+---
+import MarkdownLayout from "../../layouts/MarkdownLayout.astro";
+const { frontmatter } = Astro.props;
+---
+<MarkdownLayout pageTitle={frontmatter.title}>
+    <slot />
+</MarkdownLayout>

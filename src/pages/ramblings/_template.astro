@@ -1,0 +1,7 @@
+---
+import RamblingsLayout from "../../layouts/RamblingsLayout.astro";
+const { frontmatter } = Astro.props;
+---
+<RamblingsLayout pageTitle={frontmatter.title}>
+    <slot />
+</RamblingsLayout>

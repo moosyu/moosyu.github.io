@@ -1,0 +1,58 @@
+---
+import RamblingsLayout from "../layouts/RamblingsLayout.astro";
+
+type Rambling = {
+    file: string;
+    url: string;
+    frontmatter: FrontMatter;
+};
+
+type FrontMatter = {
+    title: string;
+}
+
+export async function getStaticPaths() {
+    const allRamblings = Object.values(import.meta.glob("./ramblings/*.md", { eager: true })) as Rambling[];
+    let ramblingsByYear: Record<string, Rambling[]> = {};
+
+    allRamblings.slice().reverse().forEach(rambling => {
+        const fileName = rambling.file.split("/").pop()!;
+        const fileYear = fileName.split("-")[0];
+
+        if (!ramblingsByYear[fileYear]) {
+            ramblingsByYear[fileYear] = [];
+        }
+
+        ramblingsByYear[fileYear].push(rambling);
+    });
+
+    return Object.entries(ramblingsByYear).map(([year, ramblings]) => ({
+        params: { year },
+        props: { ramblings },
+    }))
+}
+
+const { year } = Astro.params;
+const { ramblings } = Astro.props;
+---
+<style>
+    .ramblings-container {
+        border-bottom: 1px hsla(0, 0%, 100%, .12) solid;
+        font-size: 16px;
+    }
+</style>
+<RamblingsLayout pageTitle="untitled unmastered">
+    <p>Ramblings (list version) for {year}</p>
+        {ramblings.map(rambling =>
+        <div class="ramblings-container">
+            <h2>{
+            new Date(rambling.file.split("/").pop()!.split(".")[0]).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+            }</h2>
+            <p>
+                <a href={rambling.url}>
+                    {rambling.frontmatter.title ? rambling.frontmatter.title : "Untitled Entry"}
+                </a>
+            </p>
+        </div>
+        )}
+</RamblingsLayout>

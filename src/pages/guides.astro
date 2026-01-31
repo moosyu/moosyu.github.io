@@ -2,15 +2,13 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const allPosts = Object.values(import.meta.glob("./guides/*.md", { eager: true }));
-const pageTitle = "blind leading the blind";
+const sortedPosts = allPosts.sort((a: any, b: any) => {return new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()});
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle="blind leading the blind">
     <div class="background-div bottom-div">
         <p>Collection of guides. Most coding related, mostly written in ways those with no knowledge of JS should hopefully be able to understand. Older posts might be a little iffy.</p>
         <ul style="margin: 0; padding: 0; list-style-type: none;">
-            {allPosts.sort((a: any, b: any) => {
-                return new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime();
-            }).map((post: any) => {
+            {sortedPosts.map((post: any) => {
                 const date = new Date(post.frontmatter.pubDate);
                 return (
                 <li class="blog-post-item">
