@@ -43,28 +43,6 @@ All that you need to modify is the SITENAME-HERE part with just your site's name
 
 This is using a workaround to Neocities' CORS limitations on free sites. Nobody has been banned for doing this (yet) and the moderation is pretty slack but still proceed with caution.
 
-```js
-const username = "YOUR NAME HERE";
-async function displayViewCount() {
-    try {
-        const response = await fetch(`https://neocities.org/api/info?sitename=${username}`);
-        const data = await response.json();
-
-        document.getElementById("neocities-stats").innerHTML = `
-        <span id="view-count">Views: ${data.info.views}</span>`;
-    } catch (error) {
-        console.error("Fetching failed: ", error);
-    }
-};
-
-displayViewCount();
-```
-
-
-Next is the second script that will work on free sites but do note:
-
-<h1 style="color: red;">THIS COULD GET YOUR SITE BANNED</h1>
-
 I'm unsure if anyone has been punished for using this but the purpose of JB's POSTreq is getting around a restriction on free sites so do use it with caution.
 
 First download: https://cdn.jsdelivr.net/npm/postreq/dist/postreq.min.js and save it somewhere in your site, then on the page you want to display stats link it in a script tag somewhere, for example:
@@ -85,11 +63,10 @@ and place this JS in a script tag somewhere:
 const username = "YOUR NAME HERE";
 async function displayViewCount() {
     try {
-      const pt = new POSTreq.POSTreq();
-      const response = await pt.fetch(`https://neocities.org/api/info?sitename=${username}`);
-      const data = await response.json();
+        const response = await fetch(`https://neocities.org/api/info?sitename=${username}`);
+        const data = await response.json();
 
-      document.getElementById("neocities-stats").innerHTML = `
+        document.getElementById("neocities-stats").innerHTML = `
         <span id="view-count">Views: ${data.info.views}</span>`;
     } catch (error) {
         console.error("Fetching failed: ", error);
