@@ -11,9 +11,9 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const guide = await getEntry("guides", slug);
-const { Content } = await guide.render();
+const { Content } = await guide!.render();
 ---
 
-<MarkdownLayout {...guide!.data}>
+<MarkdownLayout title={guide!.data.title} pubDate={guide!.data.pubDate.toLocaleDateString('en-US', { dateStyle: 'medium' })}>
     <Content />
 </MarkdownLayout>

@@ -10,7 +10,7 @@ async function displayLatestGithubCommit() {
         const authorDate = new Date(data[0].commit.author.date);
 
         if (commitsContainer) {
-            textEl.innerHTML = `Latest commit: <a target="_blank" href="https://github.com/Moosyu/moosyu.github.io/commit/${sha}">${shortSha}</a> on ${authorDate.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' })}`;
+            textEl.innerHTML = `Latest commit: <a target="_blank" href="https://github.com/Moosyu/moosyu.github.io/commit/${sha}">${shortSha}</a> on ${authorDate.toLocaleDateString('en-US', { dateStyle: 'medium' })}`;
         }
     } catch (error) {
         console.error("Fetching Github latest commit failed:", error);

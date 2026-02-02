@@ -1,12 +1,12 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 
-const { frontmatter } = Astro.props;
-
+const { title, pubDate } = Astro.props;
 ---
-<BaseLayout title="blind leading the blind">
+
+<BaseLayout title={title || "blind leading the blind"}>
     <div class="background-div bottom-div">
-        <p>Date created:</p>
+        {pubDate ? <p>Date created: {pubDate}</p> : ""}
         <slot />
     </div>
 </BaseLayout>

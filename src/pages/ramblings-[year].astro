@@ -1,35 +1,23 @@
 ---
-import RamblingsLayout from "../layouts/RamblingsLayout.astro";
-
-type Rambling = {
-    file: string;
-    url: string;
-    frontmatter: FrontMatter;
-};
-
-type FrontMatter = {
-    title: string;
-}
+import BaseLayout from "../layouts/BaseLayout.astro";
+import RamblingDate from "../components/RamblingDate.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    const allRamblings = Object.values(import.meta.glob("./ramblings/*.md", { eager: true })) as Rambling[];
-    let ramblingsByYear: Record<string, Rambling[]> = {};
+  const ramblings = (await getCollection("ramblings")).reverse();
 
-    allRamblings.slice().reverse().forEach(rambling => {
-        const fileName = rambling.file.split("/").pop()!;
-        const fileYear = fileName.split("-")[0];
+  const years = Array.from(
+    new Set(ramblings.map((post) => post.id.slice(0, 4)))
+  );
 
-        if (!ramblingsByYear[fileYear]) {
-            ramblingsByYear[fileYear] = [];
-        }
-
-        ramblingsByYear[fileYear].push(rambling);
-    });
-
-    return Object.entries(ramblingsByYear).map(([year, ramblings]) => ({
-        params: { year },
-        props: { ramblings },
-    }))
+  return years.map((year) => ({
+    params: { year },
+    props: {
+      ramblings: ramblings.filter((post) =>
+        post.id.startsWith(year)
+      ),
+    },
+  }));
 }
 
 const { year } = Astro.params;
@@ -41,18 +29,18 @@ const { ramblings } = Astro.props;
         font-size: 16px;
     }
 </style>
-<RamblingsLayout pageTitle="untitled unmastered">
-    <p>Ramblings (list version) for {year}</p>
-        {ramblings.map(rambling =>
-        <div class="ramblings-container">
-            <h2>{
-            new Date(rambling.file.split("/").pop()!.split(".")[0]).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-            }</h2>
-            <p>
-                <a href={rambling.url}>
-                    {rambling.frontmatter.title ? rambling.frontmatter.title : "Untitled Entry"}
-                </a>
-            </p>
+<BaseLayout title={`ramblings ${year}`}>
+    <div class="background-div bottom-div">
+        <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+            <p style="text-align: left;">Ramblings list version {year}!! (Same entries as the calendar just in a different view.)</p>
+            <h3 style="text-align: right;"><a style="text-decoration: none;" href="javascript: document.body.scrollIntoView(false);">To bottom ↓</a></h3>
         </div>
-        )}
-</RamblingsLayout>
+            {ramblings.map((rambling) => (
+                <div class="ramblings-container">
+                    <RamblingDate ramblingEntry={rambling} />
+                    <p><a href={`/ramblings/${rambling.slug}`}>{rambling.data.title ?? "Untitled entry"}</a></p>
+                </div>
+            ))}
+        <h3 style="text-align:right;"><a style="text-decoration: none;" href="#top">To top ↑</a></h3>
+    </div>
+</BaseLayout>
