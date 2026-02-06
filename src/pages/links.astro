@@ -7,6 +7,18 @@ import BaseLayout from "../layouts/BaseLayout.astro"
         height: 31px;
         image-rendering: pixelated;
     }
+    .sitemap-list li::before {
+        content: "➤";
+        margin-right: 6px;
+    }
+    .sitemap-list ul ul li::before {
+        content: "↳";
+    }
+    .buttons-links img {
+        width: 88px;
+        height: 31px;
+        image-rendering: pixelated;
+    }
 </style>
 <BaseLayout pageTitle="please save me donald trump please">
     <main style="position: relative">
@@ -88,6 +100,8 @@ import BaseLayout from "../layouts/BaseLayout.astro"
         </div>
     </main>
     <div class="background-div bottom-div">
-        <p>SITEMAP HERE</p>
+        <ul class="sitemap-list" style="list-style-type:none">
+            <li><a href="/links/">/links</a> ← you are here!</li>
+        </ul>
     </div>
 </BaseLayout>

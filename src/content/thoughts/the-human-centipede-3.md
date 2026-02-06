@@ -1,0 +1,9 @@
+---
+title: "The Human Centipede 3"
+type: Movie
+score: 1
+---
+
+I must've lost my sense after the last Human Centipede because I was somehow convinced to watch this one. As expected, it was shit. I thought some of the shots were cool looking, Boss' motivations were at least interesting and it wasn't nearly as grotesque as the previous but that is about all the praises I have for this film and even then the bar was real low. The acting is laughably poor, deadass probably the only enjoyment I got from this film was how shit the actors for Boss and Butler were (apt names by the way). I hated how Daisy was added to the film just to be raped constantly for no reason, like she did nothing wrong it was just fucked and meanspirited. The whole reason for them making the human centipede made no fuckin sense and they didn't even make it until like right at the end (which I preferred but I can't imagine someone who went in here wanting to see a human centipede wanted).
+
+The whole criticism of the prison system thing was stupid too, it's like Tom Six was trying to say something about how the U.S prison system is fucked and emphasises cruelty over rehabilitation but that point doesn't really make sense when all the prisoners are evil rape monsters who are barely humans at this point. Like I don't need them to be good guys or anything but have some redeeming qualities so I can feel bad, but instead you have this one guy who spends his one monthly call to call up Boss and tell him he's going to rape him?? What the fuck?? Is this a criticism of the prison system or prisoners? I still don't have the answer, though it is admirable that Tom Six finally decided to give his film a larger message that isn't just watch this guy do evil shit, isn't that fucked up? For that, I'll give Mr. Six one whole point for Human Centipede 3.

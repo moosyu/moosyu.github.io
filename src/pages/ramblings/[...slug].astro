@@ -4,14 +4,18 @@ import MarkdownLayout from "../../layouts/MarkdownLayout.astro";
 import RamblingDate from "../../components/RamblingDate.astro";
 
 export async function getStaticPaths() {
-    const rambling = await getCollection("ramblings");
-        return rambling.map((guide) => ({
-            params: { slug: guide.slug },
+    const ramblings = await getCollection("ramblings");
+        return ramblings.map((rambling) => ({
+            params: {
+                slug: rambling.slug
+            },
+            props: {
+                rambling
+            }
         }));
 }
 
-const { slug } = Astro.params;
-const rambling = await getEntry("ramblings", slug);
+const { rambling } = Astro.props;
 const { Content } = await rambling!.render();
 ---
 

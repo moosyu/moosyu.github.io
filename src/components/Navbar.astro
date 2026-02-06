@@ -6,7 +6,7 @@ const currentPath = Astro.url.pathname;
     <Emojis className="navbar-expander" name="down-arrow" />
         <div class="navbar-content">
         <a href="/" class={`home-navbtn ${currentPath === "/" ? "active-tab" : ""}`}><Emojis className="nav-emojis" name="home" />Home</a>
-        <a href="/media_grid/"><Emojis className="nav-emojis" name="star" />Media Log</a>
+        <a href="/thoughts/grid/1" class={currentPath.startsWith("/thoughts") ? "active-tab" : ""}><Emojis className="nav-emojis" name="star" />Media Log</a>
         <div class="dropdown">
             <a class={`home-navbtn ${currentPath.startsWith("/ramblings") ? "active-tab" : ""}`}><Emojis className="nav-emojis" name="speech" />Ramblings</a>
             <div class="dropdown-content">

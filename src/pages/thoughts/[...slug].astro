@@ -1,0 +1,96 @@
+---
+import "../../css/glightbox.min.css";
+import { getCollection } from "astro:content";
+import MarkdownLayout from "../../layouts/MarkdownLayout.astro";
+
+export async function getStaticPaths() {
+    const thoughts = await getCollection("thoughts");
+
+    return thoughts.map((thought) => ({
+        params: {
+            slug: `${thought.slug}-${thought.data.type.toLowerCase().replace(" ", "-")}`,
+        },
+        props: {
+            thought,
+        },
+    }));
+}
+
+const { thought } = Astro.props;
+const { Content } = await thought!.render();
+---
+<style>
+    .media {
+        width: auto;
+        flex-shrink: 0;
+    }
+
+    .media img {
+        border: 2px white dotted;
+        border-radius: 20px;
+        width: 50%;
+    }
+
+    .media img:hover {
+        cursor: pointer;
+    }
+
+    .thoughts-content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .thoughts-media {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 10px;
+    }
+
+    @media screen and (min-width: 700px) {
+        .thoughts-content {
+            flex-direction: row;
+        }
+
+        .thoughts-media {
+            flex-direction: column;
+            padding-bottom: 0;
+        }
+
+        .media {
+            width: 300px;
+        }
+
+        .media img {
+            width: auto;
+        }
+    }
+</style>
+<MarkdownLayout title={thought!.data.title}>
+    <div class="thoughts-content">
+        <div>
+            <h1>{thought.data.title}</h1>
+            <p>Type: {thought.data.type}</p>
+            <p>Score: {thought.data.score}/10</p>
+            {thought.data.dateModified && <p>Date modified:{thought.data.dateModified}</p>}
+            <Content />
+        </div>
+        {(thought.data.image || thought.data.imageB) && (
+        <div class="media">
+            <h2>Media:</h2>
+            <div class="thoughts-media" style="position: relative">
+                {thought.data.image && <img src={thought.data.image} class="glightbox"/>}
+                {thought.data.imageB && <img src={thought.data.imageB} class="glightbox"/>}
+            </div>
+        </div>
+        )}
+    </div>
+</MarkdownLayout>
+<script>
+    // what i did here makes me worse than hitler
+    import GLightbox from "../../js/glightbox.min.js";
+    GLightbox();
+</script>

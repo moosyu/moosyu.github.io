@@ -5,12 +5,16 @@ import MarkdownLayout from "../../layouts/MarkdownLayout.astro";
 export async function getStaticPaths() {
     const guides = await getCollection("guides");
         return guides.map((guide) => ({
-            params: { slug: guide.slug },
+            params: {
+                slug: guide.slug
+            },
+            props: {
+                guide
+            }
         }));
 }
 
-const { slug } = Astro.params;
-const guide = await getEntry("guides", slug);
+const { guide } = Astro.props;
 const { Content } = await guide!.render();
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Adding Discord status to your site
+title: "Adding Discord status to your site"
 pubDate: 2025-10-16
 ---
 

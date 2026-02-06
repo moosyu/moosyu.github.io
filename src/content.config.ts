@@ -12,6 +12,19 @@ const ramblings = defineCollection ({
   schema: z.object({
     title: z.string().optional()
   })
-})
+});
 
-export const collections = { guides, ramblings };
+const thoughts = defineCollection ({
+  schema: z.object({
+    title: z.string(),
+    alt: z.string().optional(),
+    type: z.string(),
+    score: z.number(),
+    image: z.string().optional(),
+    imageB: z.string().optional(),
+    dateModified: z.date().optional(),
+    noRSS: z.boolean().optional(),
+  })
+});
+
+export const collections = { guides, ramblings, thoughts };

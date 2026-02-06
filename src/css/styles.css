@@ -360,10 +360,6 @@ button:hover, a:hover {
         width: 100%;
     }
 
-    .bookmarks-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
     .dropdown-content {
         transition: max-height 0.4s linear;
     }

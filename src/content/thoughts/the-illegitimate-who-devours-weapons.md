@@ -1,0 +1,7 @@
+---
+title: "The Illegitimate Who Devours Weapons"
+type: Manhwa
+score: 2
+---
+
+This shit so ass. Feels like a worse Maxed Out Leveling and Maxed Out Leveling wasn't even good. The author tries to merge the gate and murim genres but does it comically poorly, sometimes they're wearing murim clothes, sometimes they're wearing modern day clothes, sometimes they're in buildings that look airlifted straight out of a murim manhwa, sometimes they're in high tech facilities. It just doesn't make any sense, why would the like most powerful clan bother making training facilities look like they're from hundreds of years prior when there whole thing is making themselves super strong?? The author also just seems fully incapable of having a single original thought and instead has to pick up the slack by throwing in every annoying overused trope he can possibly think of, evil stepmum, random maid being the only person who likes the mc, illegitimate child with a mum who died while giving birth, cold dad, seeing visions of strong guy from the past, using old methods n shit and somehow they're stronger than the modern stuff?? It really has it all and since the author is a single cell organism not a single thing surprised me. Don't like the art either, don't know exactly why but it just feels a little too soft, sort of like My Dad Is Too Strong but less shit. Sorry this was more of a rant than usual, guess I was just more pissed off at this manhwa than I had thought.

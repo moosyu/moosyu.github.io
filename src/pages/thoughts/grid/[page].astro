@@ -1,0 +1,170 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import type { GetStaticPaths, Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+    const thoughts = await getCollection("thoughts");
+    console.log(thoughts.length);
+    return paginate(thoughts, {
+        pageSize: 32,
+        props: {
+            thoughts
+        }
+    });
+};
+
+const { page } = Astro.props as {
+  page: Page<CollectionEntry<"thoughts">>;
+};
+console.log(page.data.length);
+
+let pagesList: Array<string> = [];
+
+// ill fix later gimme a sec
+for (let index = 0; index < page.data.length; index++) {
+    pagesList.push(
+        <option value="{{ pagination.hrefs[loop.index0] }}" {% if page.url == pagination.hrefs[loop.index0] %} selected {% endif %}>
+            Page {{ loop.index }}
+        </option>
+
+    )
+
+}
+---
+<style>
+    .media-grid-container {
+        display: grid;
+        padding: 10px;
+    }
+
+    .media-grid-item {
+        margin: 20px;
+        background-color: #1f1e1e;
+        padding: 10px;
+        border-radius: 6px;
+        max-width: 250px;
+    }
+
+    .media-grid-item > h3, p, .media-head > h3 {
+        margin: 0;
+    }
+
+    .media-grid-item > img {
+        max-height: 450px;
+        display: block;
+        border-radius: 4px;
+        object-fit: cover;
+    }
+
+    .media-score {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .media-title {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .media-head {
+        display: flex;
+        justify-content: space-between;
+        margin: 3px 0 3px 0;
+    }
+
+    .media-head p {
+        margin: 0;
+    }
+
+    .media-top {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        gap: 10px;
+    }
+
+    #mediaSearchInput, .media-top div {
+        padding: 12px 20px;
+        background: linear-gradient(180deg, #212526 0, #1e2222 30%, #181f22 50%, #0d1013 100%);
+        box-sizing: border-box;
+        color: #fff;
+        border: dotted #fff 1px;
+    }
+
+    .media-top div {
+        display: flex;
+        min-width: 300px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #mediaSearchInput {
+        width: 100%;
+    }
+
+    .search-item {
+        margin: 0;
+    }
+
+    @media screen and (min-width: 700px) {
+        .media-top {
+            flex-direction: row;
+        }
+        .media-grid-container {
+            grid-template-columns: repeat(2, auto);;
+        }
+    }
+
+    @media screen and (min-width: 1000px) {
+        .media-grid-container {
+            grid-template-columns: repeat(3, auto);;
+        }
+    }
+
+    @media screen and (min-width: 1300px) {
+        .media-grid-container {
+            grid-template-columns: repeat(4, auto);;
+        }
+    }
+</style>
+<BaseLayout title="big and fat, born without arms or legs, born to jump in the air and clap">
+    <main>
+        <div class="media-grid-container">
+        {page.data.map((thought) => (
+            <div class="media-grid-item">
+                <div class="media-head">
+                    <h3 title={thought.data.title} class="media-title">{thought.data.title}</h3>
+                    <h3 style={`color: ${
+                        thought.data.score < 1 ? "#5e5e5e" :
+                        thought.data.score < 3 ? "#ff4c4c" :
+                        thought.data.score < 5 ? "#ff8888" :
+                        thought.data.score < 7 ? "#f0e68c" :
+                        thought.data.score < 8 ? "#7bc96f" :
+                        thought.data.score < 10 ? "#00cc66" :
+                        "#9d63d0"}`}>{thought.data.score}/10</h3>
+                </div>
+                <span>{thought.data.type}</span>
+                <div class="media-head">
+                    <a href={`/thoughts/${thought.slug}-${thought.data.type.toLowerCase().replace(" ", "-")}`}>Read thoughts...</a>
+                </div>
+            </div>
+        ))}
+        </div>
+    </main>
+    <div class="bottom-div pagination-container">
+        <div class="pagination-buttons left">
+            {page.url.prev ? <a href={page.url.prev}>Previous</a> : <span>Previous</span>}
+        </div>
+
+        <select id="pageDropdown" onchange="window.location.href=this.value;">
+
+        </select>
+
+        <div class="pagination-buttons right">
+            {page.url.next ? <a href={page.url.next}>Next</a> : <span>Next</span>}
+        </div>
+    </div>
+</BaseLayout>

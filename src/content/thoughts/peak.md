@@ -1,0 +1,9 @@
+---
+title: "Peak"
+type: Game
+score: 7
+image: https://i.imgur.com/RzKsgg4.png
+dateModified: 2026-01-07
+---
+
+I've reached the Peak a good few times now; so far I've managed up to ascent three so I'm basically an expert. It's not a super long or mechanically challenging game; if you're playing with someone who has played before on the normal difficulty, you'll probably beat it the first time you play it, which is about an hour of game-time depending on how slow you guys are taking it. Despite this, I still think it's a very good level of difficulty while still being a really fun game just to fuck around and scream and yell in with the help of the excellent proximity voice chat. It's always funny to hear the scream of one of my mates as they fall to their untimely demise off some cliffside, and the reviving system never makes a death feel too punishing. Each mountain is pretty varied with its own interesting gimmick, and the difficulty curve is pretty well done right up to the last ascent, where the "curve" becomes more of a straight upwards line (unless you do the mesa, then it's a lot better). Obviously after a few runs you get used to it, but it isn't super intuitive to me. I do like that the final stage puts an emphasis on resource management, and there are enough tools to pick from that your final ascent will always be different despite it being the most straightforward climb. I quite like the random generation too; I don't think it's ever given me a mountain I can't climb and gives some variety between runs. It's pretty cool that some stages can switch around, though honestly I'd prefer to be able to select the map I want to play, as the roots map is way better than the tropics. The game also looks really charming and even manages to run pretty great for a modern game despite the levels generally being quite expansive with a lot more to each level than you may realise in your first few times climbing it.

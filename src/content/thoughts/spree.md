@@ -1,0 +1,12 @@
+---
+title: "Spree"
+type: Movie
+score: 6.5
+dateModified: 2025-12-18
+---
+
+Don't have much to say about this one, I hold off giving it a 7 because I can't say it's good with a straight face but it's certainly fun and undeserving of a 5.9 on IMDB especially when put up against the show I'm about to write my thoughts on (though I suppose if you're looking at the grid it'll be before this one). Anyways time to get back on topic, Spree is a horror (??) comedy starring Steve from Stranger Things who kind of feels like he's all over the place these days working on a successful career as an actor and another successful career as a musician with his album of this year gradually pushing its way into my top 10. He's my favourite part of this film aside from maybe Bobby who is just some influencer guy and his "pranking the homeless" bit was the funniest shit I've seen in quite some time. It was also pretty cool to find out he's the guy from that I'm Jared, I'm 19 and I never fucking learnt how to read Vine.
+
+Watching this film as more of a Kay and Peele style skit was probably the right choice as I doubt I'd be able to take it seriously, Steve's (no I don't know his name) character Kurt is just not believable and that's probably purposeful because if he was the comedy wouldn't have landed at all and it'd have been a really fucked up movie. It'd also make it really quite bizarre how this guy was getting away with this for so long when he's literally streaming his crimes had this world worked on normal logic. This movie also did the best impression of the internet though I think they couldn't cranked up the cynicism a little further to be honest. I don't envy whoever had to write those Twitch chat messages, I had expected them to just be repeating nonsense but after pausing in a few spots they all seemed to be actually be written for the scene which was pretty cool.
+
+However, it's because this film had such a nonsensical tone that some parts, especially those that were trying to do social commentary on how like the internet is ruining our lives and shit didn't really land for me. I think the movie would be better off just being dumb fun with that idea just being in the background instead of being said to me like I'm too stupid to pick on it otherwise, especially because Kurt is so over the top in his quest to get famous that it's almost impossible to avoid. This film also reminded me of the Christchurch Mosque Shootings which was no doubt accidental but still killed my mood a little.

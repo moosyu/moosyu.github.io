@@ -1,0 +1,11 @@
+---
+title: "The Spark in Your Eyes"
+type: Manhwa
+score: 3.5
+image: https://i.imgur.com/46J02qu.png
+dateModified: 2025-12-17
+---
+
+Erkin is so fucking stupid dude. The fact that he didn't figure out Kaya wasn't a maid instantly is batshit insane to me. What kind of random ass maid would ever have this much free time, why would they immediately be able to meet the very secretive master of the castle and why would they have such expensive clothes?? This fucking guy sucks at 20 questions and all the way up until the far too drawn out reveal I was pissed off. I also gotta say, the way things are figured out make me feel stupid for even bothering to read this. Like the way Annetta figured out the two most evil looking Northerners were not who they said they were was because two guards randomly were like "oh yeah these two huge ass people with blue hair and a very unique cane were seen with this dead guy right before he died, wonder what happened there?" Surely there could've been a better way to do that reveal. The the characters backstories are unique enough even if their romance is about as generic as you can get with the classic of one of the romantic interests hiding who they really are and the other is a dunce.
+
+The art is certainly art. I mean it gets its point across, it's no Fist Demon of Mount Hua thankfully, but it's not like there were any panels where I was impressed in the slightest. I don't mean to be too rude but you could swap this out with just about any shojo manhwa's art and there would be no change. It also pains me that the shojo artstyle is always so stilted, the way these characters move have no fluidity to them, it feels like they all move as if they're robots. No I can't explain what this means, it just feels that way. Perhaps it's because generally the only panels involving an action are firstly the action being begun and then the next panel it's done, I don't know though. There's also a general lack of interesting camera angles, it's nearly always just headon with the only change being how cropped the person is. To me it made all the characters feel pretty flat and cardboard-y. Read a single recent chapter of Eleceed and then read a chapter of this and you'll probably get what I mean.

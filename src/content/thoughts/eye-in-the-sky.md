@@ -1,0 +1,11 @@
+---
+title: "Eye in the Sky"
+type: Movie
+score: 3.5
+---
+
+Such a tedious watch to be honest. It feels like nothing happens in this film, it's just a bunch of old people yelling at each other in a few rooms as I progressively get more and more pissed off. I do get that it's meant to be somewhat of a moral dilemma and like trolley problem or something but even then, is it that much of a dilemma? The only one not willing to kill the little girl is only doing it because she's scared of the political blowback so even if you feel as if the right call is not killing the girl you really don't have anyone to be rooting for or to identify with.
+
+Another problem I have is that while drone combat was and still is very topical (I mean just a few hours ago as of writing this Ukraine blew up 34% of Russian bombers or something insane like that with drones), it's just very uninteresting for me to watch that kind of combat in movie form. In movies there's already that separation between them and reality so the pressure of a combat scene is lessened unless it's really well done, as you know there is no inherent danger to the actor. But in this film there's even more separation, the only good guys truly in danger were the little girl and that guy operating the little bug drone, and while I admit I did feel nervous watching the bug drone pilot piloting it out in open, by the time the girl was properly in danger the stakes had become so high that I really didn't care if she survived or not.
+
+This isn't even mentioning that every character was shockingly undeveloped, I didn't know anything about anyone except for knowing Powell is an obsessive freak, Jesse Pinkman and that lady seem painfully ill prepared for their job and that one British white lady is annoying. This makes it really hard to care about anyone, especially the little girl who really has no personality at all, I don't know why the director bothered showing scenes of her reading and hula hooping n shit if they weren't going to build her as a real character. At least I liked the guy played by the guy who played Snape in Harry Potter and him getting his toy at the end when he and the audience had forgotten about it was pretty funny.
