@@ -8,5 +8,8 @@ export default defineConfig({
     server: {
         port: 5501
     },
+    devToolbar: {
+        enabled: false
+    },
     integrations: [sitemap()]
 });

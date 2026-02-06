@@ -6,9 +6,7 @@ import { getCollection } from "astro:content";
 export async function getStaticPaths() {
   const ramblings = (await getCollection("ramblings")).reverse();
 
-  const years = Array.from(
-    new Set(ramblings.map((post) => post.id.slice(0, 4)))
-  );
+  const years = Array.from(new Set(ramblings.map((post) => post.id.slice(0, 4))));
 
   return years.map((year) => ({
     params: { year },

@@ -1,37 +1,57 @@
 ---
+/*
+    TODO: ADD ARTISTS BACK TO SEARCH AND PAGE, ORDER BY PUBDATE
+ */
 import { getCollection } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import type { GetStaticPaths, Page } from "astro";
-import type { CollectionEntry } from "astro:content";
+import Emojis from "../../../components/Emojis.astro";
 
-export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+interface Thought {
+    data: {
+        title: string,
+        alt: string,
+        type: string,
+        score: number,
+        image: string,
+        imageB: string,
+        dateModified: Date,
+        noRSS: boolean
+    }
+}
+
+interface PageProps {
+    page: {
+        data: Thought[];
+        total: number;
+        currentPage: number;
+        url: {
+            prev?: string;
+            next?: string;
+        };
+    };
+    allThoughts: Thought[];
+}
+
+export async function getStaticPaths({ paginate }: { paginate: Function }) {
     const thoughts = await getCollection("thoughts");
-    console.log(thoughts.length);
     return paginate(thoughts, {
         pageSize: 32,
         props: {
-            thoughts
-        }
+            allThoughts: thoughts,
+        },
     });
 };
 
-const { page } = Astro.props as {
-  page: Page<CollectionEntry<"thoughts">>;
-};
-console.log(page.data.length);
+const { page, allThoughts } = Astro.props as PageProps;
 
-let pagesList: Array<string> = [];
-
-// ill fix later gimme a sec
-for (let index = 0; index < page.data.length; index++) {
-    pagesList.push(
-        <option value="{{ pagination.hrefs[loop.index0] }}" {% if page.url == pagination.hrefs[loop.index0] %} selected {% endif %}>
-            Page {{ loop.index }}
-        </option>
-
-    )
-
-}
+// thanks https://stackoverflow.com/questions/55579499/efficient-way-to-create-and-fill-an-array-with-consecutive-numbers-in-range
+// no i wont make the e an _ even if im not using it. it looks ugly.
+let totalScoreAllThoughts: number = 0;
+allThoughts.forEach((thought: any) => {
+    totalScoreAllThoughts += thought.data.score;
+});
+let pagesList = Array.from({length: Math.ceil(page.total / 32)}, (e, i)=> i + 1);
+let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2)
 ---
 <style>
     .media-grid-container {
@@ -105,10 +125,6 @@ for (let index = 0; index < page.data.length; index++) {
         width: 100%;
     }
 
-    .search-item {
-        margin: 0;
-    }
-
     @media screen and (min-width: 700px) {
         .media-top {
             flex-direction: row;
@@ -131,9 +147,16 @@ for (let index = 0; index < page.data.length; index++) {
     }
 </style>
 <BaseLayout title="big and fat, born without arms or legs, born to jump in the air and clap">
+    <div class="media-top">
+        <div>
+            <span>Current average score: {averageScore}/10</span>
+        </div>
+        <input autocomplete="off" type="text" id="mediaSearchInput" placeholder="Search...">
+    </div>
+    <div id="searchResults"></div>
     <main>
         <div class="media-grid-container">
-        {page.data.map((thought) => (
+        {page.data.map((thought: any) => (
             <div class="media-grid-item">
                 <div class="media-head">
                     <h3 title={thought.data.title} class="media-title">{thought.data.title}</h3>
@@ -148,7 +171,8 @@ for (let index = 0; index < page.data.length; index++) {
                 </div>
                 <span>{thought.data.type}</span>
                 <div class="media-head">
-                    <a href={`/thoughts/${thought.slug}-${thought.data.type.toLowerCase().replace(" ", "-")}`}>Read thoughts...</a>
+                    <a href={`/thoughts/${thought.slug}-${thought.data.type.toLowerCase().replace(" ", "-")}`}>Read thoughts... ({Math.ceil(thought.body.replace(/(<([^>]+)>)/gi, "").split(/\s+/).length / 200)} min read)</a>
+                    {thought.data.image || thought.data.imageB ? <Emojis name="image" className="image-emoji" /> : null}
                 </div>
             </div>
         ))}
@@ -160,7 +184,9 @@ for (let index = 0; index < page.data.length; index++) {
         </div>
 
         <select id="pageDropdown" onchange="window.location.href=this.value;">
-
+            {pagesList.map(i => (
+                <option value={i} selected={i == page.currentPage}>Page {i}</option>
+            ))}
         </select>
 
         <div class="pagination-buttons right">
@@ -168,3 +194,6 @@ for (let index = 0; index < page.data.length; index++) {
         </div>
     </div>
 </BaseLayout>
+<script>
+    import "../../../scripts/thoughtsSearch.ts"
+</script>

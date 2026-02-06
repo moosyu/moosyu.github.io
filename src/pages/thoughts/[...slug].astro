@@ -75,7 +75,7 @@ const { Content } = await thought!.render();
             <h1>{thought.data.title}</h1>
             <p>Type: {thought.data.type}</p>
             <p>Score: {thought.data.score}/10</p>
-            {thought.data.dateModified && <p>Date modified:{thought.data.dateModified}</p>}
+            {thought.data.dateModified && <p>Date modified: {thought.data.dateModified.toLocaleDateString('en-US', { dateStyle: 'medium' })}</p>}
             <Content />
         </div>
         {(thought.data.image || thought.data.imageB) && (
@@ -91,6 +91,6 @@ const { Content } = await thought!.render();
 </MarkdownLayout>
 <script>
     // what i did here makes me worse than hitler
-    import GLightbox from "../../js/glightbox.min.js";
+    import GLightbox from "../../scripts/glightbox.min.js";
     GLightbox();
 </script>

@@ -305,6 +305,10 @@ button:hover, a:hover {
     margin-right: 5px;
 }
 
+.image-emoji {
+    width: 15px;
+}
+
 /* .navbar-content a, .dropdown a, .navbar-content a:hover, .dropdown a:hover {
   animation: .5s calc(var(--animation-offset) * 50ms) cubic-bezier(.47, 1.64, .41, .8) forwards fadeIn;
 }

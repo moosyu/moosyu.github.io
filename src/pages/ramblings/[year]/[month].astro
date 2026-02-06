@@ -1,0 +1,176 @@
+---
+import Emojis from "../../../components/Emojis.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+export async function getStaticPaths() {
+    const ramblings = await getCollection("ramblings");
+
+    const yearMonths = Array.from(new Set(ramblings.map(post => post.id.slice(0, 7))));
+
+    return yearMonths.map((ym) => {
+        const [year, month] = ym.split("-");
+
+        return {
+            params: { year, month },
+            props: {
+                ramblings: ramblings.filter(post =>
+                    post.id.startsWith(ym)
+                ),
+            },
+        };
+    });
+}
+
+function generateCalendar(month: number, year: number) {
+    const totalDays = daysInMonth(month, year);
+    const offset = firstDayOffset(month, year);
+
+    let grid = new Array(6).fill(0).map(() => new Array(7).fill(null));
+    let day = 1;
+
+    for (let row = 0; row < 6; row++) {
+        for (let col = 0; col < 7; col++) {
+            if (row === 0 && col < offset) continue;
+            if (day > totalDays) continue;
+
+            grid[row][col] = day;
+            day++;
+        }
+    }
+
+    return grid;
+}
+
+// https://stackoverflow.com/a/1184359
+// jan = 1
+function daysInMonth (month: number, year: number) {
+    return new Date(year, month, 0).getDate();
+}
+
+function firstDayOffset(month: number, year: number) {
+    return new Date(year, month - 1, 1).getDay();
+}
+
+const { year, month } = Astro.params;
+const { ramblings } = Astro.props;
+const monthNumber = Number(month);
+const calendar = generateCalendar(monthNumber, Number(year));
+const ramblingDays = new Map();
+for (const rambling of ramblings) {
+    ramblingDays.set(Number(rambling.id.slice(8, 10)), rambling);
+}
+---
+<style>
+    details:hover {
+        cursor: pointer;
+    }
+
+    summary::marker {
+        content: "";
+    }
+
+    .calendar {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .calendar-header {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+        padding-bottom: 5px;
+    }
+
+    .calendar-day-header {
+        padding: 10px;
+        border: 1px #fff dotted;
+        border-radius: 4px;
+        margin: 5px;
+        text-align: center;
+    }
+
+    .calendar-row {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 1px;
+    }
+
+    .calendar-day {
+        min-height: 80px;
+        padding: 8px;
+        background: #1f1e1e;
+        margin: 3px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .calendar-day-link {
+        display: block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: #811eff;
+        color: white;
+        text-decoration: none;
+        border-radius: 50%;
+    }
+
+    .calendar-day-link:hover {
+        background: #0056b3;
+    }
+
+    @media screen and (min-width: 1000px) {
+        .calendar-day-header {
+            font-size: 20px;
+        }
+    }
+</style>
+<BaseLayout title="untitled unmastered">
+    <main>
+        <details>
+            <summary><Emojis className="nav-emojis" name="question-mark" /></summary>
+            Shoutout to xiaoshan from <a href="https://dreamscape.place/">dreamscape</a>, fully stole this idea from her!!
+        </details>
+        <h1 style="text-align: center; margin: 0 0 10px 0;">{`${months[monthNumber - 1]} ${year}`}</h1>
+        <div class="calendar">
+            <div class="calendar-header">
+                <div class="calendar-day-header">Sun</div>
+                <div class="calendar-day-header">Mon</div>
+                <div class="calendar-day-header">Tue</div>
+                <div class="calendar-day-header">Wed</div>
+                <div class="calendar-day-header">Thu</div>
+                <div class="calendar-day-header">Fri</div>
+                <div class="calendar-day-header">Sat</div>
+            </div>
+            <div class="calendar-grid">
+                {calendar.map((week) => (
+                <div class="calendar-row">
+                    {week.map((day) => (
+                    <div class="calendar-day">
+                        {day && ramblingDays.has(day) ? <span title={ramblingDays.get(day).data.title}><a href={`/ramblings/${year}-${month}-${day.toString().padStart(2, '0')}`} class="calendar-day-link">{day}</a></span> : <span class="calendar-day-number">{day}</span>}
+                    </div>
+                    ))}
+                </div>
+                ))}
+            </div>
+        </div>
+    </main>
+    <div class="bottom-div pagination-container">
+        <div class="pagination-buttons left">
+            <span>Previous</span>
+        </div>
+
+        <select id="pageDropdown" onchange="window.location.href=this.value;">
+        </select>
+
+        <div class="pagination-buttons right">
+            <span>Next</span>
+        </div>
+    </div>
+</BaseLayout>
