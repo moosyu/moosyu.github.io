@@ -182,13 +182,11 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2)
         <div class="pagination-buttons left">
             {page.url.prev ? <a href={page.url.prev}>Previous</a> : <span>Previous</span>}
         </div>
-
-        <select id="pageDropdown" onchange="window.location.href=this.value;">
+        <select id="pageDropdown" onchange="window.location.href= this.value;">
             {pagesList.map(i => (
                 <option value={i} selected={i == page.currentPage}>Page {i}</option>
             ))}
         </select>
-
         <div class="pagination-buttons right">
             {page.url.next ? <a href={page.url.next}>Next</a> : <span>Next</span>}
         </div>

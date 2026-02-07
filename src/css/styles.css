@@ -130,7 +130,7 @@ button:hover, a:hover {
     overflow: visible;
 }
 
-.dropdown a {
+.dropdown > a {
     cursor: default;
     width: 100%;
 }

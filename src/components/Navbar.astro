@@ -1,7 +1,15 @@
 ---
 import Emojis from "../components/Emojis.astro";
+
 const currentPath = Astro.url.pathname;
+const currentDate: Date = new Date();
 ---
+<style>
+    .down-arrow-svg {
+        width: 24px;
+        height: 24px;
+    }
+</style>
 <div class="navbar">
     <Emojis className="navbar-expander" name="down-arrow" />
         <div class="navbar-content">
@@ -10,7 +18,7 @@ const currentPath = Astro.url.pathname;
         <div class="dropdown">
             <a class={`home-navbtn ${currentPath.startsWith("/ramblings") ? "active-tab" : ""}`}><Emojis className="nav-emojis" name="speech" />Ramblings</a>
             <div class="dropdown-content">
-                <a href="/ramblings/calendar/">Calendar</a>
+                <a href={`/ramblings/${currentDate.getFullYear()}/${(currentDate.getMonth() + 1).toString().padStart(2, "0")}`}>Calendar</a>
                 <a href="/ramblings-2026/">2026 entries</a>
                 <a href="/ramblings-2025/">2025 entries</a>
                 <a href="/ramblings-2024/">2024 entries</a>
@@ -21,14 +29,6 @@ const currentPath = Astro.url.pathname;
         <a target="_blank" href="http://nekoweb.org/follow/moosyu.nekoweb.org"><Emojis className="nav-emojis" name="heart" />Follow</a>
     </div>
 </div>
-
-<style>
-    .down-arrow-svg {
-        width: 24px;
-        height: 24px;
-    }
-</style>
-
 <script>
     const navbarEl = document.querySelector(".navbar");
     const navbarArrowEl = document.querySelector(".down-arrow-svg");
