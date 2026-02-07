@@ -101,7 +101,6 @@ button:hover, a:hover {
 .navbar-content {
     max-height: 0;
     opacity: 0;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -127,7 +126,6 @@ button:hover, a:hover {
     position: relative;
     display: flex;
     align-items: center;
-    overflow: visible;
 }
 
 .dropdown > a {
@@ -148,8 +146,9 @@ button:hover, a:hover {
     position: absolute;
     top: 100%;
     z-index: 3;
-    background-color: #1a2024;
-    border: dotted white 1px;
+    background-color: #111214;
+    border: dotted white;
+    border-width: 0 1px 1px 1px;
     border-radius: 0 0 4px 4px;
     width: 100%;
     max-height: 0;

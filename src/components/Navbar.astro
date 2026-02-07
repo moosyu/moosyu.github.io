@@ -1,8 +1,10 @@
 ---
+// TODO: WHY IS THE DROPDOWN LIKE 1 PX OFF (ON MOBILE VIEW BUT MAYBE DESKTOP TOO)?
 import Emojis from "../components/Emojis.astro";
 
 const currentPath = Astro.url.pathname;
 const currentDate: Date = new Date();
+const isNekowebBuild = import.meta.env.DEPLOY_TARGET === "nekoweb";
 ---
 <style>
     .down-arrow-svg {
@@ -16,17 +18,17 @@ const currentDate: Date = new Date();
         <a href="/" class={`home-navbtn ${currentPath === "/" ? "active-tab" : ""}`}><Emojis className="nav-emojis" name="home" />Home</a>
         <a href="/thoughts/grid/1" class={currentPath.startsWith("/thoughts") ? "active-tab" : ""}><Emojis className="nav-emojis" name="star" />Media Log</a>
         <div class="dropdown">
-            <a class={`home-navbtn ${currentPath.startsWith("/ramblings") ? "active-tab" : ""}`}><Emojis className="nav-emojis" name="speech" />Ramblings</a>
+            <a class={`${currentPath.startsWith("/ramblings") ? "active-tab" : ""}`}><Emojis className="nav-emojis" name="speech" />Ramblings</a>
             <div class="dropdown-content">
                 <a href={`/ramblings/${currentDate.getFullYear()}/${(currentDate.getMonth() + 1).toString().padStart(2, "0")}`}>Calendar</a>
-                <a href="/ramblings-2026/">2026 entries</a>
-                <a href="/ramblings-2025/">2025 entries</a>
-                <a href="/ramblings-2024/">2024 entries</a>
+                <a href="/ramblings/2026/">2026 entries</a>
+                <a href="/ramblings/2025/">2025 entries</a>
+                <a href="/ramblings/2024/">2024 entries</a>
             </div>
         </div>
         <a href="/guides/" class={currentPath.startsWith("/guides") ? "active-tab" : ""}><Emojis className="nav-emojis" name="book-blue" />Guides</a>
         <a href="/links/" class={currentPath.startsWith("/links") ? "active-tab" : ""}><Emojis className="nav-emojis" name="chain" />Links</a>
-        <a target="_blank" href="http://nekoweb.org/follow/moosyu.nekoweb.org"><Emojis className="nav-emojis" name="heart" />Follow</a>
+        {isNekowebBuild && (<a target="_blank" href="http://nekoweb.org/follow/moosyu.nekoweb.org"><Emojis className="nav-emojis" name="heart" />Follow</a>)}
     </div>
 </div>
 <script>

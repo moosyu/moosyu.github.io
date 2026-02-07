@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import RamblingDate from "../components/RamblingDate.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RamblingDate from "../../components/RamblingDate.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -33,12 +33,15 @@ const { ramblings } = Astro.props;
             <p style="text-align: left;">Ramblings list version {year}!! (Same entries as the calendar just in a different view.)</p>
             <h3 style="text-align: right;"><a style="text-decoration: none;" href="javascript: document.body.scrollIntoView(false);">To bottom ↓</a></h3>
         </div>
-            {ramblings.map((rambling) => (
+            {ramblings.map((rambling) => {
+                const ramblingsSlug = rambling.slug.split("-");
+                return (
                 <div class="ramblings-container">
                     <RamblingDate ramblingEntry={rambling} />
-                    <p><a href={`/ramblings/${rambling.slug}`}>{rambling.data.title ?? "Untitled entry"}</a></p>
+                    <p><a href={`/ramblings/${ramblingsSlug[0]}/${ramblingsSlug[1]}/${ramblingsSlug[2]}`}>{rambling.data.title ?? "Untitled entry"}</a></p>
                 </div>
-            ))}
+                )
+            })}
         <h3 style="text-align:right;"><a style="text-decoration: none;" href="#top">To top ↑</a></h3>
     </div>
 </BaseLayout>

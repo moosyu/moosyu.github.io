@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import MarkdownLayout from "../../../../layouts/MarkdownLayout.astro";
+import RamblingDate from "../../../../components/RamblingDate.astro";
+
+export async function getStaticPaths() {
+    const ramblings = await getCollection("ramblings");
+        return ramblings.map((rambling) => ({
+            params: {
+                year: rambling.slug.slice(0, 4),
+                month: rambling.slug.slice(5, 7),
+                day: rambling.slug.slice(8, 10)
+            },
+            props: {
+                rambling
+            }
+        }));
+}
+
+const { rambling } = Astro.props;
+const { Content } = await rambling.render();
+---
+<MarkdownLayout title={rambling.data.title || "Untitled entry"}>
+    <a href={Astro.url.pathname.slice(0,18)}>Back</a>
+    <RamblingDate ramblingEntry={rambling} />
+    <Content />
+</MarkdownLayout>

@@ -184,7 +184,7 @@ for (const rambling of ramblings) {
                 <div class="calendar-row">
                     {week.map((day) => (
                     <div class="calendar-day">
-                        {day && ramblingDays.has(day) ? <span title={ramblingDays.get(day) || "Untitled entry"}><a href={`${pageRoot}${year}-${month}-${numToDateString(day)}`} class="calendar-day-link">{day}</a></span> : <span class="calendar-day-number">{day}</span>}
+                        {day && ramblingDays.has(day) ? <span title={ramblingDays.get(day) || "Untitled entry"}><a href={`${pageRoot}${year}/${month}/${numToDateString(day)}`} class="calendar-day-link">{day}</a></span> : <span class="calendar-day-number">{day}</span>}
                     </div>
                     ))}
                 </div>
