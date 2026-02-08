@@ -3,7 +3,7 @@ title: "Komi Can't Communicate"
 type: Manhwa
 score: 4
 image: https://a.ze.wtf/review-imgs/I26B2DN.png
-dateModified: 2025-06-13
+dateModified: 2026-02-08
 ---
 
 This is like seeing nice looking food, biting into it and finding out its fucking hollow.

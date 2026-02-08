@@ -33,7 +33,16 @@ interface PageProps {
 }
 
 export async function getStaticPaths({ paginate }: { paginate: Function }) {
-    const thoughts = await getCollection("thoughts");
+    let thoughts = await getCollection("thoughts");
+    thoughts.sort((a, b) => {
+        const dateA = a.data.dateModified;
+        const dateB = b.data.dateModified;
+
+        if (!dateA && !dateB) return 0;
+        if (!dateA) return 1;
+        if (!dateB) return -1;
+        return new Date(dateB).getTime() - new Date(dateA).getTime();
+    });
     return paginate(thoughts, {
         pageSize: 32,
         props: {

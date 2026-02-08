@@ -1,4 +1,5 @@
 import Fuse from "fuse.js";
+
 fetch("/data/thoughts.json")
 .then(response => response.json())
 .then(data => {
