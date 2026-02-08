@@ -32,7 +32,7 @@ jobs:
           zip -r ../site.zip .
 
       - name: Copy ZIP into _site for download
-        run: cp site.zip _site/site.zip
+        run: cp site.zip dist/site.zip
 
       - name: Deploy to NekoWeb
         uses: indiefellas/deploy2nekoweb@main
