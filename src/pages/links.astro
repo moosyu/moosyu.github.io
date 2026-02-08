@@ -9,8 +9,11 @@ const currentDate: Date = new Date();
         content: "➤";
         margin-right: 6px;
     }
-    .sitemap-list ul ul li::before {
+    .sitemap-list ul li::before {
         content: "↳";
+    }
+    ul {
+        list-style-type: none;
     }
 </style>
 <BaseLayout title="please save me donald trump please">
@@ -41,21 +44,23 @@ const currentDate: Date = new Date();
         </div>
     </main>
     <div class="background-div bottom-div">
-        <ul class="sitemap-list" style="list-style-type:none">
+        <ul class="sitemap-list">
             <li><a href="/">index</a></li>
             <li><a href="/links/">links</a> ← you are here!</li>
-            <li>thoughts</li>
-            <ul>
-                <li><a href="/thoughts/grid/1">grid</a></li>
-            </ul>
+            <li>thoughts
+                <ul>
+                    <li><a href="/thoughts/grid/1">grid</a></li>
+                </ul>
+            </li>
             <li><a href="/guides/">guides</a></li>
-            <li>ramblings</li>
-            <ul>
-                <li><a href={`/ramblings/${currentDate.getFullYear()}/${(currentDate.getMonth() + 1).toString().padStart(2, "0")}`}>calendar</a></li>
-                <li><a href="/ramblings/2026">2026</a></li>
-                <li><a href="/ramblings/2025">2025</a></li>
-                <li><a href="/ramblings/2024">2024</a></li>
-            </ul>
+            <li>ramblings
+                <ul>
+                    <li><a href={`/ramblings/${currentDate.getFullYear()}/${(currentDate.getMonth() + 1).toString().padStart(2, "0")}`}>calendar</a></li>
+                    <li><a href="/ramblings/2026">2026</a></li>
+                    <li><a href="/ramblings/2025">2025</a></li>
+                    <li><a href="/ramblings/2024">2024</a></li>
+                </ul>
+            </li>
             <li><a href="/404/">404</a></li>
         </ul>
     </div>

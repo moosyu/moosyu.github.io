@@ -94,19 +94,16 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 	</div>
 	<main class="bottom-div">
 		<p><span style="font-size: 24px;">Hello!</span> Welcome to my <span class="wave-text"><span>s</span><span>i</span><span>c</span><span>k</span></span> website. This is the terminally online equivalent to a diary so if you enjoy reading about strangers on the internet you'll love it here. If you got here trying to play Friday Night Funkin mods, I'll kill you. If you'd like to get in contact with me feel free to email me at moosyu@tuta.io but do bear in mind I don't check my emails super often (if at all).</p>
-
 		<p>I've worked on and off on this for three years (since 01/12/22), originally it was me trying to copy <a href="https://displayman.neocities.org/" target="_blank">Daniel's Virtual Place</a> but now it's more like an inbred distant relative. At this point its more like an amalgam of sites I like, but aren't we all? Hopefully the longer it lasts the more distinct the style will become. All the code is <a href="https://github.com/Moosyu/moosyu.github.io" target="_blank">public</a> and you're free to use it though it probably wasn't even mine in the first place. If for some reason you'd like to download an offline version of this site, there's a prebuilt zip at <a href="https://moosyu.nekoweb.org/site.zip">moosyu.nekoweb.org/site.zip</a> (do bear in mind many images are hosted on ze.wtf and Imgur so this will be missing a lot, all the images would make the site like half a gig as opposed to the current slim 10mb archive).</p>
-
 		<p>To travel around my webpage use the navigation bar on the right or click <a href="/links/">links</a> to view every page!!</p>
 		<p>Add my button to your site <noscript>:</noscript>&nbsp;<span class="copy-instructions">(click it to copy to clipboard).</span></p>
-
 		<div class="tooltip">
-			<img onclick="copyButton()" onmouseout="mouseOut()" src="/assets/buttons/moosyu.png" alt="moosyu button">
-			<span class="tooltip-text" id="tooltip-btn">Copy to clipboard</span>
+			<img id="tooltip-btn" src="/assets/buttons/moosyu.png" alt="moosyu button">
+			<span class="tooltip-text">Copy to clipboard</span>
 		</div>
 		<noscript>
 			<p>
-				<span style="color: #83a598;">&lt;a</span> <span style="color: #d3869b;">href</span>=<span style="color: #b8bb26;">"https://moosyu.github.io/"</span><span style="color: #83a598;">&gt;</span><span style="color: #83a598;">&lt;img</span> <span style="color: #d3869b;">src</span>=<span style="color: #b8bb26;">"https://moosyu.github.io/assets/button2.png"</span> <span style="color: #d3869b;">alt</span>=<span style="color: #b8bb26;">"moosyus awesome button"</span><span style="color: #83a598;">&gt;&lt;/a&gt;</span>
+				<span style="color: #83a598;">&lt;a</span> <span style="color: #d3869b;">href</span>=<span style="color: #b8bb26;">"https://moosyu.github.io/"</span><span style="color: #83a598;">&gt;</span><span style="color: #83a598;">&lt;img</span> <span style="color: #d3869b;">src</span>=<span style="color: #b8bb26;">"https://moosyu.github.io/assets/buttons/moosyu.png"</span> <span style="color: #d3869b;">alt</span>=<span style="color: #b8bb26;">"moosyus awesome button"</span><span style="color: #83a598;">&gt;&lt;/a&gt;</span>
 			</p>
 		</noscript>
 		<br>
@@ -115,4 +112,5 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 <script>
     import "../scripts/lastFM.js";
     import "../scripts/githubCommit.js";
+    import "../scripts/copyButton.ts"
 </script>

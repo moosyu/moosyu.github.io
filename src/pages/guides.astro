@@ -3,25 +3,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("guides")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 <BaseLayout title="blind leading the blind">
     <div class="background-div bottom-div">
         <p>Collection of guides. Most coding related, mostly written in ways those with no knowledge of JS should hopefully be able to understand. Older posts might be a little iffy.</p>
         <ul style="margin: 0; padding: 0; list-style-type: none;">
-            {posts.map((post) => (
-                <li class="blog-post-item">
-                    <a href={`/guides/${post.slug}`} class="blog-post-link">
-                        <h1 style="margin: 0" class="blog-title">
-                            {post.data.title}
-                        </h1>
-                        <span style="color: #c6a0f6">
-                            {post.data.pubDate?.toLocaleDateString('en-US', { dateStyle: 'medium' })}
-                        </span>
-                    </a>
-                </li>
-            ))}
+        {posts.map((post) => (
+            <li class="blog-post-item">
+                <a href={`/guides/${post.slug}`} class="blog-post-link">
+                    <h1 style="margin: 0" class="blog-title">
+                        {post.data.title}
+                    </h1>
+                    <span style="color: #c6a0f6">
+                        {post.data.pubDate?.toLocaleDateString('en-US', { dateStyle: 'medium' })}
+                    </span>
+                </a>
+            </li>
+        ))}
         </ul>
     </div>
 </BaseLayout>
