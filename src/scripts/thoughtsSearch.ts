@@ -34,7 +34,7 @@ fetch("/data/thoughts.json")
         .trim()
         .replace(/[^a-z0-9']+/g, "-")
         // if any regex fans want to make these two one thing please hmu bc i couldnt figure it out
-        .replace(/'/g, "")
+        .replace(/'/g, "-")
         .replace(/(^-|-$)/g, "");
     }
 });

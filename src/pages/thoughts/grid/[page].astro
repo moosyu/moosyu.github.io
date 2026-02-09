@@ -1,7 +1,4 @@
 ---
-/*
-    TODO: ADD ARTISTS BACK TO SEARCH AND PAGE, ORDER BY PUBDATE
- */
 import { getCollection } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Emojis from "../../../components/Emojis.astro";
@@ -158,7 +155,7 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2)
 <BaseLayout title="big and fat, born without arms or legs, born to jump in the air and clap">
     <div class="media-top">
         <div>
-            <span>Current average score: {averageScore}/10</span>
+            <span><a href="/thoughts/graph">Current average score: {averageScore}/10</a></span>
         </div>
         <input autocomplete="off" type="text" id="mediaSearchInput" placeholder="Search...">
     </div>

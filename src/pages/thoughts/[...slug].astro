@@ -1,23 +1,41 @@
 ---
 import "../../css/glightbox.min.css";
 import { getCollection } from "astro:content";
-import MarkdownLayout from "../../layouts/MarkdownLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
     const thoughts = await getCollection("thoughts");
+    const sortedThoughts = thoughts.sort((a, b) => {
+        const dateA = a.data.dateModified;
+        const dateB = b.data.dateModified;
 
-    return thoughts.map((thought) => ({
+        if (!dateA && !dateB) return 0;
+        if (!dateA) return 1;
+        if (!dateB) return -1;
+        return new Date(dateB).getTime() - new Date(dateA).getTime();
+    });
+
+    return thoughts.map((thought, index) => ({
         params: {
             slug: `${thought.slug}-${thought.data.type.toLowerCase().replace(" ", "-")}`,
         },
         props: {
             thought,
+            index,
+            totalThoughts: sortedThoughts,
         },
     }));
 }
 
-const { thought } = Astro.props;
-const { Content } = await thought!.render();
+const { thought, index, totalThoughts } = Astro.props;
+const { Content } = await thought.render();
+
+const prevThought = totalThoughts[index - 1] || null;
+const nextThought = totalThoughts[index + 1] || null;
+
+function getThoughtUrl(t) {
+  return `/${t.slug}-${t.data.type.toLowerCase().replace(" ", "-")}`;
+}
 ---
 <style>
     .media {
@@ -69,26 +87,36 @@ const { Content } = await thought!.render();
         }
     }
 </style>
-<MarkdownLayout title={thought!.data.title}>
-    <div class="thoughts-content">
-        <div>
-            <h1>{thought.data.title}</h1>
-            <p>Type: {thought.data.type}</p>
-            <p>Score: {thought.data.score}/10</p>
-            {thought.data.dateModified && <p>Date modified: {thought.data.dateModified.toLocaleDateString('en-US', { dateStyle: 'medium' })}</p>}
-            <Content />
-        </div>
-        {(thought.data.image || thought.data.imageB) && (
-        <div class="media">
-            <h2>Media:</h2>
-            <div class="thoughts-media" style="position: relative">
-                {thought.data.image && <img src={thought.data.image} class="glightbox"/>}
-                {thought.data.imageB && <img src={thought.data.imageB} class="glightbox"/>}
+<BaseLayout title={thought!.data.title}>
+    <main>
+        <div class="thoughts-content">
+            <div>
+                <h1>{thought.data.title}</h1>
+                <p>Type: {thought.data.type}</p>
+                <p>Score: {thought.data.score}/10</p>
+                {thought.data.dateModified && <p>Date modified: {thought.data.dateModified.toLocaleDateString('en-US', { dateStyle: 'medium' })}</p>}
+                <Content />
             </div>
+            {(thought.data.image || thought.data.imageB) && (
+            <div class="media">
+                <h2>Media:</h2>
+                <div class="thoughts-media" style="position: relative">
+                    {thought.data.image && <img src={thought.data.image} class="glightbox"/>}
+                    {thought.data.imageB && <img src={thought.data.imageB} class="glightbox"/>}
+                </div>
+            </div>
+            )}
         </div>
-        )}
+    </main>
+    <div class="bottom-div pagination-container">
+        <div class="pagination-buttons left">
+            {prevThought ? <a href={`/thoughts/${getThoughtUrl(prevThought)}`}>Previous</a> : <span>Previous</span>}
+        </div>
+        <div class="pagination-buttons right">
+            {nextThought ? <a href={`/thoughts/${getThoughtUrl(nextThought)}`}>Next</a> : <span>Next</span>}
+        </div>
     </div>
-</MarkdownLayout>
+</BaseLayout>
 <script>
     // what i did here makes me worse than hitler
     import GLightbox from "../../scripts/glightbox.min.js";

@@ -1,0 +1,60 @@
+---
+// TODO: DISPLAY LIST OF SCORES
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const thoughts = await getCollection("thoughts");
+let totalScore: number = 0;
+const scoreCounts = thoughts.reduce((acc, thought) => {
+    const score = Math.floor(thought.data.score);
+    acc[score] += 1;
+    totalScore += score;
+
+    return acc;
+}, Array(11).fill(0));
+---
+<style>
+    .chart {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin: 0;
+        padding: 0;
+        gap: 5px;
+    }
+
+    li {
+        list-style-type: none;
+        text-align: center;
+    }
+
+    .chart-column {
+        background: #0091ff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 4px 8px;
+        border: 1px solid #3a3ae2;
+        border-radius: 4px 4px 0 0;
+        pointer-events: none;
+    }
+
+    .chart-column span {
+        font-weight: bold;
+    }
+</style>
+<BaseLayout title="thoughts ratings distribution">
+    <main class="bottom-div">
+        <p>Scores - graphed. The scores have been rounded down so there aren't 1 billion bars... sorry to any .5 fans. Also sorry to axis fans I couldn't be bothered with that, you can see it, figure out the axis' yourself.</p>
+        <ul class="chart">
+            {scoreCounts.map((scoreColumn, index) => (
+            <li>
+                <div class="chart-column" style={`height: ${Math.floor((scoreColumn / totalScore) * 10000)}px`}>
+                    <span>{scoreColumn}</span>
+                </div>
+                <span>{index}</span>
+            </li>
+            ))}
+        </ul>
+    </main>
+</BaseLayout>

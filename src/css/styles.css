@@ -220,21 +220,22 @@ button:hover, a:hover {
 
 .pagination-buttons {
     display: flex;
-    gap: 5px
+    gap: 5px;
+    padding: 5px 0;
 }
 
 .pagination-buttons.left {
-    justify-content: flex-start
+    justify-content: flex-start;
 }
 
 .pagination-buttons.right {
-    justify-content: flex-end
+    justify-content: flex-end;
 }
 
 #pageDropdown {
     padding: 5px;
     background-color: #171b1f;
-    color: #FFF;
+    color: #fff;
     border-radius: 15px;
 }
 
