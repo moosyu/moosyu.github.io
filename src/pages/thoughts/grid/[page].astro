@@ -1,20 +1,9 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Emojis from "../../../components/Emojis.astro";
 
-interface Thought {
-    data: {
-        title: string,
-        alt: string,
-        type: string,
-        score: number,
-        image: string,
-        imageB: string,
-        dateModified: Date,
-        noRSS: boolean
-    }
-}
+type Thought = CollectionEntry<"thoughts">;
 
 interface PageProps {
     page: {
@@ -51,12 +40,11 @@ export async function getStaticPaths({ paginate }: { paginate: Function }) {
 const { page, allThoughts } = Astro.props as PageProps;
 
 // thanks https://stackoverflow.com/questions/55579499/efficient-way-to-create-and-fill-an-array-with-consecutive-numbers-in-range
-// no i wont make the e an _ even if im not using it. it looks ugly.
 let totalScoreAllThoughts: number = 0;
 allThoughts.forEach((thought: any) => {
     totalScoreAllThoughts += thought.data.score;
 });
-let pagesList = Array.from({length: Math.ceil(page.total / 32)}, (e, i)=> i + 1);
+let pagesList = Array.from({length: Math.ceil(page.total / 32)}, (_, i)=> i + 1);
 let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2)
 ---
 <style>

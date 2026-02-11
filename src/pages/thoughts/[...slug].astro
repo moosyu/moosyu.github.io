@@ -1,13 +1,15 @@
 ---
 import "../../css/glightbox.min.css";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
+type Thought = CollectionEntry<"thoughts">["data"];
+
 export async function getStaticPaths() {
-    const thoughts = await getCollection("thoughts");
+    const thoughts: CollectionEntry<"thoughts">[] = await getCollection("thoughts");
     const sortedThoughts = thoughts.sort((a, b) => {
-        const dateA = a.data.dateModified;
-        const dateB = b.data.dateModified;
+        const dateA: Date = a.data.dateModified;
+        const dateB: Date = b.data.dateModified;
 
         if (!dateA && !dateB) return 0;
         if (!dateA) return 1;
@@ -87,7 +89,7 @@ function getThoughtUrl(t) {
         }
     }
 </style>
-<BaseLayout title={thought!.data.title}>
+<BaseLayout title={thought.data.title}>
     <main>
         <div class="thoughts-content">
             <div>

@@ -1,4 +1,5 @@
 import Fuse from "fuse.js";
+import slugify from "../scripts/slugify"
 
 fetch("/data/thoughts.json")
 .then(response => response.json())
@@ -26,15 +27,4 @@ fetch("/data/thoughts.json")
         }).join("")});
     }
     /*i asked some smart people and they said this script is gonna blow up if my json file gets too large, but i asked what they meant and they said like 1mb or larger and since its only 1/10th of that right now im just not gonna worry about it. im sure like 25 year old version of me will be able to solve this issue (technology will probably be so good by then that it wont matter anyways). life hack.*/
-
-    // knockoff | slugify
-    function slugify(str = "") {
-        return str
-        .toLowerCase()
-        .trim()
-        .replace(/[^a-z0-9']+/g, "-")
-        // if any regex fans want to make these two one thing please hmu bc i couldnt figure it out
-        .replace(/'/g, "-")
-        .replace(/(^-|-$)/g, "");
-    }
 });

@@ -1,0 +1,38 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import slugify from "../../../scripts/slugify";
+
+type Thought = CollectionEntry<"thoughts">["data"];
+
+export async function getStaticPaths() {
+    const thoughts: CollectionEntry<"thoughts">[] = await getCollection("thoughts");
+    const scoreValues: Thought[][] = Array.from({ length: 11 }, () => []);
+
+    thoughts.forEach((thought) => {
+        scoreValues[Math.floor(thought.data.score)].push(thought.data)
+    });
+
+    return Array.from({ length: 11 }, (_, index) => ({
+        params: {
+            score: index.toString(),
+        },
+        props: {
+            items: scoreValues[index],
+            index
+        },
+    }));
+
+}
+
+const { items } = Astro.props as { items: Thought[] };
+const { index } = Astro.props as { index: number };
+---
+<BaseLayout>
+    <main class="bottom-div">
+        <p>Things I've given a {index} to.</p>
+        {items.map((entry) => {
+            return (<p><a href={`/thoughts/${slugify(entry.title)}-${slugify(entry.type)}`}>{entry.title}</a></p>);
+        })}
+    </main>
+</BaseLayout>

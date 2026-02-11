@@ -14,6 +14,11 @@ const scoreCounts = thoughts.reduce((acc, thought) => {
 }, Array(11).fill(0));
 ---
 <style>
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+
     .chart {
         display: flex;
         justify-content: center;
@@ -45,15 +50,17 @@ const scoreCounts = thoughts.reduce((acc, thought) => {
 </style>
 <BaseLayout title="thoughts ratings distribution">
     <main class="bottom-div">
-        <p>Scores - graphed. The scores have been rounded down so there aren't 1 billion bars... sorry to any .5 fans. Also sorry to axis fans I couldn't be bothered with that, you can see it, figure out the axis' yourself.</p>
+        <p>Scores - graphed. The scores have been rounded down so there aren't 1 billion bars... sorry to any .5 fans. Also sorry to axis fans I couldn't be bothered with that, you can see it, figure out the axis' yourself. Click the columns to view all entries given the selected rating.</p>
         <ul class="chart">
             {scoreCounts.map((scoreColumn, index) => (
-            <li>
-                <div class="chart-column" style={`height: ${Math.floor((scoreColumn / totalScore) * 10000)}px`}>
-                    <span>{scoreColumn}</span>
-                </div>
-                <span>{index}</span>
-            </li>
+            <a href={`/thoughts/listed/${index}`}>
+                <li>
+                    <div class="chart-column" style={`height: ${Math.floor((scoreColumn / totalScore) * 10000)}px`}>
+                        <span>{scoreColumn}</span>
+                    </div>
+                    <span>{index}</span>
+                </li>
+            </a>
             ))}
         </ul>
     </main>
