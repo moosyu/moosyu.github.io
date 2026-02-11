@@ -2,11 +2,12 @@
 import "../../css/glightbox.min.css";
 import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import slugify from "../../scripts/slugify";
 
-type Thought = CollectionEntry<"thoughts">["data"];
+type Thought = CollectionEntry<"thoughts">;
 
 export async function getStaticPaths() {
-    const thoughts: CollectionEntry<"thoughts">[] = await getCollection("thoughts");
+    const thoughts: Thought[] = await getCollection("thoughts");
     const sortedThoughts = thoughts.sort((a, b) => {
         const dateA: Date = a.data.dateModified;
         const dateB: Date = b.data.dateModified;
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
 
     return thoughts.map((thought, index) => ({
         params: {
-            slug: `${thought.slug}-${thought.data.type.toLowerCase().replace(" ", "-")}`,
+            slug: `${thought.slug}-${slugify(thought.data.type)}`,
         },
         props: {
             thought,
@@ -35,8 +36,8 @@ const { Content } = await thought.render();
 const prevThought = totalThoughts[index - 1] || null;
 const nextThought = totalThoughts[index + 1] || null;
 
-function getThoughtUrl(t) {
-  return `/${t.slug}-${t.data.type.toLowerCase().replace(" ", "-")}`;
+function getThoughtUrl(thought: Thought) {
+  return `/${thought.slug}-${slugify(thought.data.type)}`;
 }
 ---
 <style>

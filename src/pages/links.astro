@@ -24,15 +24,17 @@ const currentDate: Date = new Date();
         <Buttons />
     </main>
     <div class="background-div bottom-div">
+        <p>(Neutered) sitemap. It used to show every page but eventually that got overwhelming so I just manually add important pages now.</p>
         <ul class="sitemap-list">
             <li><a href="/">index</a></li>
-            <li><a href="/links/">links</a> ← you are here!</li>
+            <li><a href="/links">links</a> ← you are here!</li>
             <li>thoughts
                 <ul>
                     <li><a href="/thoughts/grid/1">grid</a></li>
+                    <li><a href="/thoughts/graph">graph</a></li>
                 </ul>
             </li>
-            <li><a href="/guides/">guides</a></li>
+            <li><a href="/guides">guides</a></li>
             <li>ramblings
                 <ul>
                     <li><a href={`/ramblings/${currentDate.getFullYear()}/${(currentDate.getMonth() + 1).toString().padStart(2, "0")}`}>calendar</a></li>
@@ -41,7 +43,7 @@ const currentDate: Date = new Date();
                     <li><a href="/ramblings/2024">2024</a></li>
                 </ul>
             </li>
-            <li><a href="/404/">404</a></li>
+            <li><a href="/404">404</a></li>
         </ul>
     </div>
 </BaseLayout>

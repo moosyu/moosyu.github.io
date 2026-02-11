@@ -11,9 +11,9 @@ const posts = (await getCollection("guides")).sort(
         <p>Collection of guides. Most coding related, mostly written in ways those with no knowledge of JS should hopefully be able to understand. Older posts might be a little iffy.</p>
         <ul style="margin: 0; padding: 0; list-style-type: none;">
         {posts.map((post) => (
-            <li class="blog-post-item">
-                <a href={`/guides/${post.slug}`} class="blog-post-link">
-                    <h1 style="margin: 0" class="blog-title">
+            <li class="generic-item">
+                <a href={`/guides/${post.slug}`} class="generic-link">
+                    <h1 style="margin: 0" class="generic-title">
                         {post.data.title}
                     </h1>
                     <span style="color: #c6a0f6">

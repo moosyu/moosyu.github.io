@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Emojis from "../../../components/Emojis.astro";
+import slugify from "../../../scripts/slugify";
 
 type Thought = CollectionEntry<"thoughts">;
 
@@ -59,17 +60,17 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2)
         padding: 10px;
         border-radius: 6px;
         max-width: 250px;
+        /* https://getcssscan.com/css-box-shadow-examples lol */
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        transition: box-shadow 0.5s;
+    }
+
+    .media-grid-item:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     }
 
     .media-grid-item > h3, p, .media-head > h3 {
         margin: 0;
-    }
-
-    .media-grid-item > img {
-        max-height: 450px;
-        display: block;
-        border-radius: 4px;
-        object-fit: cover;
     }
 
     .media-score {
@@ -149,6 +150,7 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2)
     </div>
     <div id="searchResults"></div>
     <main>
+        <p>Be warned, if you read any of these you will probably get spoiled.</p>
         <div class="media-grid-container">
         {page.data.map((thought: any) => (
             <div class="media-grid-item">
@@ -165,7 +167,7 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2)
                 </div>
                 <span>{thought.data.type}</span>
                 <div class="media-head">
-                    <a href={`/thoughts/${thought.slug}-${thought.data.type.toLowerCase().replace(" ", "-")}`}>Read thoughts... ({Math.ceil(thought.body.replace(/(<([^>]+)>)/gi, "").split(/\s+/).length / 200)} min read)</a>
+                    <a href={`/thoughts/${thought.slug}-${slugify(thought.data.type)}`}>Read thoughts... ({Math.ceil(thought.body.replace(/(<([^>]+)>)/gi, "").split(/\s+/).length / 200)} min read)</a>
                     {thought.data.image || thought.data.imageB ? <Emojis name="image" className="image-emoji" /> : null}
                 </div>
             </div>

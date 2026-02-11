@@ -239,24 +239,24 @@ button:hover, a:hover {
     border-radius: 15px;
 }
 
-.blog-post-item {
+.generic-item {
     background-color: #1f1e1e;
     margin: 10px;
     border: 1px white dotted;
     border-radius: 4px;
 }
 
-.blog-post-item:hover {
+.generic-item:hover {
     background-color: #111214;
     transition: ease 0.1s;
 }
 
-.blog-post-item:hover .blog-title {
+.generic-item:hover .generic-title {
     text-decoration: underline;
     color: #36a3cf;
 }
 
-.blog-post-link {
+.generic-link {
     display: block;
     height: 100%;
     width: 100%;
@@ -265,7 +265,7 @@ button:hover, a:hover {
     color: inherit;
 }
 
-.blog-title {
+.generic-title {
     text-decoration: none;
     color: #e23a45;
 }

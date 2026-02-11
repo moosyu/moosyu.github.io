@@ -1,5 +1,5 @@
 ---
-import { getEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import MarkdownLayout from "../../layouts/MarkdownLayout.astro";
 
 export async function getStaticPaths() {
@@ -15,9 +15,9 @@ export async function getStaticPaths() {
 }
 
 const { guide } = Astro.props;
-const { Content } = await guide!.render();
+const { Content } = await guide.render();
 ---
 
-<MarkdownLayout title={guide!.data.title} pubDate={guide!.data.pubDate.toLocaleDateString('en-US', { dateStyle: 'medium' })}>
+<MarkdownLayout title={guide.data.title} pubDate={guide.data.pubDate.toLocaleDateString('en-US', { dateStyle: 'medium' })}>
     <Content />
 </MarkdownLayout>
