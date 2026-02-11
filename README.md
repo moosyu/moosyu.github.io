@@ -1,43 +1,7 @@
-# Astro Starter Kit: Minimal
+##  website
+been working on and off on it for like 3 years or smthing. the codes real messy and all over the place but yk its honest work. a lot of the site is barely hodling itself together though so i wouldnt recommend copying straight code because it will probably collapse in like a week.
 
-```sh
-npm create astro@latest -- --template minimal
-```
+shoutout to the fellas at neocities bc im ripping them off real hard.
+![little laughing fella](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmk3cGc2NnU3b28yYmV0Y21kamkxZmM3Mjg0bnM1YjVkem5vMzdyaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/qootpuHaDtmXZCSIiO/giphy.gif)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+if you wanna build it all you gotta run is `npm i` to get all the packages then run `npm run dev` to hosting it locally. to build the command is `npm run build`. feel free to take what youd like, though it would be nice if you credit me so i can get my clout up.

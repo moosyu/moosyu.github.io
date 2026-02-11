@@ -28,7 +28,7 @@ const isNekowebBuild = import.meta.env.DEPLOY_TARGET === "nekoweb";
         </div>
         <a href="/guides/" class={currentPath.startsWith("/guides") ? "active-tab" : ""}><Emojis className="nav-emojis" name="book-blue" />Guides</a>
         <a href="/links/" class={currentPath.startsWith("/links") ? "active-tab" : ""}><Emojis className="nav-emojis" name="chain" />Links</a>
-        {isNekowebBuild && (<a target="_blank" href="http://nekoweb.org/follow/moosyu.nekoweb.org"><Emojis className="nav-emojis" name="heart" />Follow</a>)}
+        <a target="_blank" href={isNekowebBuild ? "http://nekoweb.org/follow/moosyu.nekoweb.org" : "https://github.com/moosyu/"}><Emojis className="nav-emojis" name="heart" />Follow</a>
     </div>
 </div>
 <script>
