@@ -46,7 +46,7 @@ allThoughts.forEach((thought: any) => {
     totalScoreAllThoughts += thought.data.score;
 });
 let pagesList = Array.from({length: Math.ceil(page.total / 32)}, (_, i)=> i + 1);
-let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2)
+let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
 ---
 <style>
     .media-grid-container {
@@ -178,7 +178,7 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2)
         <div class="pagination-buttons left">
             {page.url.prev ? <a href={page.url.prev}>Previous</a> : <span>Previous</span>}
         </div>
-        <select id="pageDropdown" onchange="window.location.href= this.value;">
+        <select id="pageDropdown" onchange="window.location.href= `/thoughts/grid/${value}`;">
             {pagesList.map(i => (
                 <option value={i} selected={i == page.currentPage}>Page {i}</option>
             ))}
