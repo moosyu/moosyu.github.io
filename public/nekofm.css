@@ -1,0 +1,49 @@
+songBox {
+  background-image: url("/assets/nekoweb/flowers.png");
+  border: none;
+  align-items: center;
+  background-position: center;
+}
+
+siteName {
+  margin: auto;
+  color: white;
+}
+
+trackInfo {
+  font-family: Monospace;
+  width: fit-content;
+  background-color: white;
+  border: 2px black solid;
+  box-shadow: 3px 3px 0 black;
+  padding: 7px;
+}
+
+trackCover {
+  height: 150px;
+  float: left;
+}
+
+trackName {
+  color: black
+}
+
+artistName {
+  margin: 5px auto;
+  color: black;
+}
+
+searchButton {
+  color: black;
+  background: none;
+  text-decoration: none;
+  display: none;
+}
+
+a {
+    color: #5a7184;
+}
+
+siteName a + a::before {
+  position: absolute;
+}
