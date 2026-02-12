@@ -1,4 +1,5 @@
 ---
+// TODO: FIX LIGHTBOX
 import "../../css/glightbox.min.css";
 import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -122,6 +123,6 @@ function getThoughtUrl(thought: Thought) {
 </BaseLayout>
 <script>
     // what i did here makes me worse than hitler
-    import GLightbox from "../../scripts/glightbox.min.js";
+    import GLightbox from "glightbox";
     GLightbox();
 </script>
