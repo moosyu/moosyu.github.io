@@ -30,7 +30,7 @@ const { index } = Astro.props as { index: number };
 ---
 <BaseLayout>
     <main class="bottom-div">
-        <p>Things I've given a {index} to.</p>
+        <p>Things I've given a {index} to. Do keep in mind that my opinions change over time and after multiple years of doing this many of the scores may be outdated.</p>
         {items.map((entry) => {
             return (<p><a href={`/thoughts/${slugify(entry.title)}-${slugify(entry.type)}`}>{entry.title}</a></p>);
         })}

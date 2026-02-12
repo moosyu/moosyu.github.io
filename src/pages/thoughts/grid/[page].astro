@@ -1,8 +1,10 @@
 ---
+// TODO: CHANGE BACKGROUNDS OF GRID ITEMS WITH A GRADIENT OF THE COLOUR SCORE THEY GOT
 import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Emojis from "../../../components/Emojis.astro";
-import slugify from "../../../scripts/slugify";
+import slugify from "../../../scripts/slugify.ts";
+import InformationButton from "../../../components/InformationButton.astro"
 
 type Thought = CollectionEntry<"thoughts">;
 
@@ -31,7 +33,7 @@ export async function getStaticPaths({ paginate }: { paginate: Function }) {
         return new Date(dateB).getTime() - new Date(dateA).getTime();
     });
     return paginate(thoughts, {
-        pageSize: 32,
+        pageSize: 33,
         props: {
             allThoughts: thoughts,
         },
@@ -45,7 +47,7 @@ let totalScoreAllThoughts: number = 0;
 allThoughts.forEach((thought: any) => {
     totalScoreAllThoughts += thought.data.score;
 });
-let pagesList = Array.from({length: Math.ceil(page.total / 32)}, (_, i)=> i + 1);
+let pagesList = Array.from({length: Math.ceil(page.total / 33)}, (_, i)=> i + 1);
 let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
 ---
 <style>
@@ -55,11 +57,13 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
     }
 
     .media-grid-item {
+        font-family: sans-serif;
         margin: 20px;
         background-color: #1f1e1e;
+        background: linear-gradient(180deg, color-mix(in srgb, var(--score-color) 70%, black) 0%, #1e2222 30%, #181f22 50%, #0d1013 100%);
         padding: 10px;
         border-radius: 6px;
-        max-width: 250px;
+        width: 350px;
         /* https://getcssscan.com/css-box-shadow-examples lol */
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         transition: box-shadow 0.5s;
@@ -73,21 +77,18 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
         margin: 0;
     }
 
-    .media-score {
-        font-weight: bold;
-        font-size: 14px;
-    }
-
     .media-title {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        /* so the overflow doesnt clip the shadow */
+        filter: drop-shadow(4px 3px 3px rgba(0, 0, 0, 1));
     }
 
     .media-head {
         display: flex;
         justify-content: space-between;
-        margin: 3px 0 3px 0;
+        margin: 3px 0;
     }
 
     .media-head p {
@@ -134,12 +135,6 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
             grid-template-columns: repeat(3, auto);;
         }
     }
-
-    @media screen and (min-width: 1300px) {
-        .media-grid-container {
-            grid-template-columns: repeat(4, auto);;
-        }
-    }
 </style>
 <BaseLayout title="big and fat, born without arms or legs, born to jump in the air and clap">
     <div class="media-top">
@@ -150,20 +145,15 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
     </div>
     <div id="searchResults"></div>
     <main>
-        <p>Be warned, if you read any of these you will probably get spoiled.</p>
+        <InformationButton info='Be warned, if you read any of these you will probably get spoiled. Also a big thanks to <a href="https://lunarcorvus.com/">Mina</a>, <a href="https://joo.sh/">Josh</a>, <a href="https://catgirlvomit.dev/">guts</a> and tm for help with figuring out the styling. No thanks to <a href="https://drfred.nekoweb.org/">Dr. Fred</a>, you cunt 🖕.' />
         <div class="media-grid-container">
-        {page.data.map((thought: any) => (
-            <div class="media-grid-item">
+        {page.data.map((thought: Thought) => {
+            let scoreColor = thought.data.score < 1 ? "#5e5e5e" : thought.data.score < 3 ? "#ff4c4c" : thought.data.score < 5 ? "#ff8888" : thought.data.score < 7 ? "#f0e68c" : thought.data.score < 8 ? "#7bc96f" : thought.data.score < 10 ? "#00cc66" : "#9d63d0";
+            return (
+            <div class="media-grid-item" style={`--score-color: ${scoreColor}`}>
                 <div class="media-head">
                     <h3 title={thought.data.title} class="media-title">{thought.data.title}</h3>
-                    <h3 style={`color: ${
-                        thought.data.score < 1 ? "#5e5e5e" :
-                        thought.data.score < 3 ? "#ff4c4c" :
-                        thought.data.score < 5 ? "#ff8888" :
-                        thought.data.score < 7 ? "#f0e68c" :
-                        thought.data.score < 8 ? "#7bc96f" :
-                        thought.data.score < 10 ? "#00cc66" :
-                        "#9d63d0"}`}>{thought.data.score}/10</h3>
+                    <h3 style={`color: ${scoreColor}; margin-left: 5px; text-shadow: 4px 3px 3px rgba(0,0,0,1);`}>{thought.data.score}/10</h3>
                 </div>
                 <span>{thought.data.type}</span>
                 <div class="media-head">
@@ -171,7 +161,8 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
                     {thought.data.image || thought.data.imageB ? <Emojis name="image" className="image-emoji" /> : null}
                 </div>
             </div>
-        ))}
+            )
+        })}
         </div>
     </main>
     <div class="bottom-div pagination-container">

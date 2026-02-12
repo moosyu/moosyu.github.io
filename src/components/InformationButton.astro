@@ -1,0 +1,8 @@
+---
+import Emojis from "./Emojis.astro";
+const { info } = Astro.props;
+---
+<details style="display: flex; align-items: center; cursor: default;">
+    <summary style="cursor: pointer; list-style: none;"><Emojis className="nav-emojis" name="question-mark" /></summary>
+    <span set:html={info}></span>
+</details>

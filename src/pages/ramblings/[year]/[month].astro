@@ -1,6 +1,6 @@
 ---
-import Emojis from "../../../components/Emojis.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import InformationButton from "../../../components/InformationButton.astro";
 import { getCollection } from "astro:content";
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -164,10 +164,7 @@ for (const rambling of ramblings) {
 </style>
 <BaseLayout title="untitled unmastered">
     <main>
-        <details style="display: flex; align-items: center; cursor: default;">
-            <summary style="cursor: pointer;"><Emojis className="nav-emojis" name="question-mark" /></summary>
-            <span>Shoutout to xiaoshan from <a href="https://dreamscape.place/">dreamscape</a>, I fully stole this idea from her!!</span>
-        </details>
+        <InformationButton info='Shoutout to xiaoshan from <a href="https://dreamscape.place/">dreamscape</a>, I fully stole this idea from her!!' />
         <h1 style="text-align: center; margin: 0 0 10px 0;">{`${months[monthNumber - 1]} ${year}`}</h1>
         <div class="calendar">
             <div class="calendar-header">
@@ -202,7 +199,7 @@ for (const rambling of ramblings) {
         const currMonth: number = Number(yearMonth.slice(5, 7));
         if (currMonth < 1 || currMonth > 12) return;
         return (
-            <option selected={currYear == year && numToDateString(currMonth) == month} value={`/ramblings/${currYear}/${numToDateString(currMonth)}`}>
+            <option selected={currYear == year && numToDateString(currMonth) == month} value={`${pageRoot}${currYear}/${numToDateString(currMonth)}`}>
             {`${months[currMonth - 1]} ${currYear}`}
             </option>
         );

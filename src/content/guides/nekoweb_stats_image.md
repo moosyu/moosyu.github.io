@@ -4,7 +4,8 @@ pubDate: 2025-11-18
 ---
 
 Wrote some jank code for rice to do this:
-![follower count on rice.place](https://i.imgur.com/nJI9CDs.png)
+
+![follower count on rice.place](/assets/guides/stats/rice_stats.png)
 
 and thought I may as well share. I made it in a way that hopefully it should be a drop in replacement for [Max's Nekoweb Stats script](https://maxpixels.moe/resources/nekoweb-stats/) though you may have to modify depending on your needs.
 
@@ -119,7 +120,7 @@ img.src = `/images/counter-${n}.png`;
 
 That's it! Now your stats display looks something like this:
 
-![](https://i.imgur.com/1knqDt6.png)
+![](/assets/guides/stats/stats_display.png)
 
 so you can style it with CSS as you wish. If you're not comfortable with JS and want to make some modifications stick around however!
 
@@ -129,13 +130,7 @@ so you can style it with CSS as you wish. If you're not comfortable with JS and 
 
 Firstly, if you want to remove any of the displayed stats you could always just delete the corresponding div but that will be a little messy as your code will still attempt to find that id then throw an error in the console when it can't find it so this is what needs to be removed in the code if you wish to remove a stat:
 
-To remove creation date remove:
-
-```html
-<div id="created"></div>
-```
-
-in your HTML and remove:
+To remove creation date remove: `<div id="created"></div>` in your HTML and remove:
 
 ```js
 const creation_date = document.getElementById("created");
@@ -147,13 +142,7 @@ creation_date.innerHTML = `<em>Made</em>: ${creation_date_formatted}`;
 
 lines from your JS.
 
-To remove last updated date remove:
-
-```html
-<div id="updated"></div>
-```
-
-in your HTML and remove:
+To remove last updated date remove: `<div id="updated"></div>` in your HTML and remove:
 
 ```js
 const updated_date = document.getElementById("updated");
@@ -165,13 +154,7 @@ updated_date.innerHTML = `<em>Updated</em>: ${updated_date_formatted}`;
 
 lines from your JS.
 
-To remove view count remove:
-
-```html
-<div id="visitors"></div>
-```
-
-in your HTML and remove:
+To remove view count remove: `<div id="visitors"></div>` in your HTML and remove:
 
 ```js
 views.innerHTML = "<em>Views</em>:";
@@ -180,13 +163,7 @@ convertTextToImage(data.views.toString().split(""), views);
 
 lines from your JS.
 
-To remove follower count remove:
-
-```html
-<div id="followers"></div>
-```
-
-in your HTML and remove:
+To remove follower count remove: `<div id="followers"></div>` in your HTML and remove the:
 
 ```js
 follows.innerHTML = "<em>Followers</em>:";
@@ -197,7 +174,8 @@ lines from your JS.
 
 ## Adding borders edges to your images
 
-![borders](https://i.imgur.com/D4XcUtZ.png)
+![borders](/assets/guides/stats/stats_border.png)
+
 
 If you'd like to things like rounded edges on your counter simply create two images, one for the front and one for the back. Then inside the convertTextToImage function add this:
 
@@ -207,13 +185,7 @@ imgFront.src = "PATH TO FRONT IMAGE";
 elementValue.appendChild(imgFront);
 ```
 
-before the
-
-```js
-stringValue.forEach(n => {
-```
-
-line and then add
+before the `stringValue.forEach(n => {` line and then add
 
 ```js
 const imgBack = document.createElement("img");
@@ -221,13 +193,7 @@ imgBack.src = "PATH TO BACK IMAGE";
 elementValue.appendChild(imgBack);
 ```
 
-after the
-
-```js
-});
-```
-
-line in convertTextToImage but NOT after the closing curly bracket of the convertTextToImage function. After this the function should look something like this:
+after the `});` line in convertTextToImage but NOT after the closing curly bracket of the convertTextToImage function. After this the function should look something like this:
 
 ```js
 function convertTextToImage(stringValue, elementValue) {
@@ -236,9 +202,9 @@ function convertTextToImage(stringValue, elementValue) {
     elementValue.appendChild(imgFront);
 
     stringValue.forEach(n => {
-      const img = document.createElement("img");
-      img.src = `${n}.png`;
-      elementValue.appendChild(img);
+        const img = document.createElement("img");
+        img.src = `${n}.png`;
+        elementValue.appendChild(img);
     });
 
     const imgBack = document.createElement("img");
@@ -249,7 +215,7 @@ function convertTextToImage(stringValue, elementValue) {
 
 and it will make your stat display look something like:
 
-![](https://i.imgur.com/8BTz9Q6.png)
+![](/assets/guides/stats/stats_display_border.png)
 
 Beautiful!
 
@@ -259,7 +225,7 @@ You may be wondering if you can convert your date into images just like the view
 
 ```js
 if (n == "/") {
-n = "slash";
+    n = "slash";
 }
 ```
 
@@ -268,19 +234,20 @@ and then have an image in your folder with the rest of your numbers named slash 
 ```js
 function convertTextToImage(stringValue, elementValue) {
     stringValue.forEach(n => {
-      if (n == "/") {
-        n = "slash";
-      }
-      const img = document.createElement("img");
-      img.src = `${n}.png`;
-      elementValue.appendChild(img);
+        if (n == "/") {
+            n = "slash";
+        }
+        const img = document.createElement("img");
+        img.src = `${n}.png`;
+        elementValue.appendChild(img);
     });
 }
 ```
 
 and this will give you something like this:
 
-![displayed date](https://i.imgur.com/sszviq5.png)
+![displayed date](/assets/guides/stats/stats_date.png)
+
 
 This is lowkey a really ugly fix as if statements are my #1 opp but it's simple enough so I think it's fine.
 
@@ -296,13 +263,7 @@ You've sent too many requests to the Nekoweb API in a short period of time. Just
 <details>
 <summary><p style="display: inline;">If you're getting TypeError: can't access property "innerHTML", views is null...</p></summary>
 
-Either add a defer to your script like so:
-
-```html
-<script src="stats.js" defer></script>
-```
-
-or put your script right at the bottom of your HTML, just above the closing body tag. This issue is being caused by the script loading before the DOM and therefore when the script is running there really is nothing with the ID views.
+Either add a defer to your script like so: `<script src="stats.js" defer></script>` or put your script right at the bottom of your HTML, just above the closing body tag. This issue is being caused by the script loading before the DOM and therefore when the script is running there really is nothing with the ID views.
 
 </details>
 

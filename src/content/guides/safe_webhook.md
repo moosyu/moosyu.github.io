@@ -5,7 +5,7 @@ pubDate: 2025-11-22
 
 Rice of the hit website rice.place had followed [this tutorial](https://dev.to/mistval/discord-webhook-powered-contact-form-3lk6) on creating a webhook contact form but this tutorial while simple also has you expose your webhook which allows people to send whatever heinous things they want to which is what happened to rice:
 
-![](https://i.imgur.com/ZGV3RzZ.png)
+![](/assets/guides/webhook/embed.png)
 
 Fortunately for her and anyone reading there is a (reasonably) easy and simple and free fix for this, Cloudflare Workers. Disclaimer before the guide starts, this is my first time doing something with Cloudflare workers so there's a non-zero chance my code breaks but as of right now it seems to be working fine so idk. On top of this I'd recommend at least a decent understanding of JS before reading this however it for sure can be completely without any knowledge of JS and I've tried to write in such a way that it makes sense to anyone.
 
@@ -15,15 +15,15 @@ Firstly go into your Discord server, go to integrations, then to webhooks and cr
 
 Then go to your Cloudflare Dashboard, if you're using Brave like me you may have to switch browsers as somehow Cloudflare is yet to figure out how to make a working website but once you've made it press the + Add button in the top bar and then press "Workers":
 
-![](https://i.imgur.com/XD35PhU.png)
+![](/assets/guides/webhook/cf_dash.png)
 
 It should take you to a page where you can press something along the lines of "Start with Hello World!":
 
-![](https://i.imgur.com/81dgRxr.png)
+![](/assets/guides/webhook/cf_hello.png)
 
 Now go into your new worker, press settings up the top, go to "Variables and Secrets" and then add a new variable. This part is important, variable's type should be secret its name should be DISCORD_WEBHOOK_URL and its value should be the webhook url that you copied earlier. Your settings page should look something along the lines of:
 
-![](https://i.imgur.com/E0j2XoM.png)
+![](/assets/guides/webhook/cf_settings.png)
 
 Now in your worker click the "Edit code" button you can delete the code already in worker.js and add this:
 
@@ -163,6 +163,6 @@ const response = await fetch("YOUR WORKER URL", {
 
 Getting your worker url is very simple, go back to your worker's page, click the visit button and copy the url of the site you are sent to (the URL also just shows up loads on the worker's page):
 
-![](https://i.imgur.com/3Cw9dx4.png)
+![](/assets/guides/webhook/cf_visit.png)
 
 I also imagine you'd want to change the alert text but it's not required. That's it! As always, if you do end up adding this somewhere on your site pretty please add my button or something 🥺. Feel free to message me on Discord or email me if you know me and are having problems.

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import InformationButton from "../components/InformationButton.astro";
 
 const posts = (await getCollection("guides")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -8,7 +9,7 @@ const posts = (await getCollection("guides")).sort(
 ---
 <BaseLayout title="blind leading the blind">
     <div class="background-div bottom-div">
-        <p>Collection of guides. Most coding related, mostly written in ways those with no knowledge of JS should hopefully be able to understand. Older posts might be a little iffy.</p>
+        <InformationButton info="Collection of guides. Most coding related, mostly written in ways those with no knowledge of JS should hopefully be able to understand. Older posts might be a little iffy." />
         <ul style="margin: 0; padding: 0; list-style-type: none;">
         {posts.map((post) => (
             <li class="generic-item">
