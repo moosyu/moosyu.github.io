@@ -53,6 +53,7 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
     .media-grid-container {
         display: grid;
         padding: 10px;
+        justify-items: center;
     }
 
     .media-grid-item {
@@ -62,7 +63,7 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
         background: linear-gradient(180deg, color-mix(in srgb, var(--score-color) 70%, black) 0%, #1e2222 30%, #181f22 50%, #0d1013 100%);
         padding: 10px;
         border-radius: 6px;
-        width: 350px;
+        width: 250px;
         /* https://getcssscan.com/css-box-shadow-examples lol */
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         transition: box-shadow 0.5s;
@@ -120,16 +121,21 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
         width: 100%;
     }
 
-    @media screen and (min-width: 700px) {
+    @media screen and (min-width: 1000px) {
+        .media-grid-container {
+            grid-template-columns: repeat(2, auto);
+        }
+
         .media-top {
             flex-direction: row;
         }
-        .media-grid-container {
-            grid-template-columns: repeat(2, auto);;
+
+        .media-grid-item {
+            width: 350px;
         }
     }
 
-    @media screen and (min-width: 1000px) {
+    @media screen and (min-width: 1300px) {
         .media-grid-container {
             grid-template-columns: repeat(3, auto);;
         }

@@ -108,11 +108,13 @@ button:hover, a:hover {
     opacity: 0;
     display: flex;
     flex-direction: column;
+    pointer-events: none;
 }
 
 .navbar.expanded .navbar-content {
     max-height: 550px;
     opacity: 1;
+    pointer-events: auto;
 }
 
 .home-navbtn {
@@ -317,6 +319,7 @@ button:hover, a:hover {
         opacity: 1;
         flex-direction: row;
         overflow: visible;
+        pointer-events: auto;
     }
 
     .dropdown-content {
