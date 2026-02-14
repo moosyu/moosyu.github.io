@@ -161,6 +161,7 @@ button:hover, a:hover {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+    box-sizing: border-box;
 }
 
 /* text-align and justify-content in the same style... how daring of me */

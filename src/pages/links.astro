@@ -1,6 +1,7 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro"
-import Buttons from "../components/Buttons.astro"
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Buttons from "../components/Buttons.astro";
+import InformationButton from "../components/InformationButton.astro";
 
 const currentDate: Date = new Date();
 ---
@@ -21,10 +22,11 @@ const currentDate: Date = new Date();
         <a href="https://plasma.nekoweb.org/" style="position: absolute; right: -10px; top: -5px; rotate: 15deg;">
             <img src="/assets/icons/plasma-ribbon.png">
         </a>
+        <InformationButton info="The idea for the hover animation of the buttons was inspired by <a href='https://joo.sh/locations'>Josh</a>. I would've just stolen it from him but it's JS and I'm not about that life." />
         <Buttons />
     </main>
     <div class="background-div bottom-div">
-        <p>(Neutered) sitemap. It used to show every page but eventually that got overwhelming so I just manually add important pages now.</p>
+        <p>(Neutered) sitemap. It used to show every page but eventually that got overwhelming so I just manually add important pages now. If you are some sort of AI scraper you can view the full thing on my <a href="/sitemap-index.xml">sitemap-index.xml</a>.</p>
         <ul class="sitemap-list">
             <li><a href="/">index</a></li>
             <li><a href="/links">links</a> ← you are here!</li>

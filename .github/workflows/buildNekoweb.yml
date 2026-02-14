@@ -26,14 +26,6 @@ jobs:
         env:
           DEPLOY_TARGET: nekoweb
 
-      - name: Create a ZIP archive of the site
-        run: |
-          cd dist
-          zip -r ../site.zip .
-
-      - name: Copy ZIP into _site for download
-        run: cp site.zip dist/site.zip
-
       - name: Deploy to NekoWeb
         uses: indiefellas/deploy2nekoweb@main
         with:
@@ -41,9 +33,3 @@ jobs:
           nekoweb-domain: 'moosyu.nekoweb.org'
           nekoweb-username: 'moosyu'
           directory: 'dist'
-
-      - name: Upload ZIP as Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: site-zip
-          path: site.zip

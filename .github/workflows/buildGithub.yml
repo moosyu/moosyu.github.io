@@ -31,6 +31,14 @@ jobs:
         env:
           DEPLOY_TARGET: github
 
+      - name: Create a ZIP archive of the site
+        run: |
+          cd dist
+          zip -r ../site.zip .
+
+      - name: Copy ZIP into _site for download
+        run: cp site.zip dist/site.zip
+
       - name: Upload static site content
         uses: actions/upload-pages-artifact@v3
         with:
@@ -38,3 +46,9 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+
+      - name: Upload ZIP as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-zip
+          path: site.zip

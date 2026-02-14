@@ -1,11 +1,27 @@
 <style>
+    .buttons-links a {
+        display: inline-block;
+        /* somehow integral in making the z-index work properly, i hate css */
+        position: relative;
+        z-index: 1;
+    }
+
+    .buttons-links a:hover {
+        z-index: 3;
+    }
+
     .buttons-links img {
+        image-rendering: pixelated;
         width: 88px;
         height: 31px;
-        image-rendering: pixelated;
+        transition: transform 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+    }
+
+    .buttons-links a:hover img {
+        transform: scale(1.25);
     }
 </style>
-<p>Neighbours/Friends:</p>
+<p>Neighbours and/or friends:</p>
 <div class="buttons-links">
     <a href="https://displayman.neocities.org/"><img src="/assets/buttons/daniel.gif" alt="daniel"></a>
     <a href="https://rice.place/"><img src="/assets/buttons/rice.png" alt="rice"></a>
@@ -15,6 +31,7 @@
     <a href="https://puffinthefish.neocities.org/"><img src="/assets/buttons/puffin.webp" alt="puffin"></a>
     <a href="https://raccoonbutt.com"><img src="https://raccoonbutt.com/static/raccoonbutt.gif" alt="sempu"></a>
     <a href="https://thinliquid.dev"><img src="https://thinliquid.dev/buttons/btn.png" alt="thin"></a>
+    <a href="https://onz.ee/"><img src="/assets/buttons/onzecki.avif" alt="onzecki"></a>
     <a href="https://obama.nekoweb.org"><img src="https://obama.nekoweb.org/obbutton.png" alt="barack"></a>
     <a href="https://eyeorb.net"><img src="https://eyeorb.net/site_button.gif" alt="eye"></a>
     <a href="https://toasty.place"><img src="https://toasty.place/images/buttons/sitebutton.gif" alt="toasty"></a>
@@ -23,17 +40,13 @@
     <a href="https://archi.moe/"><img src="https://archi.moe/images/button.png" alt="saber"></a>
     <a href="https://sad.ovh/"> <img src="/assets/buttons/sadovh.png" alt="sad.ovh"></a>
     <a href="https://mechagic.pages.gay/"><img src="/assets/buttons/mechagic.webp" alt="Mechagic's Fun Button"></a>
-    <a href="https://aelita.neocities.org/"><img src="/assets/buttons/aelita.png" alt="aelita"></a>
-    <a href="https://gwenbnuuy.nekoweb.org/"><img src="/assets/buttons/gwenbnuuy.gif" alt="gwenbnuuy"></a>
-
 </div>
 
-<p>Buttons of other cool sites:</p>
+<p>Buttons of other cool stuff/sites/people:</p>
 <div class="buttons-links">
     <a href="https://trademarkhell.net/"><img src="/assets/buttons/tmsspecialhell.png" alt="trademarkization company of 2003"></a>
     <a href="https://potentia.moe/"><img src="/assets/buttons/tm.gif" alt="potentia (terrible name btw)"></a>
     <a href="https://rice.place/"><img src="/assets/buttons/hai.gif" alt="haiweb"></a>
-    <a href="https://onz.ee/"><img src="/assets/buttons/onzecki.avif" alt="onzecki"></a>
     <a href="https://incessantpain.neocities.org/"><img src="/assets/buttons/incessant.gif" alt="incessant pain"></a>
     <a href="https://housepen.nekoweb.org/"> <img src="/assets/buttons/housepen.avif" alt="housepen"></a>
     <a href="https://zptr.cc/"><img src="/assets/buttons/zptr.gif" alt="zeroptr"></a>
@@ -60,4 +73,6 @@
     <a href="https://cobie.nekoweb.org/"><img src="/assets/buttons/cobie.gif" alt="cobie"></a>
     <a href="https://cyberwright.nekoweb.org/" target="_blank"><img src="https://cyberwright.nekoweb.org/imgs/cyberwright-btn.png" alt="text 'cyberwright' on a generic blue sky green grass background"></a>
     <a href="https://hiraethbecomesastar.neocities.org"><img src="https://hiraethbecomesastar.neocities.org/hiraeth.png" title="hiraeth"></a>
+    <a href="https://gwenbnuuy.nekoweb.org/"><img src="/assets/buttons/gwenbnuuy.gif" alt="gwenbnuuy"></a>
+    <a href="https://aelita.neocities.org/"><img src="/assets/buttons/aelita.png" alt="aelita"></a>
 </div>

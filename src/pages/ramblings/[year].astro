@@ -1,22 +1,21 @@
 ---
-// TODO: FIX SORTING BY TIME
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import RamblingDate from "../../components/RamblingDate.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const ramblings = (await getCollection("ramblings")).reverse();
+    // id use slice for this one but i dont trust myself to not write one of the days as without the 0 at front and im hoping itll still work with this
+    const ramblings = (await getCollection("ramblings")).sort((a, b) => new Date(b.id.split(".")[0]).getTime() - new Date(a.id.split(".")[0]).getTime());
+    const years = Array.from(new Set(ramblings.map((post) => post.id.slice(0, 4))));
 
-  const years = Array.from(new Set(ramblings.map((post) => post.id.slice(0, 4))));
-
-  return years.map((year) => ({
-    params: { year },
-    props: {
-      ramblings: ramblings.filter((post) =>
-        post.id.startsWith(year)
-      ),
-    },
-  }));
+    return years.map((year) => ({
+        params: { year },
+        props: {
+        ramblings: ramblings.filter((post) =>
+            post.id.startsWith(year)
+        ),
+        },
+    }));
 }
 
 const { year } = Astro.params;
