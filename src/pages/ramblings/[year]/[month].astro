@@ -1,4 +1,5 @@
 ---
+// TODO: MAKE THE DAY DISPLAYS AND LABELS STAND OUT MORE
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import InformationButton from "../../../components/InformationButton.astro";
 import { getCollection } from "astro:content";
@@ -132,7 +133,8 @@ for (const rambling of ramblings) {
     .calendar-day {
         min-height: 80px;
         padding: 8px;
-        background: #1f1e1e;
+        background-color: #1f1e1e;
+        background-image: linear-gradient(0deg, #313436 0%, #2e3133 30%, #1d242a 70%, var(--calendar-bg) 100%);
         margin: 3px;
         border-radius: 4px;
         display: flex;
@@ -146,16 +148,37 @@ for (const rambling of ramblings) {
         height: 30px;
         line-height: 30px;
         text-align: center;
-        background: #811eff;
+        background-color: #811eff;
         color: white;
         text-decoration: none;
         border-radius: 50%;
+        transition: 0.5s background-color;
     }
 
     .calendar-day-link:hover {
-        background: #0056b3;
+        background-color: #0056b3;
+        animation: 1s hoveredRotate ease;
     }
 
+    @keyframes hoveredRotate {
+        0% {
+            rotate: 0deg;
+            transform: scale(1);
+        }
+        33.3% {
+            rotate: -25deg;
+        }
+        50% {
+            transform: scale(1.25);
+        }
+        66.6% {
+            rotate: 25deg;
+        }
+        100% {
+            rotate: 0deg;
+            transform: scale(1);
+        }
+    }
     @media screen and (min-width: 1000px) {
         .calendar-day-header {
             font-size: 20px;
@@ -179,11 +202,14 @@ for (const rambling of ramblings) {
             <div class="calendar-grid">
                 {calendar.map((week) => (
                 <div class="calendar-row">
-                    {week.map((day) => (
-                    <div class="calendar-day">
-                        {day && ramblingDays.has(day) ? <span title={ramblingDays.get(day) || "Untitled entry"}><a href={`${pageRoot}${year}/${month}/${numToDateString(day)}`} class="calendar-day-link">{day}</a></span> : <span class="calendar-day-number">{day}</span>}
+                    {week.map((day) => {
+                    const hasEntry = day && ramblingDays.has(day);
+                    return (
+                    <div class="calendar-day" style={hasEntry ? `--calendar-bg: #583980` : `--calendar-bg: #2a4057`}>
+                        {hasEntry ? <span title={ramblingDays.get(day) || "Untitled entry"}><a href={`${pageRoot}${year}/${month}/${numToDateString(day)}`} class="calendar-day-link">{day}</a></span> : <span class="calendar-day-number">{day}</span>}
                     </div>
-                    ))}
+                    )
+                    })}
                 </div>
                 ))}
             </div>
@@ -209,4 +235,11 @@ for (const rambling of ramblings) {
             {nextPage ? <a href={nextPage}>Next</a> : <span>Next</span>}
         </div>
     </div>
+    <noscript>
+        <style>
+            select {
+                display: none;
+            }
+        </style>
+    </noscript>
 </BaseLayout>

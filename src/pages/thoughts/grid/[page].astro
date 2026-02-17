@@ -183,6 +183,13 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
             {page.url.next ? <a href={page.url.next}>Next</a> : <span>Next</span>}
         </div>
     </div>
+<noscript>
+    <style>
+        select {
+            display: none;
+        }
+    </style>
+</noscript>
 </BaseLayout>
 <script>
     import "../../../scripts/thoughtsSearch.ts"

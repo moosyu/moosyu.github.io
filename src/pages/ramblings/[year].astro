@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import RamblingDate from "../../components/RamblingDate.astro";
+import InformationButton from "../../components/InformationButton.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -26,12 +27,21 @@ const { ramblings } = Astro.props;
         border-bottom: 1px hsla(0, 0%, 100%, .12) solid;
         font-size: 16px;
     }
+
+    .page-jump {
+        text-align: right;
+    }
+
+    .page-jump > a {
+        text-decoration: none;
+    }
 </style>
 <BaseLayout title={`ramblings ${year}`}>
     <div class="background-div bottom-div">
+        <InformationButton info="The year-long lists of ramblings were inspired by some Chinese forum site that I forgot the name of..." />
         <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
             <p style="text-align: left;">Ramblings list version {year}!! (Same entries as the calendar just in a different view.)</p>
-            <h3 style="text-align: right;"><a style="text-decoration: none;" href="javascript: document.body.scrollIntoView(false);">To bottom ↓</a></h3>
+            <h3 class="page-jump to-bottom"><a href="javascript: document.body.scrollIntoView(false);">To bottom ↓</a></h3>
         </div>
             {ramblings.map((rambling) => {
                 const ramblingsSlug = rambling.slug.split("-");
@@ -42,6 +52,13 @@ const { ramblings } = Astro.props;
                 </div>
                 )
             })}
-        <h3 style="text-align:right;"><a style="text-decoration: none;" href="#top">To top ↑</a></h3>
+        <h3 class="page-jump"><a href="#top">To top ↑</a></h3>
     </div>
+    <noscript>
+        <style>
+            .to-bottom {
+                display: none;
+            }
+        </style>
+    </noscript>
 </BaseLayout>
