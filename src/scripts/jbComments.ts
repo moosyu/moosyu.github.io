@@ -5,13 +5,13 @@ interface CommentsResponse {
     comments: Comments[];
 }
 
-interface Comments extends BaseEntry{
+interface Comments extends BaseComment{
     replies: Replies[];
 }
 
-interface Replies extends BaseEntry {}
+interface Replies extends BaseComment {}
 
-interface BaseEntry {
+interface BaseComment {
     id: string;
     approved: boolean;
     createdAt: Date;
@@ -23,7 +23,7 @@ interface BaseEntry {
 
 const comment_entry_form = document.getElementById("comment-entry-form") as HTMLDivElement;
 const comment_section = document.getElementById("comment-section") as HTMLDivElement;
-const comment_pagination_container = document.getElementById("comment-pagination-container");
+const comment_pagination_container = document.getElementById("comment-pagination-container") as HTMLDivElement;
 const pageName: string = window.location.pathname;
 const pageURL: string = `moosyu.github.io${pageName}`;
 const apiURL: string = "https://cmt.nkko.link/api/export/";
@@ -138,10 +138,10 @@ function displayPagination(data: CommentsResponse) {
         <div class="pagination-buttons right">
             ${nextDisabled ? "<span>Next</span>" : `<span onclick="displayComments(${data.currentPage + 1})" id="next-link">Next</span>`}
         </div>`;
-    const dropdown = document.getElementById('pageDropdown') as HTMLSelectElement;
+    const dropdown = document.getElementById("pageDropdown") as HTMLSelectElement;
     if (dropdown) {
         dropdown.value = data.currentPage.toString();
-        dropdown.addEventListener('change', function() {
+        dropdown.addEventListener("change", function() {
             displayComments(Number(this.value));
         });
     }

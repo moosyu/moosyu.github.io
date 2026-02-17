@@ -1,5 +1,5 @@
 import Fuse from "fuse.js";
-import slugify from "../scripts/slugify"
+import slugify from "../scripts/slugify";
 
 fetch("/data/thoughts.json")
 .then(response => response.json())

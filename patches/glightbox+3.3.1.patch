@@ -1,0 +1,30 @@
+diff --git a/node_modules/glightbox/src/js/glightbox.js b/node_modules/glightbox/src/js/glightbox.js
+index a05d228..8bd3f08 100644
+--- a/node_modules/glightbox/src/js/glightbox.js
++++ b/node_modules/glightbox/src/js/glightbox.js
+@@ -187,16 +187,6 @@ class GlightboxInit {
+ 
+         const body = document.body;
+ 
+-        const scrollBar = window.innerWidth - document.documentElement.clientWidth;
+-        if (scrollBar > 0) {
+-            var styleSheet = document.createElement('style');
+-            styleSheet.type = 'text/css';
+-            styleSheet.className = 'gcss-styles';
+-            styleSheet.innerText = `.gscrollbar-fixer {margin-right: ${scrollBar}px}`;
+-            document.head.appendChild(styleSheet);
+-            _.addClass(body, 'gscrollbar-fixer');
+-        }
+-
+         _.addClass(body, 'glightbox-open');
+         _.addClass(html, 'glightbox-open');
+         if (isMobile) {
+@@ -1246,7 +1236,7 @@ class GlightboxInit {
+ 
+             const body = document.body;
+             _.removeClass(html, 'glightbox-open');
+-            _.removeClass(body, 'glightbox-open touching gdesc-open glightbox-touch glightbox-mobile gscrollbar-fixer');
++            _.removeClass(body, 'glightbox-open touching gdesc-open glightbox-touch glightbox-mobile');
+             this.modal.parentNode.removeChild(this.modal);
+ 
+             this.trigger('close');
