@@ -36,6 +36,13 @@ const { ramblings } = Astro.props;
         text-decoration: none;
     }
 </style>
+<noscript>
+    <style>
+        .to-bottom {
+            display: none;
+        }
+    </style>
+</noscript>
 <BaseLayout title={`ramblings ${year}`}>
     <div class="background-div bottom-div">
         <InformationButton info="The year-long lists of ramblings were inspired by some Chinese forum site that I forgot the name of..." />
@@ -54,11 +61,4 @@ const { ramblings } = Astro.props;
             })}
         <h3 class="page-jump"><a href="#top">To top ↑</a></h3>
     </div>
-    <noscript>
-        <style>
-            .to-bottom {
-                display: none;
-            }
-        </style>
-    </noscript>
 </BaseLayout>

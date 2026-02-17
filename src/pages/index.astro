@@ -98,6 +98,16 @@ import BaseLayout from "../layouts/BaseLayout.astro"
         }
     }
 </style>
+<noscript>
+    <style>
+        #tooltip-btn {
+            display: none;
+        }
+        .copy-instructions {
+            display: none;
+        }
+    </style>
+</noscript>
 <BaseLayout>
 	<div class="updates-container">
 		<div id="commitsContainer">
@@ -126,16 +136,6 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 		</noscript>
 		<br>
 	</main>
-    <noscript>
-        <style>
-            #tooltip-btn {
-                display: none;
-            }
-            .copy-instructions {
-                display: none;
-            }
-        </style>
-    </noscript>
 </BaseLayout>
 <script>
     import "../scripts/lastFM.js";
