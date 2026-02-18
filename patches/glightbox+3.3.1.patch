@@ -27,3 +27,16 @@ index 678f7cb..d826f42 100644
            _this8.modal.parentNode.removeChild(_this8.modal);
            _this8.trigger('close');
            if (isFunction(_this8.settings.onClose)) {
+diff --git a/node_modules/glightbox/package.json b/node_modules/glightbox/package.json
+index 6c863a9..5ab8cda 100644
+--- a/node_modules/glightbox/package.json
++++ b/node_modules/glightbox/package.json
+@@ -2,7 +2,7 @@
+   "name": "glightbox",
+   "version": "3.3.1",
+   "description": "Pure Javascript lightbox",
+-  "main": "dist/js/glightbox.min.js",
++  "main": "dist/js/glightbox.js",
+   "scripts": {
+     "watch": "node development/watcher.js"
+   },
