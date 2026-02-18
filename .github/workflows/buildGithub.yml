@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Apply patches
+        run: npx patch-package
+
       - name: Build the site with Astro
         run: npm run build
         env:
