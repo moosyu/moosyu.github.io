@@ -29,6 +29,12 @@ jobs:
         env:
           DEPLOY_TARGET: nekoweb
 
+      - name: Rename 404 to not_found
+        run: |
+          if [ -f dist/404.html ]; then
+            mv dist/404.html dist/not_found.html
+          fi
+
       - name: Deploy to NekoWeb
         uses: indiefellas/deploy2nekoweb@main
         with:
