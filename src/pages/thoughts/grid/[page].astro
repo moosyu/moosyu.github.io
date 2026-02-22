@@ -60,7 +60,12 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
         font-family: sans-serif;
         margin: 20px;
         background-color: #1f1e1e;
-        background: linear-gradient(180deg, color-mix(in srgb, var(--score-color) 70%, black) 0%, #1e2222 30%, #181f22 50%, #0d1013 100%);
+        background: linear-gradient(180deg,
+            color-mix(in srgb, var(--score-color) 70%, black) 0%,
+            #1e2222 30%,
+            #181f22 50%,
+            #0d1013 100%
+        );
         padding: 10px;
         border-radius: 6px;
         width: 250px;
@@ -104,7 +109,12 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
 
     #mediaSearchInput, .media-top div {
         padding: 12px 20px;
-        background: linear-gradient(180deg, #212526 0, #1e2222 30%, #181f22 50%, #0d1013 100%);
+        background: linear-gradient(180deg,
+            #212526 0%,
+            #1e2222 30%,
+            #181f22 50%,
+            #0d1013 100%
+        );
         box-sizing: border-box;
         color: #fff;
         border: dotted #fff 1px;

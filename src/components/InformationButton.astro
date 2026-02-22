@@ -2,7 +2,34 @@
 import Emojis from "./Emojis.astro";
 const { info } = Astro.props;
 ---
-<details style="display: flex; align-items: center; cursor: default;">
-    <summary style="cursor: pointer; list-style: none; filter: drop-shadow(4px 3px 3px rgba(0, 0, 0, 1));"><Emojis className="nav-emojis" name="question-mark" /></summary>
-    <span set:html={info}></span>
+<style>
+details {
+    display: flex;
+    align-items: center;
+    cursor: default;
+}
+
+details > summary {
+    cursor: pointer;
+    list-style: none;
+    filter: drop-shadow(4px 3px 3px rgba(0, 0, 0, 1));
+}
+@keyframes details-show {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+details[open] > span:not(summary) {
+  animation: details-show 150ms ease-in-out;
+}
+</style>
+<details>
+    <summary><Emojis className="nav-emojis" name="question-mark" /></summary>
+    <span style="display: inline-block;" set:html={info}></span>
 </details>
