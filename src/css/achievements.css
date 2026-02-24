@@ -1,0 +1,100 @@
+:root {
+    --achievement-background-color: #0d1013;
+    --achievement-foreground-color: #fff;
+}
+
+.achievement-popup {
+    position: fixed;
+    top: 10px;
+    right: 0;
+    max-width: 1000px;
+    background-color: var(--achievement-background-color);
+    color: var(--achievement-foreground-color);
+    padding: 10px;
+    border-radius: 30px 0 0 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 3;
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.achievement-popup.show {
+    animation: achievementShowAnimation 0.6s ease forwards;
+}
+
+.achievement-popup.hide {
+    animation: achievementHideAnimation 0.6s ease forwards;
+}
+
+.achievement-popup > img {
+    border-radius: 15px 0 0 15px;
+    width: 50px;
+    height: 50px;
+}
+
+.achievement-popup p, .achievement-grid-item p {
+    margin: 0;
+}
+
+.achievement-grid-item {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    gap: 10px;
+    align-items: center;
+    background-color: var(--achievement-background-color);
+    color: var(--achievement-foreground-color);
+    border-radius: 15px;
+}
+
+.achievement-grid-item-disabled {
+    filter: grayscale(100%);
+}
+
+.achievement-grid-item > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px 0 0 15px;
+}
+
+#achievements-container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 20px;
+}
+
+@keyframes achievementShowAnimation {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes achievementHideAnimation {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #achievements-container {
+        grid-template-columns: repeat(2, auto);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #achievements-container {
+        grid-template-columns: repeat(1, auto);
+    }
+}

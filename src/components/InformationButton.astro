@@ -14,7 +14,8 @@ details > summary {
     list-style: none;
     filter: drop-shadow(4px 3px 3px rgba(0, 0, 0, 1));
 }
-@keyframes details-show {
+
+@keyframes detailsShow {
     from {
         opacity: 0;
         transform: translateX(-10px);
@@ -26,7 +27,7 @@ details > summary {
 }
 
 details[open] > span:not(summary) {
-  animation: details-show 150ms ease-in-out;
+  animation: detailsShow 150ms ease-in-out;
 }
 </style>
 <details>

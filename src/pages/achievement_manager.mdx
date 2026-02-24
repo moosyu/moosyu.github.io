@@ -1,0 +1,122 @@
+---
+layout: ../layouts/AchievementLayout.astro
+title: Instructions
+---
+
+Hi, I made an achievement manager, it uses JS and is made for static sites. It makes heavy use of `import` so browser versions from ~2020 and before may not be able to run it. You can download it here: [achievement_manager.zip](/assets/achievement_manager/achievementManager.zip) Below are instructions on how to use it.
+
+## Basic setup
+
+After downloading the zip above unzipping it and you'll find two folders, JS and CSS. Put these somewhere in your project site's files. You can put them anywhere however the Javascript expects to be laid out with `achievementDisplay.js`, `achievementList.js`, `achievementManager.js` and the achievements folder in the same directory level. You can change this by changing the import paths of `achievementDisplay.js` and the achievements in the achievements folder. The import paths follow the same format as importing CSS, JS or images in HTML.
+
+In order to add the achievement manager to a page you need to link the stylesheet (e.g. `<link rel="stylesheet" href="/css/achievements.css">`) and you also need to import the script AND set its type as module `<script type="module" src="/js/achievementManager.js"></script>`. It will not set the type as module by default and if you don't do it the script won't work. Scripts generally go in the head or at the bottom of the page right before `</body>`. In this case it doesn't really matter because modules are automatically deferred though so you can put it in either location. This process will need to be repeated every page you want the achievement manager to be running. Inside `achievementList.js` you will need to edit the constant `achievementIconsPath` to the path of where you store your achievement icons, by default these icons are sized to 50x50 but you can edit that in `achievements.css` if you wish.
+
+## Adding a local achievement
+
+In the included JS folder there's a subfolder for achievements. Inside is an example achievement which looks something like this:
+
+```js
+import { updateAchievements } from "../achievementManager.js";
+import { achievements } from "../achievementList.js"
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Access the achievement list and then select the achievement you want to give by key
+    updateAchievements(achievements.exampleAchievement);
+});
+```
+
+Whatever page this is added to will reward the user with the achievement when the page has been fully loaded. If you have a page that would need the achievement to be added before the DOM has been loaded (like if you wanted to give the user to be given the achievement for visiting the achievements list and have the list item for that achievement not be greyed out without a reload) you could remove the listener, I just have it there to be safe. Inside the `updateAchievements` function it's going to the achievements in achievementsList.js and selecting the achievement the with key `exampleAchievement`. Remember to give every achievement you add in `achievementList.js` a key so you can use it. In order for this achievement to be obtainable, import it to a page that also has `achievements.css` imported. The HTML may look something like this:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example achievement</title>
+    <link rel="stylesheet" href="/css/achievements.css">
+</head>
+<body>
+    <script type="module" src="/js/achievements/exampleAchievement.js"></script>
+    <script type="module" src="/js/achievementManager.js"></script>
+</body>
+</html>
+```
+
+You actually don't even need to add `achievementManager.js` through a script tag as it's being imported in the exampleAchievement, I just add it because it makes it more clear. The HTML of achievement popups can be edited in `achievementManager.js` in the return of `displayPopupHTML`. In `achievementManager.js` the time achievements display for can also be modified with the `popupTimeout` constant.
+
+## Adding a global achievement (optional)
+
+For achievements you want to be achievable from within any page of your site (that has imported `achievementManager.js` and `achievements.css`) you can import the achievement script directly into your `achievementManager.js`. First, as always should be done when adding a new achievement, go to `achievementList.js` and add a new object. This is what my achievements look like after doing so:
+
+```js
+export const achievements = {
+    exampleAchievement: {
+        name: "Woah...",
+        description: "You did it",
+        iconName: `${achievementIconsPath}example-icon.png`
+    },
+    exampleGlobalAchievement: {
+        name: "Global",
+        description: "You got a global achievement!",
+        iconName: `${achievementIconsPath}example-icon-2.png`
+    },
+}
+```
+
+Now, inside of my achievements folder I added a new achievement file, `exampleGlobalAchievement.js`. You don't have to name the achievement scripts the same as their corresponding keys but it does make it more clear. Inside this script is the following code:
+
+```js
+import { updateAchievements } from "../achievementManager.js";
+import { achievements } from "../achievementList.js"
+
+const linksClickedNum = Number(localStorage.getItem("linksClicked"));
+
+function incrementLinkCounter(currentCount) {
+    return (Number(currentCount) + 1).toString();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (linksClickedNum >= 10) {
+        updateAchievements(achievements.exampleGlobalAchievement);
+    }
+});
+
+document.addEventListener("click", function (event) {
+    const link = event.target.closest("a");
+    if (!link) return;
+    if (localStorage.getItem("linksClicked")) {
+        localStorage.setItem("linksClicked", incrementLinkCounter(linksClickedNum));
+    } else {
+        localStorage.setItem("linksClicked", incrementLinkCounter(0));
+    }
+});
+```
+
+This script just increments a count in localStorage and once that count is 10 or greater it awards the achievement. Finally, add `import "./achievements/exampleGlobal.js";` at the top of `achievementManager.js` so this script gets run on every page that has the achievement manager (which ideally should be every page on your site for achievements like this to track properly).
+
+## Clearing achievements
+
+Clearing achievements is quite simple, in fact you can do it in one line, just create a button like so: `<button onclick="localStorage.removeItem('achievements')">Clear achievements!</button>`.
+
+## Displaying a list of completed achievements
+
+Included in the JS folder is one unused file, `achievementDisplay.js`. This is a script to display the achievements in a grid with the locked achievements greyed out (what happens to locked achievements visually can be edited under `.achievement-grid-item-disabled` in `achievements.css`). To make use of this all you need to do is link the achievements stylesheet, `<link rel="stylesheet" href="/css/achievements.css">`, create a div with the id `achievements-container`, `<div id="achievements-container"></div>` import `achievementDisplay.js` as a module `<script type="module" src="/js/achievementDisplay.js"></script>`. The HTML may look something like this:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements list</title>
+    <link rel="stylesheet" href="/css/achievements.css">
+</head>
+<body>
+    <div id="achievements-container"></div>
+    <script type="module" src="/js/achievementDisplay.js"></script>
+</body>
+</html>
+```
+
+That's about it! If you found this helpful maybe drop me a follow (perhaps even add my button). Much of this idea was inspired by [June](https://layercake.moe/) and [Darko](https://darkosparko.nekoweb.org/) (though the code is mine), show them some love.

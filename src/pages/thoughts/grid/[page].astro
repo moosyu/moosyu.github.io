@@ -70,12 +70,15 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
         border-radius: 6px;
         width: 250px;
         /* https://getcssscan.com/css-box-shadow-examples lol */
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         transition: box-shadow 0.5s;
     }
 
     .media-grid-item:hover {
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
     }
 
     .media-grid-item > h3, p, .media-head > h3 {
@@ -156,6 +159,14 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
         select {
             display: none;
         }
+
+        input {
+            display: none;
+        }
+
+        .media-top div {
+            min-width: 100% !important;
+        }
     </style>
 </noscript>
 <BaseLayout title="big and fat, born without arms or legs, born to jump in the air and clap">
@@ -167,7 +178,7 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
     </div>
     <div id="searchResults"></div>
     <main>
-        <InformationButton info='Be warned, if you read any of these you will probably get spoiled. Also a big thanks to <a href="https://lunarcorvus.com/">Mina</a>, <a href="https://joo.sh/">Josh</a>, <a href="https://catgirlvomit.dev/">guts</a> and tm for help with figuring out the styling. No thanks to <a href="https://drfred.nekoweb.org/">Dr. Fred</a>, you cunt 🖕.' />
+        <InformationButton info='Be warned, if you read any of these you will probably get spoiled. Also the quality really varies from thought to thought based on how much I care and how much time I have. Big thanks to <a href="https://lunarcorvus.com/">Mina</a>, <a href="https://joo.sh/">Josh</a>, <a href="https://catgirlvomit.dev/">guts</a> and tm for help with figuring out the styling. No thanks to <a href="https://drfred.nekoweb.org/">Dr. Fred</a>, you cunt 🖕.' />
         <div class="media-grid-container">
         {page.data.map((thought: Thought) => {
             let scoreColor = thought.data.score < 1 ? "#5e5e5e" : thought.data.score < 3 ? "#ff4c4c" : thought.data.score < 5 ? "#ff8888" : thought.data.score < 7 ? "#f0e68c" : thought.data.score < 8 ? "#7bc96f" : thought.data.score < 10 ? "#00cc66" : "#9d63d0";

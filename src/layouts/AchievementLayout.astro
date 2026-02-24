@@ -1,0 +1,28 @@
+---
+import "../css/achievements.css";
+import "../css/achievement-manager.css";
+import Meta from "../components/Meta.astro";
+
+const { title = "moosyu's wix site" } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<Meta />
+		<title>{title}</title>
+	</head>
+	<body>
+        <header>
+            <h1>ACHIEVEMENT MANAGER</h1>
+        </header>
+        <nav>
+            <a href="/achievement_manager">Instructions</a>
+            <a href="/achievement_manager/achievement_example">Example</a>
+            <!-- <a href="/achievement_manager/scripts">Scripts</a> -->
+        </nav>
+		<slot />
+        <script>
+            import "../scripts/achievementManager.js";
+        </script>
+	</body>
+</html>
