@@ -1,7 +1,16 @@
 ---
 import AchievementLayout from "../../layouts/AchievementLayout.astro";
 ---
+<style>
+    div {
+        display: flex;
+        gap: 20px;
+        margin: 20px;
+    }
+</style>
 <AchievementLayout title="Example achievement">
-    <a href="./achievement_list">Go to achievements list</a>
-    <button onclick="localStorage.removeItem('achievements')">Clear achievements!</button>
+    <div>
+        <a href="./achievement_list">Go to achievements list</a>
+        <button onclick="localStorage.removeItem('achievements')">Clear achievements!</button>
+    </div>
 </AchievementLayout>
