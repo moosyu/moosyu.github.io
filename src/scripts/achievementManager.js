@@ -25,10 +25,13 @@ function slugify(str) {
         .replace(/(^-|-$)/g, "");
 }
 
-function achievementPopup(achievement) {
+let achievementQueue = [];
+
+function achievementPopup() {
+    console.log(achievementQueue);
     const popupDiv = document.createElement("div");
     popupDiv.classList.add("achievement-popup");
-    popupDiv.innerHTML = displayPopupHTML(achievement);
+    popupDiv.innerHTML = displayPopupHTML(achievementQueue[achievementQueue.length - 1]);
     document.body.append(popupDiv);
 
     requestAnimationFrame(() => {
@@ -40,6 +43,10 @@ function achievementPopup(achievement) {
         popupDiv.addEventListener("animationend", () => {
             popupDiv.remove();
         });
+        achievementQueue.pop();
+        if (!achievementQueue.length == 0) {
+            achievementPopup()
+        }
     // Time in ms before the achievement popup disappears
     }, popupTimeout);
 }
@@ -50,8 +57,9 @@ export function updateAchievements(achievement) {
 
     if (!isAchievementUnlocked(achievement)) {
         savedAchievements.push(achievement);
+        achievementQueue.push(achievement);
         localStorage.setItem("achievements", JSON.stringify(savedAchievements));
-        achievementPopup(achievement);
+        achievementPopup();
     }
 }
 

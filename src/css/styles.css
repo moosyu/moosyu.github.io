@@ -66,7 +66,7 @@ button:hover, a:hover {
     border-radius: 0 0 15px 15px;
 }
 
-.navbar {
+nav {
     background: linear-gradient(180deg,
         #313436 0%,
         #2e3133 30%,
@@ -80,7 +80,7 @@ button:hover, a:hover {
     max-width: 100%;
 }
 
-.navbar a {
+nav a {
     font-size: 24px;
     padding: 14px 8px;
     display: flex;
@@ -88,7 +88,7 @@ button:hover, a:hover {
     text-decoration: none;
 }
 
-.navbar a:hover {
+nav a:hover {
     filter: none;
 }
 
@@ -140,7 +140,7 @@ button:hover, a:hover {
     width: 100%;
 }
 
-.navbar a:hover {
+nav a:hover {
     background: linear-gradient(180deg,
         #2d3032e6 0%,
         #1e2123e6 30%,
@@ -323,7 +323,7 @@ button:hover, a:hover {
 } */
 
 @media screen and (min-width: 1125px) {
-    .navbar {
+    nav {
         flex-direction: row;
         display: flex;
         width: auto;

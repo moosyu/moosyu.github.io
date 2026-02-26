@@ -11,7 +11,7 @@ const isNekowebBuild = import.meta.env.DEPLOY_TARGET === "nekoweb";
         height: 24px;
     }
 </style>
-<div class="navbar">
+<nav>
     <Emojis className="navbar-expander" name="down-arrow" />
         <div class="navbar-content">
         <a href="/" class={`home-navbtn ${currentPath === "/" ? "active-tab" : ""}`}><Emojis className="nav-emojis" name="home" />Home</a>
@@ -29,7 +29,7 @@ const isNekowebBuild = import.meta.env.DEPLOY_TARGET === "nekoweb";
         <a href="/links/" class={currentPath.startsWith("/links") ? "active-tab" : ""}><Emojis className="nav-emojis" name="chain" />Links</a>
         <a target="_blank" href={isNekowebBuild ? "http://nekoweb.org/follow/moosyu.nekoweb.org" : "https://github.com/moosyu/"}><Emojis className="nav-emojis" name="heart" />Follow</a>
     </div>
-</div>
+</nav>
 <script>
     const navbarEl = document.querySelector(".navbar");
     const navbarArrowEl = document.querySelector(".down-arrow-svg");
