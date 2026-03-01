@@ -141,7 +141,7 @@ function displayPagination(data: CommentsResponse) {
     const dropdown = document.getElementById("pageDropdown") as HTMLSelectElement;
     if (dropdown) {
         dropdown.value = data.currentPage.toString();
-        dropdown.addEventListener("change", function() {
+        dropdown.addEventListener("change", () => {
             displayComments(Number(this.value));
         });
     }
