@@ -181,6 +181,8 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
         <InformationButton info='Be warned, if you read any of these you will probably get spoiled. Also the quality really varies from thought to thought based on how much I care and how much time I have. Big thanks to <a href="https://lunarcorvus.com/">Mina</a>, <a href="https://joo.sh/">Josh</a>, <a href="https://catgirlvomit.dev/">guts</a> and tm for help with figuring out the styling. No thanks to <a href="https://drfred.nekoweb.org/">Dr. Fred</a>, you cunt 🖕.' />
         <div class="media-grid-container">
         {page.data.map((thought: Thought) => {
+            const plainText = thought.body?.replace(/(<([^>]+)>)/gi, "").trim();
+            const wordCount = plainText ? plainText.split(/\s+/).length : 0;
             let scoreColor = thought.data.score < 1 ? "#5e5e5e" : thought.data.score < 3 ? "#ff4c4c" : thought.data.score < 5 ? "#ff8888" : thought.data.score < 7 ? "#f0e68c" : thought.data.score < 8 ? "#7bc96f" : thought.data.score < 10 ? "#00cc66" : "#9d63d0";
             return (
             <div class="media-grid-item" style={`--score-color: ${scoreColor}`}>
@@ -190,7 +192,7 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
                 </div>
                 <span>{thought.data.type}</span>
                 <div class="media-head">
-                    <a href={`/thoughts/${thought.slug}-${slugify(thought.data.type)}`}>Read thoughts... ({Math.ceil(thought.body.replace(/(<([^>]+)>)/gi, "").split(/\s+/).length / 200)} min read)</a>
+                    { wordCount > 0 ? <a href={`/thoughts/${thought.slug}-${slugify(thought.data.type)}`}>Read thoughts... ({Math.ceil(thought.body.replace(/(<([^>]+)>)/gi, "").split(/\s+/).length / 200)} min read)</a> : null }
                     {thought.data.image || thought.data.imageB ? <Emojis name="image" className="image-emoji" /> : null}
                 </div>
             </div>
