@@ -6,7 +6,7 @@ const { title, pubDate } = Astro.props;
 
 <BaseLayout title={title || "blind leading the blind"}>
     <div class="background-div bottom-div">
-        {pubDate ? <p>Date created: {pubDate}</p> : ""}
+        {pubDate && <p style="margin: 0;">Date created: {pubDate}</p>}
         <slot />
     </div>
 </BaseLayout>

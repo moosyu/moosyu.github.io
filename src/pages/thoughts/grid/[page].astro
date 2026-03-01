@@ -192,8 +192,8 @@ let averageScore: string = (totalScoreAllThoughts / page.total).toFixed(2);
                 </div>
                 <span>{thought.data.type}</span>
                 <div class="media-head">
-                    { wordCount > 0 ? <a href={`/thoughts/${thought.slug}-${slugify(thought.data.type)}`}>Read thoughts... ({Math.ceil(thought.body.replace(/(<([^>]+)>)/gi, "").split(/\s+/).length / 200)} min read)</a> : null }
-                    {thought.data.image || thought.data.imageB ? <Emojis name="image" className="image-emoji" /> : null}
+                    {wordCount > 0 && <a href={`/thoughts/${thought.slug}-${slugify(thought.data.type)}`}>Read thoughts... ({Math.ceil(thought.body.replace(/(<([^>]+)>)/gi, "").split(/\s+/).length / 200)} min read)</a>}
+                    {(thought.data.image || thought.data.imageB) && <Emojis name="image" className="image-emoji" />}
                 </div>
             </div>
             )
