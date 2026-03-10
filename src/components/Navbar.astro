@@ -1,7 +1,7 @@
 ---
 import Emojis from "../components/Emojis.astro";
 
-const currentPath = Astro.url.pathname;
+const currentPath: string = Astro.url.pathname;
 const currentDate: Date = new Date();
 const isNekowebBuild = import.meta.env.DEPLOY_TARGET === "nekoweb";
 ---
@@ -31,12 +31,12 @@ const isNekowebBuild = import.meta.env.DEPLOY_TARGET === "nekoweb";
     </div>
 </nav>
 <script>
-    const navbarEl = document.querySelector(".navbar");
+    const navbarEl = document.querySelector("nav");
     const navbarArrowEl = document.querySelector(".down-arrow-svg");
 
-    if (navbarEl && navbarArrowEl) {
-        navbarArrowEl.addEventListener("click", () => {
-            navbarEl.classList.toggle('expanded');
-        });
-    }
+    console.log(navbarEl);
+
+    navbarArrowEl.addEventListener("click", () => {
+        navbarEl.classList.toggle('expanded');
+    });
 </script>

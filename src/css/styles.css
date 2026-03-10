@@ -111,7 +111,7 @@ nav a:hover {
     pointer-events: none;
 }
 
-.navbar.expanded .navbar-content {
+nav.expanded .navbar-content {
     max-height: 550px;
     opacity: 1;
     pointer-events: auto;
@@ -125,7 +125,7 @@ nav a:hover {
     transition: transform 0.2s linear;
 }
 
-.navbar.expanded .navbar-expander svg {
+nav.expanded .navbar-expander svg {
     transform: rotate(180deg);
 }
 

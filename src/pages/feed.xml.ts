@@ -1,3 +1,5 @@
+// TODO: MAKE POSTS WITHOUT CONTENT OR POSTS WITH THE NORSS OPTION NOT DISPLAY. ALSO FIX THE ORDER.
+
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 
