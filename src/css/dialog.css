@@ -1,0 +1,47 @@
+#dialogContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    gap: 10px;
+}
+
+.dialog-box, .dialog-name {
+    background-color: rgba(67, 67, 255, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.dialog-box {
+    max-height: 200px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.dialog-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.dialog-name {
+    max-width: 200px;
+}
+
+.dialog-profile {
+    border: 2px solid black;
+    max-width: 100px;
+}
+
+.dialog-name p {
+    margin: 0;
+}
+
+.dialog-options {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.hidden {
+    display: none;
+}

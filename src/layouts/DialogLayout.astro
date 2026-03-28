@@ -1,0 +1,21 @@
+---
+import Meta from "../components/Meta.astro";
+import "../css/dialog.css";
+const { title = "VN dialog script" } = Astro.props;
+---
+<html lang="en">
+	<head>
+		<Meta />
+		<title>{title}</title>
+	</head>
+	<body>
+        <header>
+            <h1>Dialog script</h1>
+        </header>
+        <nav>
+            <a href="/dialog">Instructions</a>
+            <a href="/dialog/example">Example</a>
+        </nav>
+		<slot />
+	</body>
+</html>

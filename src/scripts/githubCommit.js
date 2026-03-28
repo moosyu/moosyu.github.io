@@ -3,7 +3,7 @@ const textEl = commitsContainer.querySelector("p");
 
 async function displayLatestGithubCommit() {
     try {
-        const response = await fetch('https://api.github.com/repos/Moosyu/moosyu.github.io/commits?per_page=1');
+        const response = await fetch("https://api.github.com/repos/Moosyu/moosyu.github.io/commits?per_page=1");
         const data = await response.json();
         const sha = data[0].sha;
         const shortSha = sha.substring(0, 7);

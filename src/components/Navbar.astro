@@ -34,8 +34,6 @@ const isNekowebBuild = import.meta.env.DEPLOY_TARGET === "nekoweb";
     const navbarEl = document.querySelector("nav");
     const navbarArrowEl = document.querySelector(".down-arrow-svg");
 
-    console.log(navbarEl);
-
     navbarArrowEl.addEventListener("click", () => {
         navbarEl.classList.toggle('expanded');
     });

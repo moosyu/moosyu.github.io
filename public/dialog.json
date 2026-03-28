@@ -1,0 +1,19 @@
+{
+    "message_0": {
+        "name": "frog detective",
+        "profile": "https://pbs.twimg.com/profile_images/1070219750339371009/iCsyijCX_400x400.jpg",
+        "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque eius sint, quo cum rerum ducimus facere sed",
+        "next": "message_1"
+    },
+    "message_1": {
+        "name": "frog detective",
+        "profile": "https://i.guim.co.uk/img/media/95c00e2314b292f40b1c90b149d83eb606344974/287_18_1293_776/master/1293.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=d119dc44b0ecda61b34b33319b5f865b",
+        "text": "hi2",
+        "next": "message_2"
+    },
+    "message_2": {
+        "name": "frog detective",
+        "profile": "https://i.guim.co.uk/img/media/95c00e2314b292f40b1c90b149d83eb606344974/287_18_1293_776/master/1293.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=d119dc44b0ecda61b34b33319b5f865b",
+        "text": "hi3"
+    }
+}
