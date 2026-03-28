@@ -1,12 +1,12 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import MarkdownLayout from "../../layouts/MarkdownLayout.astro";
 
 export async function getStaticPaths() {
     const guides = await getCollection("guides");
         return guides.map((guide) => ({
             params: {
-                slug: guide.slug
+                slug: guide.id
             },
             props: {
                 guide
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { guide } = Astro.props;
-const { Content } = await guide.render();
+const { Content } = await render(guide);
 ---
 
 <MarkdownLayout title={guide.data.title} pubDate={guide.data.pubDate.toLocaleDateString('en-US', { dateStyle: 'medium' })}>

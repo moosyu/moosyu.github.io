@@ -1,6 +1,6 @@
 ---
 import "../../css/glightbox.min.css";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import slugify from "../../scripts/slugify";
 
@@ -8,7 +8,9 @@ type Thought = CollectionEntry<"thoughts">;
 
 export async function getStaticPaths() {
     const thoughts: Thought[] = await getCollection("thoughts");
-    const sortedThoughts = thoughts.sort((a, b) => {
+    // stop creating pages with no content
+    const filteredThoughts = thoughts.filter(thought => thought.body?.trim());
+    const sortedThoughts = filteredThoughts.sort((a, b) => {
         const dateA: Date = a.data.dateModified;
         const dateB: Date = b.data.dateModified;
 
@@ -17,10 +19,9 @@ export async function getStaticPaths() {
         if (!dateB) return -1;
         return new Date(dateB).getTime() - new Date(dateA).getTime();
     });
-
-    return thoughts.map((thought, index) => ({
+    return filteredThoughts.map((thought, index) => ({
         params: {
-            slug: `${thought.slug}-${slugify(thought.data.type)}`,
+            slug: `${thought.id}-${slugify(thought.data.type)}`,
         },
         props: {
             thought,
@@ -31,13 +32,13 @@ export async function getStaticPaths() {
 }
 
 const { thought, index, totalThoughts } = Astro.props;
-const { Content } = await thought.render();
+const { Content } = await render(thought);
 
 const prevThought = totalThoughts[index - 1] || null;
 const nextThought = totalThoughts[index + 1] || null;
 
 function getThoughtUrl(thought: Thought) {
-  return `/${thought.slug}-${slugify(thought.data.type)}`;
+  return `/${thought.id}-${slugify(thought.data.type)}`;
 }
 ---
 <style>

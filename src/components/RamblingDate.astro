@@ -1,5 +1,4 @@
 ---
 const { ramblingEntry } = Astro.props;
-const formattedDate = new Date(ramblingEntry.id.slice(0, -3)).toLocaleDateString('en-US', { dateStyle: 'medium' });
 ---
-<h2>{formattedDate}</h2>
+<h2>{new Date(ramblingEntry.id).toLocaleDateString("en-US", { dateStyle: "medium" })}</h2>

@@ -13,7 +13,7 @@ const posts = (await getCollection("guides")).sort(
         <ul style="margin: 0; padding: 0; list-style-type: none;">
         {posts.map((post) => (
             <li class="generic-item">
-                <a href={`/guides/${post.slug}`} class="generic-link">
+                <a href={`/guides/${post.id}`} class="generic-link">
                     <h1 style="margin: 0" class="generic-title">
                         {post.data.title}
                     </h1>

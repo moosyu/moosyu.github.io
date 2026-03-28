@@ -12,9 +12,9 @@ export async function getStaticPaths() {
     const yearMonths = Array.from(new Set(ramblings.map(post => post.id.slice(0, 7)))).sort();
     const ramblingsMonthYears: Map<string, Set<string>> = new Map();
 
-    for (const rambling of ramblings) {
-        const year = rambling.slug.slice(0, 4);
-        const month = rambling.slug.slice(5, 7);
+    ramblings.forEach((rambling) => {
+        const year = rambling.id.slice(0, 4);
+        const month = rambling.id.slice(5, 7);
         let monthsForYear = ramblingsMonthYears.get(year);
 
         if (!monthsForYear) {
@@ -22,7 +22,7 @@ export async function getStaticPaths() {
             ramblingsMonthYears.set(year, monthsForYear);
         }
         monthsForYear.add(month);
-    }
+    });
 
     return yearMonths.map((ym) => {
         const [year, month] = ym.split("-");
