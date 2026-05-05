@@ -1,0 +1,7 @@
+---
+title: "My New Band Believe"
+type: Album
+score: 6.5
+dateModified: 2026-04-22
+---
+A well done release from Cameron Picton and maybe a some more people idk. I can't lie and say I wasn't a little disappointed this didn't blow me out of the water like Greep's album, another ex black midi member, however it did have its moments. Although I found the album slow at some points, especially on Heart of Darkness and the wholly unsatisfying final song One Night it also has Actress which is just the song of all time. I'd be pretty hard pressed to name a song better than it that came out this year, maybe Music or Bodyfeeling? Either way everything past the five minute mark blew me away and reminded me that this man really was in black midi with some of the intensity they had on their best songs. In my opinion Actress should've been the final song but whatever, maybe he needed to pad time. It should also be mentioned that lyrically this is some  good stuff too. This shows especially in Love Story which makes you think you get it and then kicks you in the crotch out of nowhere (at least it felt that way for me). It happens that it sounds pretty great too. Good stuff MNBB, I just hope the next one gets more time in the oven or whatever this was missing.

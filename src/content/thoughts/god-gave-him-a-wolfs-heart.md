@@ -1,0 +1,7 @@
+---
+title: "God Gave Him a Wolf's Heart"
+type: EP
+score: 9
+dateModified: 2026-05-05
+---
+I didn't really expect to enjoy this EP, nor did I particularly want to out of spite for some guy and yet it's now it's my 5th most listened to album of all time. Despite how much time I've listened to this for I can't say for sure what in particular made me love this EP so much. Much of it has a harsh, distorted kind of sound to it that's strangely comforting alongside the kind of imperfect singing voice of Mr. sun is poison. Yet there's also Gabriel Swallows Machines which slows everything down in a lovely final track which manages to be pretty climactic for a project that only lasted a little over 10 minutes all in all. I've heard some people online say the production is a little wack but I never thought of that as a negative on this, if anything it only made this a more charming listen to me. It feels pretty raw and personal which goes well with the pretty raw lyrics. Well I don't know particulars about what some lines mean or whether they mean anything at all, they all feel like care was put into them, especially Torch I Hate to Hold which is all-around great. I'm not too sure whether the amount of effort put into a throw-away EP like this was enough to explain why I love it so much but even if this is just sun is poison shitting out his arse I love it deeply.

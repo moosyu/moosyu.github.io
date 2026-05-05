@@ -60,9 +60,7 @@ async function fetchDialog() {
 
 function toggleMissingOptions(dialog, dialogInfo, dialogName, dialogProfile) {
     dialog.name || dialog.profile ? dialogInfo.classList.remove("hidden") : dialogInfo.classList.add("hidden");
-
     dialog.name ? dialogName.classList.remove("hidden") : dialogName.classList.add("hidden");
-
     dialog.profile ? dialogProfile.classList.remove("hidden") : dialogProfile.classList.add("hidden");
 }
 

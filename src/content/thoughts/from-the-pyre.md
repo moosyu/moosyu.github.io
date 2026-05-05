@@ -1,0 +1,7 @@
+---
+title: "From the Pyre"
+type: Album
+score: 7
+dateModified: 2026-04-22
+---
+This was an album I expected to stick with me a lot more than it did. I'm writing this a week or so after listening to this album for the first time and despite listening another couple of times none of the songs really stuck with me. This was a little bit of a surprise as I also don't remember any misses on this album and my first listen was pretty fantastic. There were a few that I remember as being good like Agnus Dei and Woman is a Tree but they aren't the kind of things that I'd listen to on repeat (though Agnus Dei is coming pretty close). I really mess with this kind of sound which I recently learned was called the "Windmill Scene" but it's no New Sound, nor is it an Ants From Up There. Obviously I don't expect it to be a copy of those classics (not sure if I can call an album released in 2024 a classic but whatever it's a classic to me) but I had hoped for more seeing as it's often recommended alongside them online. Not to mention I've heard some people call this glam rock which always excites me however I wasn't really feeling that in From the Pyre. The album cover's great at least so at least there's one big winner here.
