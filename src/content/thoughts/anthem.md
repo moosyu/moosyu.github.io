@@ -1,0 +1,10 @@
+---
+title: "Anthem"
+type: Book
+score: 4
+dateModified: 2026-05-16
+---
+
+Anthem is either very good or very bad and as I'm a miserable person I'm going to go with it being very bad. Anthem is a book about collectivism which was big in the good ol' days of the 30s (and most of the 20th century actually) but it's done in such a lame, heavy-handed way that any criticism kind of feel lost. I'm not actually going to be talking much about the book before the ending because it's barely a book at like 50 pages or something, read it for yourself in half an hour if you care. Overall I found it pretty mediocre but again it's short so I don't actually care. It's also not going to be a very good interpretation of the ending as in spite of the 1000 or so entries on my site I'm neither good at writing or reading.
+
+The ending of Anthem is really weird to me, it seems as if Equality is doing exactly what he hated, being the only person in charge, not much the individualist he was preaching out being the whole time. Obviously Liberty is there but she doesn't do shit, she doesn't even pick her own name. I feel like it would actually be a pretty good ending if it was like a switch up and Equality was just as bad the whole time but I'm really not sure that was the intention. Based on the time period it was written and Ayn Rand sounding generally like a huge prick I think it's more likely than not that this character development was completely unintentional and she thought she was writing a happy ending. I haven't actually read any other books by Rand but based on what I've heard she's pretty awful at any semblance of subtlety in her writing so I just find it extremely hard to believe this was an intentional piece of commentary. If it was though, it was actually a pretty fantastic ending and if you think that's the case consider my rating like a 7.5.
