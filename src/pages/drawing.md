@@ -10,8 +10,8 @@ const MATCH_THRESHOLD: float = 55.0
 var image: Image
 var canvas_texture: ImageTexture
 var gesture_points: Array[Vector2]
-var template_norm: Array[Vector2]
-var template_norm_rev: Array[Vector2]
+var normalized_template: Array[Vector2]
+var normalized_template_reverse: Array[Vector2]
 
 func _ready() -> void:
 	GameEvents.submit_pressed.connect(_on_submit_pressed)
@@ -20,12 +20,11 @@ func _ready() -> void:
 	canvas_texture = ImageTexture.create_from_image(image)
 	texture = canvas_texture
 	position = get_viewport().get_visible_rect().size / 2
-	template_norm = normalize_points(FLAME_POINT_CLOUD)
-	
+	normalized_template = normalize_points(FLAME_POINT_CLOUD)
 	# so it isnt direction specific
 	var reversed: Array[Vector2] = FLAME_POINT_CLOUD.duplicate()
 	reversed.reverse()
-	template_norm_rev = normalize_points(reversed)
+	normalized_template_reverse = normalize_points(reversed)
 
 func paint_texture(pos: Vector2i, paint_color: Color) -> void:
 	image.fill_rect(Rect2i(pos, Vector2i(1,1)).grow(3), paint_color)
@@ -33,7 +32,6 @@ func paint_texture(pos: Vector2i, paint_color: Color) -> void:
 func _input(event: InputEvent) -> void:
 	var local_pos = to_local(event.position)
 	if !get_rect().has_point(local_pos): return
-
 	if Input.is_action_just_pressed("left_click"):
 		image.fill(Color.WHITE)
 		gesture_points.clear()
@@ -66,9 +64,9 @@ func recognizable() -> bool:
 	if gesture_points.size() < 2:
 		return false
 
-	var candidate_norm: Array[Vector2] = normalize_points(gesture_points)
-	var distance_forward: float = path_distance(candidate_norm, template_norm)
-	var distance_reverse: float = path_distance(candidate_norm, template_norm_rev)
+	var normalized_drawing: Array[Vector2] = normalize_points(gesture_points)
+	var distance_forward: float = calculate_path_distance(normalized_drawing, normalized_template)
+	var distance_reverse: float = calculate_path_distance(normalized_drawing, normalized_template_reverse)
 	var best_distance: float = min(distance_forward, distance_reverse)
 
 	print(best_distance)
@@ -82,38 +80,30 @@ func normalize_points(points: Array[Vector2]) -> Array[Vector2]:
 	return centered_point
 
 func resample(points: Array[Vector2]) -> Array[Vector2]:
-	if points.size() < 2:
-		return points.duplicate()
-	var arc: Array[float] = [0.0]
-	for i in range(1, points.size()):
-		arc.append(arc[i - 1] + points[i].distance_to(points[i - 1]))
-	var total_len: float = arc.back()
-	if total_len == 0.0:
-		var temp_points: Array[Vector2]
-		for point in NUM_POINTS:
-			temp_points.append(points[0])
-		return temp_points
+	# points too small
+	if points.size() < 2: return points.duplicate()
 
-	var result: Array[Vector2] = [points[0]]
-	for i in NUM_POINTS - 1:
-		var target_distance: float = i * total_len / (NUM_POINTS - 1)
-		var low: float = 0
-		var high: float = arc.size() - 1
-		while high - low > 1:
-			var mid: float = (low + high) / 2
-			if arc[mid] <= target_distance:
-				low = mid
-			else:
-				high = mid
-		var segment_length: float = arc[high] - arc[low]
-		var t: float = 0.0 if segment_length == 0.0 else (target_distance - arc[low]) / segment_length
-		result.append(points[low].lerp(points[high], t))
+	var curve: Curve2D = Curve2D.new()
+	for point in points:
+		curve.add_point(point)
+	var total_curve_length: float = curve.get_baked_length()
+	if total_curve_length == 0.0:
+		var temp_points: Array[Vector2]
+		temp_points.resize(NUM_POINTS)
+		temp_points.fill(points[0])
+		return temp_points
+	var result: Array[Vector2]
+	result.resize(NUM_POINTS)
+
+	for i in range(NUM_POINTS):
+		var gap_size: float = (i * total_curve_length) / (NUM_POINTS - 1)
+		result[i] = curve.sample_baked(gap_size) 
 	return result
 
 func rotate_to_zero(points: Array[Vector2]) -> Array[Vector2]:
-	var c: Vector2 = centroid(points)
-	var angle: float = atan2(points[0].y - c.y, points[0].x - c.x)
-	return rotate_by(points, -angle, c)
+	var center: Vector2 = centroid(points)
+	var angle: float = atan2(points[0].y - center.y, points[0].x - center.x)
+	return rotate_by(points, -angle, center)
 
 func rotate_by(points: Array[Vector2], angle: float, center: Vector2) -> Array[Vector2]:
 	var cos_a: float = cos(angle)
@@ -124,9 +114,7 @@ func rotate_by(points: Array[Vector2], angle: float, center: Vector2) -> Array[V
 		temp_points.append(Vector2(q.x * cos_a - q.y * sin_a, q.x * sin_a + q.y * cos_a) + center)
 	return temp_points
 
-#func bounding_box(points: Array[Vector2]) -> 
-
-func scale_to_square(points: Array[Vector2], size: float) -> Array[Vector2]:
+func create_bounding_box(points: Array[Vector2]) -> Rect2:
 	var min_x: float = points[0].x
 	var max_x: float = points[0].x
 	var min_y: float = points[0].y
@@ -136,13 +124,16 @@ func scale_to_square(points: Array[Vector2], size: float) -> Array[Vector2]:
 		max_x = max(max_x, point.x)
 		min_y = min(min_y, point.y)
 		max_y = max(max_y, point.y)
-
 	var width: float = max_x - min_x
 	var height: float = max_y - min_y
-	var scale_factor = size / max(width, height)
+	return Rect2(min_x, min_y, width, height)
+
+func scale_to_square(points: Array[Vector2], size: float) -> Array[Vector2]:
+	var bounding_box = create_bounding_box(points);
+	var scale_factor = size / max(bounding_box.size.x, bounding_box.size.y)
 	var temp_points: Array[Vector2]
 	for point in points:
-		temp_points.append(Vector2((point.x - min_x) * scale_factor, (point.y - min_y) * scale_factor))
+		temp_points.append(Vector2((point.x - bounding_box.position.x) * scale_factor, (point.y - bounding_box.position.y) * scale_factor))
 	return temp_points
 
 func translate_to_origin(points: Array[Vector2]) -> Array[Vector2]:
@@ -152,12 +143,12 @@ func translate_to_origin(points: Array[Vector2]) -> Array[Vector2]:
 		temp_points.append(point - center)
 	return temp_points
 
-func path_distance(point_a: Array[Vector2], point_b: Array[Vector2]) -> float:
+func calculate_path_distance(drawing: Array[Vector2], template: Array[Vector2]) -> float:
 	var total: float = 0.0
-	var n = min(point_a.size(), point_b.size())
-	for i in n:
-		total += point_a[i].distance_to(point_b[i])
-	return total / n
+	var smallest_size: int = min(drawing.size(), template.size())
+	for i in smallest_size:
+		total += drawing[i].distance_to(template[i])
+	return total / smallest_size
 
 func centroid(points: Array[Vector2]) -> Vector2:
 	# https://stackoverflow.com/questions/12840839/find-the-center-point-of-coordinate-2d-array-c-sharp
