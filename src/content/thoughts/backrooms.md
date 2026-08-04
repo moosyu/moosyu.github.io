@@ -1,0 +1,12 @@
+---
+title: "Backrooms"
+type: Movie
+score: 5
+dateModified: 2026-08-04
+---
+
+I didn't really feel the need to write anything about the Backrooms after having first watched it however after being brutally harassed today I thought I might as well compile some of my fleeting thoughts on it. First off, I actually quite liked the majority of this film. For such a small cast of actors who I generally haven't seen anything of in the past, it was a pretty impressive showing acting-wise. Clark especially was an obvious highlight and it's no surprise to me that some of his lines got turned into memes after the fact. It wasn't just him though, Mary's actor was fantastic, particularly at doing believable reactions and I quite enjoyed Bobby and Katherine even if they were pretty obviously invented just to be fodder. I didn't even feel like I needed to know much background as to what the Backrooms actually are as I'm not really part of that fandom.
+
+A particularly memorable sequence is leading up to Clark being bitten was genuinely fantastic, it was tense, both Clark, and Mary are played to perfection and when Clark actually gets bitten the booming soundtrack coming in was pretty fantastic. This was especially true in a theater and it was one of the few times I felt that the theater experience was necessary to my enjoyment. The chase sequence with Mary was pretty great too and a lot of the sets felt like they were really getting the most of their relatively small budget, the jumpscare got me too even when I knew it was coming.
+
+It may seem from this that I really enjoyed this movie and that's true, it's just the ending that really fucked me up. It felt so sudden I genuinely couldn't believe it was the end. I've watched probably 100s of movies at this point and this is the only time this has happened to me. It almost felt like they accidentally cut 20 minutes off the film and never added it back. I didn't expect a cheesy happy ending or anything, it never did seem like that kind of film but I felt so unsatisfied and lowkey robbed by what I just saw. It even kind of retroactively recontextualised the entire film for me and just made me think that instead of this being some sort of cohesive story and instead things just happening. It also felt like it was bizarre that they had so much b-roll of the scientists watching when we got like max 10 seconds of actual screentime with them and they never really felt entirely fleshed out to me. Better luck next time Kane "youngest person ever" Parsons.
