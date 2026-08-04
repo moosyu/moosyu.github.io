@@ -2,7 +2,7 @@
 title: "Komi Can't Communicate"
 type: Manhwa
 score: 4
-image: https://a.ze.wtf/review-imgs/I26B2DN.png
+image: https://i.imgur.com/I26B2DN.png
 dateModified: 2026-02-08
 ---
 

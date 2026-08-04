@@ -2,7 +2,7 @@
 title: "Reaper of the Drifting Moon"
 type: Manhwa
 score: 6.5
-image: https://a.ze.wtf/review-imgs/ZMDzk0J.png
+image: https://i.imgur.com/ZMDzk0J.png
 dateModified: 2025-03-09
 ---
 

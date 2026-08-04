@@ -2,7 +2,7 @@
 title: "Annarasumanara"
 type: Manhwa
 score: 8
-image: https://a.ze.wtf/review-imgs/vQvlUyH.png
+image: https://i.imgur.com/vQvlUyH.png
 dateModified: 2025-03-15
 ---
 

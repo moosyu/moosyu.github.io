@@ -2,7 +2,7 @@
 title: "Love Advice From The Great Duke Of Hell"
 type: Webtoon
 score: 8
-image: https://a.ze.wtf/review-imgs/ASDZSt1.png
+image: https://i.imgur.com/ASDZSt1.png
 dateModified: 2025-12-14
 ---
 

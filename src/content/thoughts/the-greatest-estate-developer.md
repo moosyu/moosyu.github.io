@@ -2,7 +2,7 @@
 title: "The Greatest Estate Developer"
 type: Manhwa
 score: 6
-image: https://a.ze.wtf/review-imgs/zgjjbnP.png
+image: https://i.imgur.com/zgjjbnP.png
 dateModified: 2025-03-09
 ---
 

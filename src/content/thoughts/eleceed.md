@@ -2,7 +2,7 @@
 title: "Eleceed"
 type: Manhwa
 score: 8
-image: https://a.ze.wtf/review-imgs/XJfzrx5.png
+image: https://i.imgur.com/XJfzrx5.png
 dateModified: 2025-03-15
 ---
 

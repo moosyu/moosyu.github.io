@@ -2,7 +2,7 @@
 title: "Absolute Reign"
 type: Manhwa
 score: 7
-image: https://a.ze.wtf/review-imgs/Tp04B2E.png
+image: https://i.imgur.com/Tp04B2E.png
 ---
 
 Kind of a needle in a haystack find as far as murim slop goes. I remember maybe a month ago complaining there wasn't enough well drawn murim slop and this is exactly what I wanted, while the art is sometimes spotty, when it needs to be it can also become fuckin insane. If you take a glance at the image I displayed, like holy shit how they do that, this manhwa is definitely using the longstrip format of manhwa to its advantage in panels like this and it's awesome especially when so many just don't bother leveraging the unique medium they're using. 

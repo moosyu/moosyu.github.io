@@ -2,7 +2,7 @@
 title: "My Dress-Up Darling"
 type: Manga
 score: 3
-image: https://a.ze.wtf/review-imgs/SDsBJ5p.jpeg
+image: https://i.imgur.com/SDsBJ5p.jpeg
 ---
 
 This is 50% fanservice 50% something else and I'm not even sure what the something else is but its not good at either. If I wanted porn I'd watch porn. This is definitely not a 9 as it somehow got on Comick but the recent arc has unironically been really great (like an 8). Unfortunately thats because it is so different from the rest of the manga (the latest arc being the one where she cosplays as Kmart griffith).

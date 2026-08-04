@@ -2,7 +2,7 @@
 title: "The Legend of the Northern Blade"
 type: Manhwa
 score: 8
-image: https://a.ze.wtf/review-imgs/vXKXeA1.png
+image: https://i.imgur.com/vXKXeA1.png
 dateModified: 2025-03-09
 ---
 

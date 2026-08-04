@@ -2,7 +2,7 @@
 title: "One Piece: Nami vs. Kalifa"
 type: Manga
 score: 2
-image: https://a.ze.wtf/review-imgs/lM2D9EQ.jpeg
+image: https://i.imgur.com/lM2D9EQ.jpeg
 ---
 
 Boichi is actually so shit at drawing girls its honestly insane. This feels closer to softcore porn then a oneshot. The fight is pretty good too but I just cannot read this with a straight face I just feel silly. 

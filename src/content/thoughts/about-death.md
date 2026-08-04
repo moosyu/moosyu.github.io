@@ -2,7 +2,7 @@
 title: "About Death"
 type: Manhwa
 score: 8.5
-image: https://a.ze.wtf/review-imgs/uFaeeX9.png
+image: https://i.imgur.com/uFaeeX9.png
 dateModified: 2025-08-23
 ---
 

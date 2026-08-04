@@ -2,7 +2,7 @@
 title: "Little Rabbit and the Big Bad Leopard"
 type: Manhwa
 score: 4
-image: https://a.ze.wtf/review-imgs/wGEszYO.png
+image: https://i.imgur.com/wGEszYO.png
 ---
 
 Not much for substance but honestly it's fun. 

@@ -2,7 +2,7 @@
 title: "Leviathan"
 type: Manhwa
 score: 5.5
-image: https://a.ze.wtf/review-imgs/RThCdYk.png
+image: https://i.imgur.com/RThCdYk.png
 dateModified: 2025-01-22
 ---
 

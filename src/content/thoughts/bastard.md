@@ -2,7 +2,7 @@
 title: "Bastard"
 type: Manhwa
 score: 9
-image: https://a.ze.wtf/review-imgs/u2zrHNY.png
+image: https://i.imgur.com/u2zrHNY.png
 ---
 
 Rather dank. 

@@ -2,7 +2,7 @@
 title: "Yakuza Fiance"
 type: Manga
 score: 7.5
-image: https://a.ze.wtf/review-imgs/dBhfFrQ.jpeg
+image: https://i.imgur.com/dBhfFrQ.jpeg
 ---
 
 I really felt something at the start kind of like Bastard where shes trapped and can't escape but they really fumbled, or maybe this what they were going for, but I don't know why you would make a decent story instead of a great one. 

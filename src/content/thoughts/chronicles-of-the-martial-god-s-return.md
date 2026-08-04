@@ -3,7 +3,7 @@ title: "Chronicles Of The Martial God's Return"
 alt: war god returner
 type: Manhwa
 score: 6
-image: https://a.ze.wtf/review-imgs/uXz95Nu.png
+image: https://i.imgur.com/uXz95Nu.png
 ---
 
 The child isn't disgusting to look at. Edit 

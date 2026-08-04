@@ -2,7 +2,7 @@
 title: "Sweet Home"
 type: Manhwa
 score: 9.5
-image: https://a.ze.wtf/review-imgs/Ix5TEfh.png
+image: https://i.imgur.com/Ix5TEfh.png
 dateModified: 2025-10-06
 ---
 

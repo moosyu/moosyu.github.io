@@ -2,7 +2,7 @@
 title: "The Breaker"
 type: Manhwa
 score: 7.5
-image: https://a.ze.wtf/review-imgs/glgo9Cg.png
+image: https://i.imgur.com/glgo9Cg.png
 ---
 
 I aint buying yo.

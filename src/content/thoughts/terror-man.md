@@ -2,7 +2,7 @@
 title: "Terror Man"
 type: Manhwa
 score: 5
-image: https://a.ze.wtf/review-imgs/rBqkZT2.png
+image: https://i.imgur.com/rBqkZT2.png
 dateModified: 2024-03-09
 ---
 

@@ -2,7 +2,7 @@
 title: "Girls' Last Tour"
 type: Manga
 score: 9.5
-image: https://a.ze.wtf/review-imgs/BXdRsYt.png
+image: https://i.imgur.com/BXdRsYt.png
 dateModified: 2026-02-08
 ---
 

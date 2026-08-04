@@ -3,7 +3,7 @@ title: "Chainsaw Man"
 alt: csm
 type: Manga
 score: 9
-image: https://a.ze.wtf/review-imgs/grlfF33.jpg
+image: https://i.imgur.com/grlfF33.jpg
 dateModified: 2025-03-20
 ---
 

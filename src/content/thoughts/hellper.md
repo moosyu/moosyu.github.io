@@ -2,7 +2,7 @@
 title: "Hellper"
 type: Manhwa
 score: 8.5
-image: https://a.ze.wtf/review-imgs/MlIvIEA.png
+image: https://i.imgur.com/MlIvIEA.png
 ---
 
 The author really thought hell and then wrote one of the most well made comics ever with great art, fights and characters. 

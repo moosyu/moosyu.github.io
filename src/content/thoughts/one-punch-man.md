@@ -3,7 +3,7 @@ title: "One Punch Man"
 alt: opm
 type: Manga
 score: 8.5
-image: https://a.ze.wtf/review-imgs/F8xdw1j.png
+image: https://i.imgur.com/F8xdw1j.png
 dateModified: 2025-03-20
 ---
 

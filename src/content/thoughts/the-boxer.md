@@ -2,7 +2,7 @@
 title: "The Boxer"
 type: Manhwa
 score: 9
-image: https://a.ze.wtf/review-imgs/409HqRn.png
+image: https://i.imgur.com/409HqRn.png
 dateModified: 2025-03-09
 ---
 

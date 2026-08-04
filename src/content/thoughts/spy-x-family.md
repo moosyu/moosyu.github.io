@@ -2,7 +2,7 @@
 title: "Spy X Family"
 type: Manga
 score: 7.5
-image: https://a.ze.wtf/review-imgs/142HN96.png
+image: https://i.imgur.com/142HN96.png
 dateModified: 2025-12-20
 ---
 

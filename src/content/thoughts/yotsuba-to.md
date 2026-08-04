@@ -2,7 +2,7 @@
 title: "Yotsuba to!"
 type: Manga
 score: 5
-image: https://a.ze.wtf/review-imgs/CV6Z4O4.png
+image: https://i.imgur.com/CV6Z4O4.png
 ---
 
 Jumbo don't deserve this disrespect! 

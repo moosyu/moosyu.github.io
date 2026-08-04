@@ -2,7 +2,7 @@
 title: "Vampire Family"
 type: Webtoon
 score: 8.5
-image: https://a.ze.wtf/review-imgs/3EbflU9.png
+image: https://i.imgur.com/3EbflU9.png
 dateModified: 2025-12-14
 ---
 

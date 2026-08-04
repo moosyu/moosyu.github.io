@@ -2,7 +2,7 @@
 title: "Bones"
 type: Manhwa
 score: 2.5
-image: https://a.ze.wtf/review-imgs/8VC9cVp.jpeg
+image: https://i.imgur.com/8VC9cVp.jpeg
 ---
 
 If Naver doesnt pick this up I'm selling my organs so I can. 

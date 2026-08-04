@@ -2,7 +2,7 @@
 title: "The Ancient Magus' Bride"
 type: Manga
 score: 7.5
-image: https://a.ze.wtf/review-imgs/cBGYIEU.png
+image: https://i.imgur.com/cBGYIEU.png
 ---
 
 Ok he's not a pedo I'm the stupid one mb chat. 

@@ -3,7 +3,7 @@ title: "Heavenly Demon Can't Live a Normal Life"
 alt: Descended from Divinity
 type: Manhwa
 score: 4
-image: https://a.ze.wtf/review-imgs/oc6IYcx.png
+image: https://i.imgur.com/oc6IYcx.png
 ---
 
 I feel bad for that Rodwell guy. 

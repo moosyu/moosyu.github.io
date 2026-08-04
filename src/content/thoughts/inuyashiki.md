@@ -2,7 +2,7 @@
 title: "Inuyashiki"
 type: Manga
 score: 7
-image: https://a.ze.wtf/review-imgs/O4HRIWK.jpg
+image: https://i.imgur.com/O4HRIWK.jpg
 ---
 
 This is why we need Trump back. 

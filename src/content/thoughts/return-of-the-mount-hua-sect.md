@@ -3,7 +3,7 @@ title: "Return of the Mount Hua Sect"
 alt: Return of the Blossoming Blade
 type: Manhwa
 score: 8.5
-image: https://a.ze.wtf/review-imgs/CRaGWK5.png
+image: https://i.imgur.com/CRaGWK5.png
 dateModified: 2025-05-24
 ---
 

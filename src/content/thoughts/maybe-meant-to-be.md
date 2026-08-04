@@ -2,7 +2,7 @@
 title: "Maybe Meant to Be"
 type: Manhwa
 score: 6.5
-image: https://a.ze.wtf/review-imgs/Uab7H2e.png
+image: https://i.imgur.com/Uab7H2e.png
 ---
 
 If I was gay it would be this guy or Chris Pratt I'm just saying. 

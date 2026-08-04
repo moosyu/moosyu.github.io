@@ -2,7 +2,7 @@
 title: "Nano Machine"
 type: Manhwa
 score: 5.5
-image: https://a.ze.wtf/review-imgs/eIV6Rit.png
+image: https://i.imgur.com/eIV6Rit.png
 dateModified: 2025-03-09
 ---
 

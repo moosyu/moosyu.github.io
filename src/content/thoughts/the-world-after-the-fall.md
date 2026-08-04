@@ -2,7 +2,7 @@
 title: "The World After the Fall"
 type: Manhwa
 score: 4
-image: https://a.ze.wtf/review-imgs/L8Mbb0y.jpeg
+image: https://i.imgur.com/L8Mbb0y.jpeg
 dateModified: 2025-03-08
 ---
 

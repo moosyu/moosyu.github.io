@@ -2,7 +2,7 @@
 title: "Absolute Regression"
 type: Manhwa
 score: 7
-image: https://a.ze.wtf/review-imgs/7EGsOrG.jpeg
+image: https://i.imgur.com/7EGsOrG.jpeg
 ---
 
 Absolute Regression manages to be its own thing in the oversaturated world of murim manhwa completely because the vibes are completely fucked, I don't know how this happened but I think I love it for it. There wasn't a single interaction in this manhwa that I found believable in any way but every character's autistic energy eventually became very charming to me and watching them bumble around talking crazy was extremely entertaining. Watching the MC and his father stare each other down after every sentence during every scene together as the lighting on them increases in quality for no reason was simply peak and unintentionally hilarious. The reason the author chose to do it like this is unknowable and I imagine you have to read it yourself to understand what I'm on about at all, but it should at least be an intriguing draw if anything. 

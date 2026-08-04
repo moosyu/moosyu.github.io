@@ -3,7 +3,7 @@ title: "Jujutsu Kaisen"
 alt: jjk
 type: Manga
 score: 6.5
-image: https://a.ze.wtf/review-imgs/YCGsi4Q.png
+image: https://i.imgur.com/YCGsi4Q.png
 ---
 
 What is going on?? 
