@@ -1,7 +1,7 @@
 ---
 title: "Berserk"
 type: Manga
-score: 10
+score: 9
 image: https://i.imgur.com/8zTm6YW.jpg
 ---
 
