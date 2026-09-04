@@ -3,9 +3,8 @@ title: "Low"
 type: Album
 score: 9
 dateModified: 2026-09-01
+image: "https://i.imgur.com/aJlpM8E.png"
 ---
 Cannot believe I haven't said anything about this album before on here, honestly I think I must've and just lost it while transferring files or something. I thought of this because I was listening to something else and was about to compare it to this only to be shocked to find an entry for this missing. Whatever.
 
 Low is one of Bowie's best which is a fantastically high bar to cross for an album by my favourite musician of all time but this definitely does it. Variety is my favourite part of Bowie's output, especially that during his run from 1970-1983. It felt like you never knew what to expect when checking out a new album and nothing does it better than Low even if to me Station to Station was the best from the Berlin trilogy. Its such a completely batshit insane choice to make half a rock album and then suddenly go all in on ambient but it pays off massively here because both sides contain some of Bowie's best. Obviously Sound and Vision is a classic but Always Crashing the Same Car and Be My Wife are supremely underrated bangers and have been stuck in my head for years now. As for the ambient part, while that kind of music isn't my favourite (which is part of the reason I didn't really love the album Heroes), some of the stuff here is just beautiful. Like I'm genuinely out here rocking out to Weeping Wall and Warszawa on my main, generally rock-centric playlist. Warszawa might actually be the best song on this album and one of Bowie's best ever, the slow build into the beautiful and bizarre vocals is always breathtaking and mesmerising. I haven't heard something like it since, perhaps the thing that comes closest is the vocals on that [fuckass Moai sound](https://www.youtube.com/watch?v=hyQpP1zjEG8).
-
-![](https://i.imgur.com/aJlpM8E.png)

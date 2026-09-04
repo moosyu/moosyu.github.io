@@ -1,0 +1,8 @@
+---
+title: Toast
+type: Movie
+score: 3
+dateModified: 2026-09-04
+---
+
+This movie was a real dreary piece of shit. First off I had to go through some real trials and tribulations to watch this at all because everywhere kept thinking I was looking for the Bollywood classic Toaster. Perhaps I should've watched that instead, but alas. Once I finally found it however I was very disappointed, from the clips I saw of this film I had thought it would be almost entirely cooking based which is what got me interested. However it's actually not much about cooking at all, the drama isn't incredibly unrealistic or anything but it just isn't really what I want to see, not to mention that dad is squarely in the wrong for so long that I didn't even want them to reconcile at all (not that they did but the movie still acted like it's a bad thing he's dead, guy is burning in hell). Aside from the straight child abuse he's just not a good parent and worst of all he isn't even trying, he's just a selfish asshole who couldn't give less of a shit about his son if he tried. Lastly there's just some creepy stuff that really put me off, like that kid telling Nigel he could touch his dick for milk, that came off really creepily to me instead of funny which I assume was the intention. The ending parts felt super rushed (like why include a timeskip 30 minutes before the end) and I came out feeling miserable instead of uplifted. I know it's a biography so it's not like this stuff could be changed but I didn't even know he was a real guy until the end so think about that.
