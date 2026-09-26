@@ -1,5 +1,5 @@
 ---
-title: "Ted"
+title: Ted
 type: TV Show
 score: 7
 dateModified: 2026-09-14
