@@ -1,0 +1,9 @@
+---
+title: "The LEGO Movie"
+type: Movie
+score: 7.5
+dateModified: 2026-09-14
+---
+I recently rewatched this film and honestly it holds up. I kind of miss the period this movie's success created where we got so many new LEGO film projects because I've always thought they were really fun and actually often funny too despite the younger audience they bring in. LEGO Batman particularly was absolutely hilarious and one of the best Batman movies of all time period. Tangent aside The LEGO Movie is the best film realised during this time by far because it has some real heart to it. Aside from the shockingly good visuals and Chris Pratt's best voice acting to date, the twist that this isn't in fact a LEGO world and instead a father and son's LEGO beef is so awesome. Them making up at the end was really sweet and I weirdly liked the divide between the low stakes real life situation and the high stakes LEGO situation, made the film feel strangely grounded while also allowing it to be as fantastical as it needed. Also again this felt like such an out there ending that stuck with me. Really brief thoughts on this but if I were you I'd check it out again, if 12 year old me and 18 year old me can enjoy the same film 6 years apart it must be a little special.
+
+Did kind of just realise I've only been saying good things and yet only gave this a 7.5 so I should probably explain myself. The film didn't really do anything wrong but it's still a primarily gag film made for children so in spite of the ending resonating with me so much, aside from being funny I can't say the rest of the film had the same effect.
