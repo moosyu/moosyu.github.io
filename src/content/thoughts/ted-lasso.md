@@ -1,6 +1,6 @@
 ---
 title: Ted Lasso (Seasons 1-3)
-type: Series
+type: TV Show
 score: 9
 dateModified: 2026-09-04
 ---

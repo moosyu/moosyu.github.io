@@ -1,0 +1,7 @@
+---
+title: "Peacemaker Season 1"
+type: TV Show
+score: 7
+dateModified: 2026-10-03
+---
+I've heard season two is awful so I think I'm just going to not watch it and pretend it doesn't exist as I wouldn't want it to retroactively damper my enjoyment of this season. That said I thought what I saw of this game was pretty good, honestly I kind of expected and hoped it'd lean a little more comedy than it ended up being, the only scenes that made me audibly laugh were the exchange between Peacemaker and the janitor in episode one and in the final episode when Eaglely puts the helmet in the completely wrong place. However, I thought the rest of the show was better than I'd expected so it made up for it. There wasn't a single character I didn't like which is pretty hard in a show where just about everyone is at best dangerously stupid, except for Peacemakers dad who I was thrilled to see finally get his comeuppance. It'd be nice if he was redeemed somehow however if you're a fullblown Nazi there's a limit to how much you can be redeemed so I can see why it made more sense to just kill him. I liked Peacemaker's growth, I liked how the butterflies had a pretty solid motivation (assuming they weren't lying) and overall this was just a really good show, especially for something that stemmed from the Suicide Squad (which really could've been worse all things considered, at least it was memorable).
