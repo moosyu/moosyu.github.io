@@ -1,7 +1,7 @@
 ---
 title: "Tokyo Ghoul"
 type: Manga
-score: 8.5
+score: 8
 image: https://i.imgur.com/iVkgiFj.jpg
 ---
 
