@@ -1,7 +1,7 @@
 ---
 title: "Tokyo Ghoul:re"
 type: Manga
-score: 8.5
+score: 9
 image: https://i.imgur.com/wBuYh5D.png
 dateModified: 2026-10-24
 ---
